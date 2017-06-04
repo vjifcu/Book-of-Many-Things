@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Spellbook.xcscheme</key>
+		<key>Book of Many Things.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>409FC5061EE4A7610047A7BE</key>
+		<key>409FC5321EE4B6D10047A7BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>409FC51A1EE4A7620047A7BE</key>
+		<key>409FC54A1EE4B6D10047A7BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

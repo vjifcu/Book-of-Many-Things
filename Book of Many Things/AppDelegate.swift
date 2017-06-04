@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Spellbook
+//  Book of Many Things
 //
 //  Created by Victor Jifcu on 2017-06-04.
 //  Copyright © 2017 Victor Jifcu. All rights reserved.

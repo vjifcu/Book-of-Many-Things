@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "409FC5061EE4A7610047A7BE"
-               BuildableName = "Spellbook.app"
-               BlueprintName = "Spellbook"
-               ReferencedContainer = "container:Spellbook.xcodeproj">
+               BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+               BuildableName = "Book of Many Things.app"
+               BlueprintName = "Book of Many Things"
+               ReferencedContainer = "container:Book of Many Things.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "409FC51A1EE4A7620047A7BE"
-               BuildableName = "SpellbookTests.xctest"
-               BlueprintName = "SpellbookTests"
-               ReferencedContainer = "container:Spellbook.xcodeproj">
+               BlueprintIdentifier = "409FC54A1EE4B6D10047A7BE"
+               BuildableName = "Book of Many ThingsTests.xctest"
+               BlueprintName = "Book of Many ThingsTests"
+               ReferencedContainer = "container:Book of Many Things.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5061EE4A7610047A7BE"
-            BuildableName = "Spellbook.app"
-            BlueprintName = "Spellbook"
-            ReferencedContainer = "container:Spellbook.xcodeproj">
+            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BuildableName = "Book of Many Things.app"
+            BlueprintName = "Book of Many Things"
+            ReferencedContainer = "container:Book of Many Things.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +65,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5061EE4A7610047A7BE"
-            BuildableName = "Spellbook.app"
-            BlueprintName = "Spellbook"
-            ReferencedContainer = "container:Spellbook.xcodeproj">
+            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BuildableName = "Book of Many Things.app"
+            BlueprintName = "Book of Many Things"
+            ReferencedContainer = "container:Book of Many Things.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +84,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5061EE4A7610047A7BE"
-            BuildableName = "Spellbook.app"
-            BlueprintName = "Spellbook"
-            ReferencedContainer = "container:Spellbook.xcodeproj">
+            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BuildableName = "Book of Many Things.app"
+            BlueprintName = "Book of Many Things"
+            ReferencedContainer = "container:Book of Many Things.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

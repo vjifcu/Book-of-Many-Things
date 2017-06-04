@@ -1,15 +1,15 @@
 //
-//  SpellbookTests.swift
-//  SpellbookTests
+//  Book_of_Many_ThingsTests.swift
+//  Book of Many ThingsTests
 //
 //  Created by Victor Jifcu on 2017-06-04.
 //  Copyright © 2017 Victor Jifcu. All rights reserved.
 //
 
 import XCTest
-@testable import Spellbook
+@testable import Book_of_Many_Things
 
-class SpellbookTests: XCTestCase {
+class Book_of_Many_ThingsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
