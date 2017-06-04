@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+               BlueprintIdentifier = "40A2D9791EE4BA2300FE237A"
                BuildableName = "Book of Many Things.app"
                BlueprintName = "Book of Many Things"
                ReferencedContainer = "container:Book of Many Things.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "409FC54A1EE4B6D10047A7BE"
+               BlueprintIdentifier = "40A2D98F1EE4BA2300FE237A"
                BuildableName = "Book of Many ThingsTests.xctest"
                BlueprintName = "Book of Many ThingsTests"
                ReferencedContainer = "container:Book of Many Things.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BlueprintIdentifier = "40A2D9791EE4BA2300FE237A"
             BuildableName = "Book of Many Things.app"
             BlueprintName = "Book of Many Things"
             ReferencedContainer = "container:Book of Many Things.xcodeproj">
@@ -65,7 +65,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BlueprintIdentifier = "40A2D9791EE4BA2300FE237A"
             BuildableName = "Book of Many Things.app"
             BlueprintName = "Book of Many Things"
             ReferencedContainer = "container:Book of Many Things.xcodeproj">
@@ -84,7 +84,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "409FC5321EE4B6D10047A7BE"
+            BlueprintIdentifier = "40A2D9791EE4BA2300FE237A"
             BuildableName = "Book of Many Things.app"
             BlueprintName = "Book of Many Things"
             ReferencedContainer = "container:Book of Many Things.xcodeproj">

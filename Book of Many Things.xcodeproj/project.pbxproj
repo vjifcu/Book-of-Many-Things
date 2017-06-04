@@ -7,50 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		409FC5371EE4B6D10047A7BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC5361EE4B6D10047A7BE /* AppDelegate.swift */; };
-		409FC5391EE4B6D10047A7BE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC5381EE4B6D10047A7BE /* RootViewController.swift */; };
-		409FC53B1EE4B6D10047A7BE /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC53A1EE4B6D10047A7BE /* DataViewController.swift */; };
-		409FC53D1EE4B6D10047A7BE /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC53C1EE4B6D10047A7BE /* ModelController.swift */; };
-		409FC5401EE4B6D10047A7BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409FC53E1EE4B6D10047A7BE /* Main.storyboard */; };
-		409FC5421EE4B6D10047A7BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 409FC5411EE4B6D10047A7BE /* Assets.xcassets */; };
-		409FC5451EE4B6D10047A7BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 409FC5431EE4B6D10047A7BE /* LaunchScreen.storyboard */; };
-		409FC5501EE4B6D10047A7BE /* Book_of_Many_ThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409FC54F1EE4B6D10047A7BE /* Book_of_Many_ThingsTests.swift */; };
+		40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */; };
+		40A2D9801EE4BA2300FE237A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */; };
+		40A2D9821EE4BA2300FE237A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D9811EE4BA2300FE237A /* SecondViewController.swift */; };
+		40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9831EE4BA2300FE237A /* Main.storyboard */; };
+		40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9861EE4BA2300FE237A /* Assets.xcassets */; };
+		40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */; };
+		40A2D9951EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		409FC54C1EE4B6D10047A7BE /* PBXContainerItemProxy */ = {
+		40A2D9911EE4BA2300FE237A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 409FC52B1EE4B6D10047A7BE /* Project object */;
+			containerPortal = 40A2D9721EE4BA2300FE237A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 409FC5321EE4B6D10047A7BE;
+			remoteGlobalIDString = 40A2D9791EE4BA2300FE237A;
 			remoteInfo = "Book of Many Things";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		409FC5331EE4B6D10047A7BE /* Book of Many Things.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book of Many Things.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		409FC5361EE4B6D10047A7BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		409FC5381EE4B6D10047A7BE /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		409FC53A1EE4B6D10047A7BE /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		409FC53C1EE4B6D10047A7BE /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
-		409FC53F1EE4B6D10047A7BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		409FC5411EE4B6D10047A7BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		409FC5441EE4B6D10047A7BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		409FC5461EE4B6D10047A7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		409FC54B1EE4B6D10047A7BE /* Book of Many ThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Book of Many ThingsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		409FC54F1EE4B6D10047A7BE /* Book_of_Many_ThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book_of_Many_ThingsTests.swift; sourceTree = "<group>"; };
-		409FC5511EE4B6D10047A7BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A2D97A1EE4BA2300FE237A /* Book of Many Things.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book of Many Things.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		40A2D9811EE4BA2300FE237A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		40A2D9841EE4BA2300FE237A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40A2D9861EE4BA2300FE237A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40A2D9891EE4BA2300FE237A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		40A2D98B1EE4BA2300FE237A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40A2D9901EE4BA2300FE237A /* Book of Many ThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Book of Many ThingsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book_of_Many_ThingsTests.swift; sourceTree = "<group>"; };
+		40A2D9961EE4BA2300FE237A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		409FC5301EE4B6D10047A7BE /* Frameworks */ = {
+		40A2D9771EE4BA2300FE237A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409FC5481EE4B6D10047A7BE /* Frameworks */ = {
+		40A2D98D1EE4BA2300FE237A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -60,44 +58,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		409FC52A1EE4B6D10047A7BE = {
+		40A2D9711EE4BA2300FE237A = {
 			isa = PBXGroup;
 			children = (
-				409FC5351EE4B6D10047A7BE /* Book of Many Things */,
-				409FC54E1EE4B6D10047A7BE /* Book of Many ThingsTests */,
-				409FC5341EE4B6D10047A7BE /* Products */,
+				40A2D97C1EE4BA2300FE237A /* Book of Many Things */,
+				40A2D9931EE4BA2300FE237A /* Book of Many ThingsTests */,
+				40A2D97B1EE4BA2300FE237A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		409FC5341EE4B6D10047A7BE /* Products */ = {
+		40A2D97B1EE4BA2300FE237A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				409FC5331EE4B6D10047A7BE /* Book of Many Things.app */,
-				409FC54B1EE4B6D10047A7BE /* Book of Many ThingsTests.xctest */,
+				40A2D97A1EE4BA2300FE237A /* Book of Many Things.app */,
+				40A2D9901EE4BA2300FE237A /* Book of Many ThingsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		409FC5351EE4B6D10047A7BE /* Book of Many Things */ = {
+		40A2D97C1EE4BA2300FE237A /* Book of Many Things */ = {
 			isa = PBXGroup;
 			children = (
-				409FC5361EE4B6D10047A7BE /* AppDelegate.swift */,
-				409FC5381EE4B6D10047A7BE /* RootViewController.swift */,
-				409FC53A1EE4B6D10047A7BE /* DataViewController.swift */,
-				409FC53C1EE4B6D10047A7BE /* ModelController.swift */,
-				409FC53E1EE4B6D10047A7BE /* Main.storyboard */,
-				409FC5411EE4B6D10047A7BE /* Assets.xcassets */,
-				409FC5431EE4B6D10047A7BE /* LaunchScreen.storyboard */,
-				409FC5461EE4B6D10047A7BE /* Info.plist */,
+				40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */,
+				40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */,
+				40A2D9811EE4BA2300FE237A /* SecondViewController.swift */,
+				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
+				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
+				40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */,
+				40A2D98B1EE4BA2300FE237A /* Info.plist */,
 			);
 			path = "Book of Many Things";
 			sourceTree = "<group>";
 		};
-		409FC54E1EE4B6D10047A7BE /* Book of Many ThingsTests */ = {
+		40A2D9931EE4BA2300FE237A /* Book of Many ThingsTests */ = {
 			isa = PBXGroup;
 			children = (
-				409FC54F1EE4B6D10047A7BE /* Book_of_Many_ThingsTests.swift */,
-				409FC5511EE4B6D10047A7BE /* Info.plist */,
+				40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */,
+				40A2D9961EE4BA2300FE237A /* Info.plist */,
 			);
 			path = "Book of Many ThingsTests";
 			sourceTree = "<group>";
@@ -105,13 +102,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		409FC5321EE4B6D10047A7BE /* Book of Many Things */ = {
+		40A2D9791EE4BA2300FE237A /* Book of Many Things */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 409FC5541EE4B6D10047A7BE /* Build configuration list for PBXNativeTarget "Book of Many Things" */;
+			buildConfigurationList = 40A2D9991EE4BA2300FE237A /* Build configuration list for PBXNativeTarget "Book of Many Things" */;
 			buildPhases = (
-				409FC52F1EE4B6D10047A7BE /* Sources */,
-				409FC5301EE4B6D10047A7BE /* Frameworks */,
-				409FC5311EE4B6D10047A7BE /* Resources */,
+				40A2D9761EE4BA2300FE237A /* Sources */,
+				40A2D9771EE4BA2300FE237A /* Frameworks */,
+				40A2D9781EE4BA2300FE237A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -119,51 +116,51 @@
 			);
 			name = "Book of Many Things";
 			productName = "Book of Many Things";
-			productReference = 409FC5331EE4B6D10047A7BE /* Book of Many Things.app */;
+			productReference = 40A2D97A1EE4BA2300FE237A /* Book of Many Things.app */;
 			productType = "com.apple.product-type.application";
 		};
-		409FC54A1EE4B6D10047A7BE /* Book of Many ThingsTests */ = {
+		40A2D98F1EE4BA2300FE237A /* Book of Many ThingsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 409FC5571EE4B6D10047A7BE /* Build configuration list for PBXNativeTarget "Book of Many ThingsTests" */;
+			buildConfigurationList = 40A2D99C1EE4BA2300FE237A /* Build configuration list for PBXNativeTarget "Book of Many ThingsTests" */;
 			buildPhases = (
-				409FC5471EE4B6D10047A7BE /* Sources */,
-				409FC5481EE4B6D10047A7BE /* Frameworks */,
-				409FC5491EE4B6D10047A7BE /* Resources */,
+				40A2D98C1EE4BA2300FE237A /* Sources */,
+				40A2D98D1EE4BA2300FE237A /* Frameworks */,
+				40A2D98E1EE4BA2300FE237A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				409FC54D1EE4B6D10047A7BE /* PBXTargetDependency */,
+				40A2D9921EE4BA2300FE237A /* PBXTargetDependency */,
 			);
 			name = "Book of Many ThingsTests";
 			productName = "Book of Many ThingsTests";
-			productReference = 409FC54B1EE4B6D10047A7BE /* Book of Many ThingsTests.xctest */;
+			productReference = 40A2D9901EE4BA2300FE237A /* Book of Many ThingsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		409FC52B1EE4B6D10047A7BE /* Project object */ = {
+		40A2D9721EE4BA2300FE237A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Victor Jifcu";
 				TargetAttributes = {
-					409FC5321EE4B6D10047A7BE = {
+					40A2D9791EE4BA2300FE237A = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = GVGKEVD3RJ;
 						ProvisioningStyle = Automatic;
 					};
-					409FC54A1EE4B6D10047A7BE = {
+					40A2D98F1EE4BA2300FE237A = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = GVGKEVD3RJ;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 409FC5321EE4B6D10047A7BE;
+						TestTargetID = 40A2D9791EE4BA2300FE237A;
 					};
 				};
 			};
-			buildConfigurationList = 409FC52E1EE4B6D10047A7BE /* Build configuration list for PBXProject "Book of Many Things" */;
+			buildConfigurationList = 40A2D9751EE4BA2300FE237A /* Build configuration list for PBXProject "Book of Many Things" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -171,29 +168,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 409FC52A1EE4B6D10047A7BE;
-			productRefGroup = 409FC5341EE4B6D10047A7BE /* Products */;
+			mainGroup = 40A2D9711EE4BA2300FE237A;
+			productRefGroup = 40A2D97B1EE4BA2300FE237A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				409FC5321EE4B6D10047A7BE /* Book of Many Things */,
-				409FC54A1EE4B6D10047A7BE /* Book of Many ThingsTests */,
+				40A2D9791EE4BA2300FE237A /* Book of Many Things */,
+				40A2D98F1EE4BA2300FE237A /* Book of Many ThingsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		409FC5311EE4B6D10047A7BE /* Resources */ = {
+		40A2D9781EE4BA2300FE237A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				409FC5451EE4B6D10047A7BE /* LaunchScreen.storyboard in Resources */,
-				409FC5421EE4B6D10047A7BE /* Assets.xcassets in Resources */,
-				409FC5401EE4B6D10047A7BE /* Main.storyboard in Resources */,
+				40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */,
+				40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */,
+				40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409FC5491EE4B6D10047A7BE /* Resources */ = {
+		40A2D98E1EE4BA2300FE237A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -203,48 +200,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		409FC52F1EE4B6D10047A7BE /* Sources */ = {
+		40A2D9761EE4BA2300FE237A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				409FC5391EE4B6D10047A7BE /* RootViewController.swift in Sources */,
-				409FC53D1EE4B6D10047A7BE /* ModelController.swift in Sources */,
-				409FC53B1EE4B6D10047A7BE /* DataViewController.swift in Sources */,
-				409FC5371EE4B6D10047A7BE /* AppDelegate.swift in Sources */,
+				40A2D9821EE4BA2300FE237A /* SecondViewController.swift in Sources */,
+				40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */,
+				40A2D9801EE4BA2300FE237A /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		409FC5471EE4B6D10047A7BE /* Sources */ = {
+		40A2D98C1EE4BA2300FE237A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				409FC5501EE4B6D10047A7BE /* Book_of_Many_ThingsTests.swift in Sources */,
+				40A2D9951EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		409FC54D1EE4B6D10047A7BE /* PBXTargetDependency */ = {
+		40A2D9921EE4BA2300FE237A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 409FC5321EE4B6D10047A7BE /* Book of Many Things */;
-			targetProxy = 409FC54C1EE4B6D10047A7BE /* PBXContainerItemProxy */;
+			target = 40A2D9791EE4BA2300FE237A /* Book of Many Things */;
+			targetProxy = 40A2D9911EE4BA2300FE237A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		409FC53E1EE4B6D10047A7BE /* Main.storyboard */ = {
+		40A2D9831EE4BA2300FE237A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				409FC53F1EE4B6D10047A7BE /* Base */,
+				40A2D9841EE4BA2300FE237A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		409FC5431EE4B6D10047A7BE /* LaunchScreen.storyboard */ = {
+		40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				409FC5441EE4B6D10047A7BE /* Base */,
+				40A2D9891EE4BA2300FE237A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -252,7 +248,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		409FC5521EE4B6D10047A7BE /* Debug */ = {
+		40A2D9971EE4BA2300FE237A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -303,7 +299,7 @@
 			};
 			name = Debug;
 		};
-		409FC5531EE4B6D10047A7BE /* Release */ = {
+		40A2D9981EE4BA2300FE237A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -347,7 +343,7 @@
 			};
 			name = Release;
 		};
-		409FC5551EE4B6D10047A7BE /* Debug */ = {
+		40A2D99A1EE4BA2300FE237A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -360,7 +356,7 @@
 			};
 			name = Debug;
 		};
-		409FC5561EE4B6D10047A7BE /* Release */ = {
+		40A2D99B1EE4BA2300FE237A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -373,7 +369,7 @@
 			};
 			name = Release;
 		};
-		409FC5581EE4B6D10047A7BE /* Debug */ = {
+		40A2D99D1EE4BA2300FE237A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -388,7 +384,7 @@
 			};
 			name = Debug;
 		};
-		409FC5591EE4B6D10047A7BE /* Release */ = {
+		40A2D99E1EE4BA2300FE237A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -406,32 +402,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		409FC52E1EE4B6D10047A7BE /* Build configuration list for PBXProject "Book of Many Things" */ = {
+		40A2D9751EE4BA2300FE237A /* Build configuration list for PBXProject "Book of Many Things" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409FC5521EE4B6D10047A7BE /* Debug */,
-				409FC5531EE4B6D10047A7BE /* Release */,
+				40A2D9971EE4BA2300FE237A /* Debug */,
+				40A2D9981EE4BA2300FE237A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		409FC5541EE4B6D10047A7BE /* Build configuration list for PBXNativeTarget "Book of Many Things" */ = {
+		40A2D9991EE4BA2300FE237A /* Build configuration list for PBXNativeTarget "Book of Many Things" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409FC5551EE4B6D10047A7BE /* Debug */,
-				409FC5561EE4B6D10047A7BE /* Release */,
+				40A2D99A1EE4BA2300FE237A /* Debug */,
+				40A2D99B1EE4BA2300FE237A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		409FC5571EE4B6D10047A7BE /* Build configuration list for PBXNativeTarget "Book of Many ThingsTests" */ = {
+		40A2D99C1EE4BA2300FE237A /* Build configuration list for PBXNativeTarget "Book of Many ThingsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				409FC5581EE4B6D10047A7BE /* Debug */,
-				409FC5591EE4B6D10047A7BE /* Release */,
+				40A2D99D1EE4BA2300FE237A /* Debug */,
+				40A2D99E1EE4BA2300FE237A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 409FC52B1EE4B6D10047A7BE /* Project object */;
+	rootObject = 40A2D9721EE4BA2300FE237A /* Project object */;
 }
