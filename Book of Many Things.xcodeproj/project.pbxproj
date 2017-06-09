@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D411EEA525E006478A9 /* SpellViewController.swift */; };
 		40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */; };
-		40A2D9801EE4BA2300FE237A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */; };
-		40A2D9821EE4BA2300FE237A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D9811EE4BA2300FE237A /* SecondViewController.swift */; };
+		40A2D9801EE4BA2300FE237A /* ClassSpellbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */; };
 		40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9831EE4BA2300FE237A /* Main.storyboard */; };
 		40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9861EE4BA2300FE237A /* Assets.xcassets */; };
 		40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */; };
 		40A2D9951EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */; };
+		40C962911EE61348005148F6 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 40C962901EE61348005148F6 /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		403D3D411EEA525E006478A9 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
 		40A2D97A1EE4BA2300FE237A /* Book of Many Things.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book of Many Things.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		40A2D9811EE4BA2300FE237A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSpellbook.swift; sourceTree = "<group>"; };
 		40A2D9841EE4BA2300FE237A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40A2D9861EE4BA2300FE237A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40A2D9891EE4BA2300FE237A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		40A2D9901EE4BA2300FE237A /* Book of Many ThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Book of Many ThingsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book_of_Many_ThingsTests.swift; sourceTree = "<group>"; };
 		40A2D9961EE4BA2300FE237A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40C962901EE61348005148F6 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */,
-				40A2D97F1EE4BA2300FE237A /* FirstViewController.swift */,
-				40A2D9811EE4BA2300FE237A /* SecondViewController.swift */,
+				40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */,
+				40C962901EE61348005148F6 /* data.json */,
 				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
+				403D3D411EEA525E006478A9 /* SpellViewController.swift */,
 				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
 				40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */,
 				40A2D98B1EE4BA2300FE237A /* Info.plist */,
@@ -184,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40C962911EE61348005148F6 /* data.json in Resources */,
 				40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */,
 				40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */,
 				40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */,
@@ -204,9 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40A2D9821EE4BA2300FE237A /* SecondViewController.swift in Sources */,
+				403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */,
 				40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */,
-				40A2D9801EE4BA2300FE237A /* FirstViewController.swift in Sources */,
+				40A2D9801EE4BA2300FE237A /* ClassSpellbook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +422,7 @@
 				40A2D99B1EE4BA2300FE237A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		40A2D99C1EE4BA2300FE237A /* Build configuration list for PBXNativeTarget "Book of Many ThingsTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				40A2D99E1EE4BA2300FE237A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
