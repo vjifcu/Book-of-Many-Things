@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D411EEA525E006478A9 /* SpellViewController.swift */; };
+		403D3D441EEA5E44006478A9 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D431EEA5E44006478A9 /* Spell.swift */; };
+		405F6FB51EEB5CF5001C258B /* texgyrebonum-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 405F6FB11EEB5CF5001C258B /* texgyrebonum-bold.otf */; };
+		405F6FB61EEB5CF5001C258B /* texgyrebonum-bolditalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 405F6FB21EEB5CF5001C258B /* texgyrebonum-bolditalic.otf */; };
+		405F6FB71EEB5CF5001C258B /* texgyrebonum-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 405F6FB31EEB5CF5001C258B /* texgyrebonum-italic.otf */; };
+		405F6FB81EEB5CF5001C258B /* texgyrebonum-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 405F6FB41EEB5CF5001C258B /* texgyrebonum-regular.otf */; };
 		40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */; };
 		40A2D9801EE4BA2300FE237A /* ClassSpellbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */; };
 		40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9831EE4BA2300FE237A /* Main.storyboard */; };
 		40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9861EE4BA2300FE237A /* Assets.xcassets */; };
 		40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */; };
 		40A2D9951EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */; };
+		40B1BCE11EECFCA00011D115 /* TabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B1BCE01EECFCA00011D115 /* TabbedViewController.swift */; };
 		40C962911EE61348005148F6 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 40C962901EE61348005148F6 /* data.json */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +35,11 @@
 
 /* Begin PBXFileReference section */
 		403D3D411EEA525E006478A9 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
+		403D3D431EEA5E44006478A9 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
+		405F6FB11EEB5CF5001C258B /* texgyrebonum-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "texgyrebonum-bold.otf"; path = "../../../../Downloads/gust-e-foundry_tex-gyre-bonum/texgyrebonum-bold.otf"; sourceTree = "<group>"; };
+		405F6FB21EEB5CF5001C258B /* texgyrebonum-bolditalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "texgyrebonum-bolditalic.otf"; path = "../../../../Downloads/gust-e-foundry_tex-gyre-bonum/texgyrebonum-bolditalic.otf"; sourceTree = "<group>"; };
+		405F6FB31EEB5CF5001C258B /* texgyrebonum-italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "texgyrebonum-italic.otf"; path = "../../../../Downloads/gust-e-foundry_tex-gyre-bonum/texgyrebonum-italic.otf"; sourceTree = "<group>"; };
+		405F6FB41EEB5CF5001C258B /* texgyrebonum-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "texgyrebonum-regular.otf"; path = "../../../../Downloads/gust-e-foundry_tex-gyre-bonum/texgyrebonum-regular.otf"; sourceTree = "<group>"; };
 		40A2D97A1EE4BA2300FE237A /* Book of Many Things.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Book of Many Things.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSpellbook.swift; sourceTree = "<group>"; };
@@ -39,6 +50,7 @@
 		40A2D9901EE4BA2300FE237A /* Book of Many ThingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Book of Many ThingsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40A2D9941EE4BA2300FE237A /* Book_of_Many_ThingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book_of_Many_ThingsTests.swift; sourceTree = "<group>"; };
 		40A2D9961EE4BA2300FE237A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40B1BCE01EECFCA00011D115 /* TabbedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbedViewController.swift; sourceTree = "<group>"; };
 		40C962901EE61348005148F6 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +72,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		405F6FB01EEB5CD1001C258B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				405F6FB11EEB5CF5001C258B /* texgyrebonum-bold.otf */,
+				405F6FB21EEB5CF5001C258B /* texgyrebonum-bolditalic.otf */,
+				405F6FB31EEB5CF5001C258B /* texgyrebonum-italic.otf */,
+				405F6FB41EEB5CF5001C258B /* texgyrebonum-regular.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		40A2D9711EE4BA2300FE237A = {
 			isa = PBXGroup;
 			children = (
@@ -81,11 +104,14 @@
 		40A2D97C1EE4BA2300FE237A /* Book of Many Things */ = {
 			isa = PBXGroup;
 			children = (
+				405F6FB01EEB5CD1001C258B /* Resources */,
 				40A2D97D1EE4BA2300FE237A /* AppDelegate.swift */,
 				40A2D97F1EE4BA2300FE237A /* ClassSpellbook.swift */,
+				40B1BCE01EECFCA00011D115 /* TabbedViewController.swift */,
+				403D3D431EEA5E44006478A9 /* Spell.swift */,
+				403D3D411EEA525E006478A9 /* SpellViewController.swift */,
 				40C962901EE61348005148F6 /* data.json */,
 				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
-				403D3D411EEA525E006478A9 /* SpellViewController.swift */,
 				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
 				40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */,
 				40A2D98B1EE4BA2300FE237A /* Info.plist */,
@@ -152,7 +178,7 @@
 				TargetAttributes = {
 					40A2D9791EE4BA2300FE237A = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = GVGKEVD3RJ;
+						DevelopmentTeam = 434WL5CLN7;
 						ProvisioningStyle = Automatic;
 					};
 					40A2D98F1EE4BA2300FE237A = {
@@ -188,9 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				40C962911EE61348005148F6 /* data.json in Resources */,
+				405F6FB61EEB5CF5001C258B /* texgyrebonum-bolditalic.otf in Resources */,
 				40A2D98A1EE4BA2300FE237A /* LaunchScreen.storyboard in Resources */,
 				40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */,
+				405F6FB71EEB5CF5001C258B /* texgyrebonum-italic.otf in Resources */,
 				40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */,
+				405F6FB51EEB5CF5001C258B /* texgyrebonum-bold.otf in Resources */,
+				405F6FB81EEB5CF5001C258B /* texgyrebonum-regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40B1BCE11EECFCA00011D115 /* TabbedViewController.swift in Sources */,
 				403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */,
+				403D3D441EEA5E44006478A9 /* Spell.swift in Sources */,
 				40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */,
 				40A2D9801EE4BA2300FE237A /* ClassSpellbook.swift in Sources */,
 			);
@@ -350,11 +382,12 @@
 		40A2D99A1EE4BA2300FE237A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GVGKEVD3RJ;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				DEVELOPMENT_TEAM = 434WL5CLN7;
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vgjifcu.Book-of-Many-Things";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.victorjifcu.Book-of-Many-Things";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -363,11 +396,12 @@
 		40A2D99B1EE4BA2300FE237A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GVGKEVD3RJ;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				DEVELOPMENT_TEAM = 434WL5CLN7;
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vgjifcu.Book-of-Many-Things";
+				PRODUCT_BUNDLE_IDENTIFIER = "ca.victorjifcu.Book-of-Many-Things";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

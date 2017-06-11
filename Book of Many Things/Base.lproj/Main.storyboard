@@ -4,10 +4,14 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="texgyrebonum-regular.otf">
+            <string>TeXGyreBonum-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Your Spellbook-->
         <scene sceneID="YJe-io-rG9">
@@ -30,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QZK-GC-URk" id="fbM-dV-LS9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -64,7 +68,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="45r-nA-kkT" id="YnH-xD-10n">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -93,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tXM-N9-VYQ" id="XjD-pi-JnX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -122,7 +126,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YW6-pr-lRF" id="UV0-ga-ldn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -151,7 +155,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P61-bZ-2bI" id="ZGR-zF-TTE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -172,7 +176,7 @@
             <objects>
                 <navigationController id="AdG-SH-RuT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Treasure" id="hvR-71-a66"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aGQ-6V-YDH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aGQ-6V-YDH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -189,7 +193,7 @@
             <objects>
                 <navigationController id="RnV-Ms-oAb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Items" id="cls-xN-XDc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7St-FN-jTR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7St-FN-jTR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -206,7 +210,7 @@
             <objects>
                 <navigationController id="8cr-2P-klw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Background" id="WxT-dQ-jMG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x1g-eE-CAS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="x1g-eE-CAS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -223,7 +227,7 @@
             <objects>
                 <navigationController id="QkC-3W-MbA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Character" id="iNE-O1-fbL"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jYQ-fr-tJB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jYQ-fr-tJB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -248,11 +252,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tTo-PF-HNA" id="Dof-jF-yD4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kjZ-6W-d0n" kind="show" identifier="showDetail" id="9OG-Ut-Ohi"/>
+                                    <segue destination="kjZ-6W-d0n" kind="show" id="iCQ-23-MLI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -262,15 +266,35 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Wizard" id="QsR-1l-qWf"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="VLX-sP-33v" id="Jlf-nf-R9G"/>
+                        <outlet property="tableView" destination="fyD-ds-33b" id="Wac-Sa-emZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYI-g7-Anp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="oTG-zq-SSo">
+                    <connections>
+                        <outlet property="delegate" destination="qmR-7X-KoI" id="iXT-jf-2Na"/>
+                        <outlet property="searchContentsController" destination="qmR-7X-KoI" id="qBy-EM-oDN"/>
+                        <outlet property="searchResultsDataSource" destination="qmR-7X-KoI" id="pdB-CB-jED"/>
+                        <outlet property="searchResultsDelegate" destination="qmR-7X-KoI" id="t2P-QY-0Nh"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="VLX-sP-33v">
+                    <connections>
+                        <outlet property="delegate" destination="qmR-7X-KoI" id="A4V-he-h5e"/>
+                        <outlet property="searchContentsController" destination="qmR-7X-KoI" id="dfs-YV-7L5"/>
+                        <outlet property="searchResultsDataSource" destination="qmR-7X-KoI" id="QdX-9w-Yzb"/>
+                        <outlet property="searchResultsDelegate" destination="qmR-7X-KoI" id="iL4-si-202"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3718" y="-1610"/>
         </scene>
-        <!--View Controller-->
+        <!--Spell View Controller-->
         <scene sceneID="daL-1m-KBr">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="kjZ-6W-d0n" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="kjZ-6W-d0n" customClass="SpellViewController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bEU-D9-zuS"/>
                         <viewControllerLayoutGuide type="bottom" id="PD9-9c-e4R"/>
@@ -278,13 +302,106 @@
                     <view key="view" contentMode="scaleToFill" id="IFt-a8-g4N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-hv-taa">
+                                <rect key="frame" x="12" y="6" width="351" height="655"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="218.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-py-Bid" userLabel="Name">
+                                                <rect key="frame" x="0.0" y="0.0" width="351" height="32.5"/>
+                                                <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-cR-cX2">
+                                                <rect key="frame" x="0.0" y="42.5" width="351" height="143"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSC-Zg-3Ly" userLabel="Range">
+                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-5e-S4F" userLabel="Duration">
+                                                        <rect key="frame" x="0.0" y="24" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adl-vh-xKZ" userLabel="Area of Effect">
+                                                        <rect key="frame" x="0.0" y="48" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3y-QN-0PF" userLabel="Casting Time">
+                                                        <rect key="frame" x="0.0" y="72" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osl-16-GNm" userLabel="Saving Throw">
+                                                        <rect key="frame" x="0.0" y="96" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-H8-IvW" userLabel="Components">
+                                                        <rect key="frame" x="0.0" y="120" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d27-u9-YLX">
+                                                <rect key="frame" x="0.0" y="195.5" width="351" height="23"/>
+                                                <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="width" secondItem="VPg-hv-taa" secondAttribute="width" id="0H9-xq-eos"/>
+                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="leading" secondItem="VPg-hv-taa" secondAttribute="leading" id="3zg-WB-X0v"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mw4-FA-MKC" secondAttribute="bottom" id="BlG-14-nya"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mw4-FA-MKC" secondAttribute="trailing" id="brv-K8-QTR"/>
+                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="top" secondItem="VPg-hv-taa" secondAttribute="top" id="ske-4v-Y4q"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="VPg-hv-taa" firstAttribute="leading" secondItem="IFt-a8-g4N" secondAttribute="leading" constant="12" id="VRf-04-PfC"/>
+                            <constraint firstAttribute="bottom" secondItem="VPg-hv-taa" secondAttribute="bottom" constant="6" id="sad-ZI-LO3"/>
+                            <constraint firstAttribute="trailing" secondItem="VPg-hv-taa" secondAttribute="trailing" constant="12" id="wfR-dS-R6Z"/>
+                            <constraint firstItem="VPg-hv-taa" firstAttribute="top" secondItem="IFt-a8-g4N" secondAttribute="top" constant="6" id="zC1-ZW-Lxg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MBm-n1-cjj"/>
+                    <connections>
+                        <outlet property="areaOfEffectLabel" destination="adl-vh-xKZ" id="kY9-fT-Bms"/>
+                        <outlet property="castingTimeLabel" destination="z3y-QN-0PF" id="XTm-5m-d5J"/>
+                        <outlet property="componentsLabel" destination="MED-H8-IvW" id="2ZN-Iq-Ohg"/>
+                        <outlet property="descriptionLabel" destination="d27-u9-YLX" id="izg-8m-OCJ"/>
+                        <outlet property="durationLabel" destination="ez3-5e-S4F" id="Y0Y-d7-d3m"/>
+                        <outlet property="nameLabel" destination="CGH-py-Bid" id="xes-eF-XTc"/>
+                        <outlet property="rangeLabel" destination="HSC-Zg-3Ly" id="H8Y-HO-kDP"/>
+                        <outlet property="savingThrowLabel" destination="Osl-16-GNm" id="LJz-17-1DU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN2-yz-Aum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4442" y="-1611"/>
+            <point key="canvasLocation" x="4494" y="-1611"/>
         </scene>
         <!--Priest-->
         <scene sceneID="lqD-yK-uaZ">
@@ -299,7 +416,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DEO-y7-psd" id="zOw-BT-fCY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -320,7 +437,7 @@
             <objects>
                 <navigationController id="XWU-Ub-a09" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cleric" id="5NC-lx-1wf"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MJr-en-YBX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MJr-en-YBX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -337,7 +454,7 @@
             <objects>
                 <navigationController id="NFc-Rd-4nn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Wizard" id="bUm-Kf-1a2"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T5S-l5-Bso">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T5S-l5-Bso">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -377,7 +494,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mxr-QX-otA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Spellbook" id="ehf-AN-Fyg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lJe-yT-Jp0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lJe-yT-Jp0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -390,10 +507,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-304.4977511244378"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabbed View Controller-->
         <scene sceneID="8v3-3J-so6">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="V8K-L9-3BL" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="V8K-L9-3BL" customClass="TabbedViewController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Yk1-fQ-vnV">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

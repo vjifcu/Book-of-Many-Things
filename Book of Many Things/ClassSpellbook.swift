@@ -8,38 +8,47 @@
 
 import UIKit
 
-class ClassSpellbook: UITableViewController {
+class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
     
-    struct Spell{
-        let name: String
-        let level: Int
-        let _class: [String]
-        
-        init(dictionary: [String: Any]){
-            self.name = dictionary["name"] as! String
-            self.level = dictionary["level"] as! Int
-            self._class = dictionary["class"] as! [String]
-        }
-    }
+    var searchController: UISearchController!
     
-    var spells = [Spell]()
+    var tab = 1
+    var spells = [[Spell]]()
     var spellLevels = [Int]()
+    var spellsFiltered = [[Spell]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
+        
         do{
         if let file = Bundle.main.url(forResource: "data", withExtension: "json")
         {
             let data = try Data(contentsOf: file)
             let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            let spells = json?["spells"] as! [[String: Any]]
+            let spellData = json?["spells"] as! [String: [[String: Any]]]
+            for (key, value) in spellData{
+                let spellData = spellData.map{
+                    Spell(dictionary: $0)
+                }
+                self.spells.append(spellData)
+            }
+            
+            let spells = json?[String(tab)] as! [[String: Any]]
             self.spells = spells.map{
                 Spell(dictionary: $0)
             }
-            spellLevels = Array(Set(self.spells.map{$0.level}))
-            spellLevels.sort {
-                return $0 < $1
-            }
+            
+            buildData()
+            
         }
         } catch{
             print(error.localizedDescription)
@@ -47,8 +56,35 @@ class ClassSpellbook: UITableViewController {
         
     }
     
+    func buildData(){
+        
+        let searchString = searchController.searchBar.text!
+        let spellData: [Spell]
+        
+        if !searchString.isEmpty {
+            spellData = spells[tab].filter{spell in
+                    return spell.name.lowercased().contains(searchString.lowercased())
+                }
+        }else{
+            spellData = spells[tab]
+        }
+        
+        spellLevels = Array(Set(spellData.map{$0.level}))
+        spellLevels.sort {
+            return $0 < $1
+        }
+        
+            spellsFiltered = [[Spell]]()
+            
+            for level in spellLevels{
+                spellsFiltered.append(spellData.filter({$0.level == level}) )
+            }
+        
+        tableView.reloadData()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return Set(spells.map{$0.level}).count
+        return spellLevels.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -56,14 +92,14 @@ class ClassSpellbook: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return spells.filter({$0.level == (spellLevels[section])}).count
+        return spellsFiltered[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SomeCell", for: indexPath) as UITableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SomeCell")!
         
-        let spell = spells.filter({$0.level == spellLevels[indexPath.section]})[indexPath.row]
+        let spell = spellsFiltered[indexPath.section][indexPath.row]
         
         cell.textLabel?.text = spell.name
         
@@ -71,4 +107,28 @@ class ClassSpellbook: UITableViewController {
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let spellViewController = segue.destination as? SpellViewController else{
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        guard let selectedSpellCell = sender as? UITableViewCell else{
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+
+        guard let indexPath = self.tableView.indexPath(for: selectedSpellCell) else{
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        let spell = spellsFiltered[indexPath.section][indexPath.row]
+            
+        spellViewController.spell = spell
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        buildData()
+    }
+    
 }
