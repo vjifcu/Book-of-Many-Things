@@ -12,7 +12,7 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
     
     var searchController: UISearchController!
     
-    var tab = 1
+    var tab = 0
     var spells = [[Spell]]()
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
@@ -26,6 +26,7 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
+        self.searchController.hidesNavigationBarDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
         
@@ -36,15 +37,9 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
             let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             let spellData = json?["spells"] as! [String: [[String: Any]]]
             for (key, value) in spellData{
-                let spellData = spellData.map{
+                self.spells.append(value.map{
                     Spell(dictionary: $0)
-                }
-                self.spells.append(spellData)
-            }
-            
-            let spells = json?[String(tab)] as! [[String: Any]]
-            self.spells = spells.map{
-                Spell(dictionary: $0)
+                })
             }
             
             buildData()
@@ -59,26 +54,31 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
     func buildData(){
         
         let searchString = searchController.searchBar.text!
-        let spellData: [Spell]
+        var spellData = [Spell]()
         
         if !searchString.isEmpty {
             spellData = spells[tab].filter{spell in
-                    return spell.name.lowercased().contains(searchString.lowercased())
+                let words = spell.name.lowercased().components(separatedBy: CharacterSet.whitespacesAndNewlines)
+                let matchingWords = words.filter{
+                    $0.hasPrefix(searchString.lowercased())
+                }
+                return matchingWords.count > 0
                 }
         }else{
             spellData = spells[tab]
         }
         
+        spellLevels.removeAll()
         spellLevels = Array(Set(spellData.map{$0.level}))
         spellLevels.sort {
             return $0 < $1
         }
         
-            spellsFiltered = [[Spell]]()
+        spellsFiltered.removeAll()
             
-            for level in spellLevels{
-                spellsFiltered.append(spellData.filter({$0.level == level}) )
-            }
+        for level in spellLevels{
+            spellsFiltered.append(spellData.filter({$0.level == level}) )
+        }
         
         tableView.reloadData()
     }

@@ -10,10 +10,16 @@ import UIKit
 
 class TabbedViewController: UITabBarController{
 
-    static var currentTab = 1
+    var currentTab = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for children in self.viewControllers!{
+            let tableViewController = children.childViewControllers.first as! ClassSpellbook
+            tableViewController.tab = currentTab
+            currentTab += 1
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -21,21 +27,6 @@ class TabbedViewController: UITabBarController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let navController = segue.destination as? UINavigationController else{
-            fatalError("Unexpected destination: \(segue.destination)")
-        }
-        
-        guard let tableViewController = navController.viewControllers.first as? ClassSpellbook else{
-            fatalError("No TableViewController found")
-        }
-
-        tableViewController.tab = self.selectedIndex
-        tableViewController.buildData()
     }
 
     /*

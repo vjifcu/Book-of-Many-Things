@@ -406,6 +406,7 @@
         <!--Priest-->
         <scene sceneID="lqD-yK-uaZ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWW-Wa-GNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="h46-Yr-uVE" customClass="ClassSpellbook" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="8PS-IO-Jug">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -416,7 +417,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DEO-y7-psd" id="zOw-BT-fCY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -428,7 +429,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Priest" id="NPC-E1-Fak"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OWW-Wa-GNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3718" y="-974"/>
         </scene>
