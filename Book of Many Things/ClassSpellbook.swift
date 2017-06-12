@@ -8,11 +8,14 @@
 
 import UIKit
 
-class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
+class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate{
     
-    var searchController: UISearchController!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
+
     var tab = 0
+    var tabName = ""
     var spells = [[Spell]]()
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
@@ -21,14 +24,10 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
         super.viewDidLoad()
         
         tableView.dataSource = self
-        
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.sizeToFit()
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        tableView.tableHeaderView = searchController.searchBar
-        definesPresentationContext = true
+        tableView.delegate = self
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
+        self.navigationItem.title = tabName
         
         do{
         if let file = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -39,7 +38,7 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
             for (key, value) in spellData{
                 self.spells.append(value.map{
                     Spell(dictionary: $0)
-                })
+                })                
             }
             
             buildData()
@@ -53,14 +52,18 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
     
     func buildData(){
         
-        let searchString = searchController.searchBar.text!
+        let searchString = searchBar.text!
         var spellData = [Spell]()
         
         if !searchString.isEmpty {
             spellData = spells[tab].filter{spell in
                 let words = spell.name.lowercased().components(separatedBy: CharacterSet.whitespacesAndNewlines)
                 let matchingWords = words.filter{
-                    $0.hasPrefix(searchString.lowercased())
+                    if(!searchString.hasPrefix("(")){
+                        return $0.replacingOccurrences(of: "(", with: "").hasPrefix(searchString.lowercased())
+                    }else{
+                        return $0.hasPrefix(searchString.lowercased())
+                    }
                 }
                 return matchingWords.count > 0
                 }
@@ -83,21 +86,34 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
         tableView.reloadData()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return spellLevels.count
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
+            if cell.accessoryType == .checkmark{
+                cell.accessoryType = .none
+            }
+            else{
+                cell.accessoryType = .checkmark
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Level " + String(spellLevels[section])
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return spellsFiltered[section].count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "SomeCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SomeCell")!
         
         let spell = spellsFiltered[indexPath.section][indexPath.row]
         
@@ -118,16 +134,50 @@ class ClassSpellbook: UITableViewController, UISearchResultsUpdating{
             fatalError("Unexpected sender: \(String(describing: sender))")
         }
 
-        guard let indexPath = self.tableView.indexPath(for: selectedSpellCell) else{
+        guard let indexPath = tableView.indexPath(for: selectedSpellCell) else{
             fatalError("The selected cell is not being displayed by the table")
         }
         let spell = spellsFiltered[indexPath.section][indexPath.row]
-            
+        
         spellViewController.spell = spell
         
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
+    //Deselects cell after returning from detail view
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+    }
+    
+    //Search bar logic///////////////////////////////////////////////////////////
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        buildData()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBarSearchButtonClicked(searchBar)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton{
+            cancelButton.isEnabled = true
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         buildData()
     }
     
