@@ -17,14 +17,19 @@ class SpellViewController: UIViewController {
     @IBOutlet weak var savingThrowLabel: UILabel!
     @IBOutlet weak var rangeLabel: UILabel!
     @IBOutlet weak var componentsLabel: UILabel!
-    
+    @IBOutlet weak var descriptionEndLabel: UILabel!
+
     var spell: Spell?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let spell = spell{
-            descriptionLabel.text = spell.description.joined(separator: "\n\n")
+            descriptionLabel.text = spell.description.joined(separator: "\n\n") + "\n"
+            
+            let text = spell.description_end ?? [""]
+            descriptionEndLabel.text = text.joined(separator: "\n\n")
+            
             nameLabel.text = spell.name
             
             var formattedString = NSMutableAttributedString()
@@ -51,6 +56,8 @@ class SpellViewController: UIViewController {
             
             formattedString.bold("Components: ").normal(spell.components)
             componentsLabel.attributedText = formattedString
+            
+            
         }
     }
 

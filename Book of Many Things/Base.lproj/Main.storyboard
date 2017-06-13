@@ -255,35 +255,41 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3gz-v0-enR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Rlq-fZ-UFG"/>
+                                        </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-AM-650">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="r2f-16-NwB" userLabel="SomeCell">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r2f-16-NwB" id="0Rq-dq-1LR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMp-Yf-Yar">
-                                                            <rect key="frame" x="50" y="8" width="317" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="kjZ-6W-d0n" kind="show" id="I15-N6-dSE"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-hz-JCB">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-AM-650">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="r2f-16-NwB" userLabel="SomeCell">
+                                                        <rect key="frame" x="0.0" y="28" width="345" height="60"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r2f-16-NwB" id="0Rq-dq-1LR">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <segue destination="kjZ-6W-d0n" kind="show" id="zTt-nI-LKk"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-Kf-4Sy" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
+                                                <rect key="frame" x="345" y="0.0" width="30" height="510"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="999" constant="30" id="vnN-U5-JAp"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -297,6 +303,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WkD-FW-IET"/>
                     <connections>
+                        <outlet property="indexView" destination="pvT-Kf-4Sy" id="OjW-gP-ECx"/>
                         <outlet property="searchBar" destination="3gz-v0-enR" id="BS5-nk-F4i"/>
                         <outlet property="tableView" destination="e3h-AM-650" id="Mud-1M-bXA"/>
                     </connections>
@@ -321,7 +328,7 @@
                                 <rect key="frame" x="12" y="6" width="351" height="655"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="218.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="241.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-py-Bid" userLabel="Name">
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="32.5"/>
@@ -370,12 +377,23 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d27-u9-YLX">
-                                                <rect key="frame" x="0.0" y="195.5" width="351" height="23"/>
-                                                <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lso-gs-cLQ">
+                                                <rect key="frame" x="0.0" y="195.5" width="351" height="46"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d27-u9-YLX" userLabel="Description">
+                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpw-kX-KAB" userLabel="Description End">
+                                                        <rect key="frame" x="0.0" y="23" width="351" height="23"/>
+                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -406,6 +424,7 @@
                         <outlet property="areaOfEffectLabel" destination="adl-vh-xKZ" id="kY9-fT-Bms"/>
                         <outlet property="castingTimeLabel" destination="z3y-QN-0PF" id="XTm-5m-d5J"/>
                         <outlet property="componentsLabel" destination="MED-H8-IvW" id="2ZN-Iq-Ohg"/>
+                        <outlet property="descriptionEndLabel" destination="rpw-kX-KAB" id="EHd-l0-9kh"/>
                         <outlet property="descriptionLabel" destination="d27-u9-YLX" id="izg-8m-OCJ"/>
                         <outlet property="durationLabel" destination="ez3-5e-S4F" id="Y0Y-d7-d3m"/>
                         <outlet property="nameLabel" destination="CGH-py-Bid" id="xes-eF-XTc"/>
@@ -415,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN2-yz-Aum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4494" y="-1611"/>
+            <point key="canvasLocation" x="4487" y="-1612"/>
         </scene>
         <!--Priest-->
         <scene sceneID="c26-Nl-k0u">

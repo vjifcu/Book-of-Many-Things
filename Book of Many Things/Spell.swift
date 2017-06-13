@@ -20,6 +20,7 @@ class Spell{
     let components: String
     let area_of_effect: String
     let saving_throw: String
+    let description_end: [String]?
     
     init(dictionary: [String: Any]){
         self.name = dictionary["name"] as! String
@@ -32,5 +33,6 @@ class Spell{
         self.components = dictionary["components"] as! String
         self.area_of_effect = dictionary["area_of_effect"] as! String
         self.saving_throw = dictionary["saving_throw"] as! String
+        self.description_end = dictionary["description_end"] as? [String]
     }
 }

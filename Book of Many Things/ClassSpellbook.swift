@@ -12,13 +12,14 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var indexView: M4KTableIndexView!
     
-
     var tab = 0
     var tabName = ""
     var spells = [[Spell]]()
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
+    var sections = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         self.navigationItem.title = tabName
+        
+        
         
         do{
         if let file = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -42,6 +45,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             }
             
             buildData()
+            
+            indexView.tableView = self.tableView
+            indexView.indexes = sections
+            indexView.setup()
             
         }
         } catch{
@@ -83,6 +90,12 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             spellsFiltered.append(spellData.filter({$0.level == level}) )
         }
         
+        sections.removeAll()
+        
+        for level in spellLevels{
+            sections.append(String(level))
+        }
+        
         tableView.reloadData()
     }
     
@@ -90,21 +103,8 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         return spellLevels.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath as IndexPath) {
-            if cell.accessoryType == .checkmark{
-                cell.accessoryType = .none
-            }
-            else{
-                cell.accessoryType = .checkmark
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Level " + String(spellLevels[section])
+        return "level " + sections[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,7 +121,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         return cell
         
-    }
+    }    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -163,6 +163,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         searchBar.text = ""
         searchBar.resignFirstResponder()
         buildData()
+        indexView.isHidden = false
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -178,6 +179,11 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text == ""){
+            indexView.isHidden = false
+        }else{
+            indexView.isHidden = true
+        }
         buildData()
     }
     
