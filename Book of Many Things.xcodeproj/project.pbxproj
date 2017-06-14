@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		40035FA91EEF965800FD84AA /* M4KTableIndexPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */; };
 		40035FAA1EEF965800FD84AA /* M4KTableIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */; };
+		40035FAC1EEFAAAB00FD84AA /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */; };
 		403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D411EEA525E006478A9 /* SpellViewController.swift */; };
 		403D3D441EEA5E44006478A9 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D431EEA5E44006478A9 /* Spell.swift */; };
 		405F6FB51EEB5CF5001C258B /* texgyrebonum-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 405F6FB11EEB5CF5001C258B /* texgyrebonum-bold.otf */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M4KTableIndexPreviewView.swift; sourceTree = "<group>"; };
 		40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M4KTableIndexView.swift; sourceTree = "<group>"; };
+		40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		403D3D411EEA525E006478A9 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
 		403D3D431EEA5E44006478A9 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		405F6FB11EEB5CF5001C258B /* texgyrebonum-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "texgyrebonum-bold.otf"; path = "../../../../Downloads/gust-e-foundry_tex-gyre-bonum/texgyrebonum-bold.otf"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */,
 				40C962901EE61348005148F6 /* data.json */,
 				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
+				40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */,
 				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
 				40A2D9881EE4BA2300FE237A /* LaunchScreen.storyboard */,
 				40A2D98B1EE4BA2300FE237A /* Info.plist */,
@@ -246,6 +249,7 @@
 			files = (
 				40035FAA1EEF965800FD84AA /* M4KTableIndexView.swift in Sources */,
 				40B1BCE11EECFCA00011D115 /* TabbedViewController.swift in Sources */,
+				40035FAC1EEFAAAB00FD84AA /* MyCollectionViewCell.swift in Sources */,
 				403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */,
 				403D3D441EEA5E44006478A9 /* Spell.swift in Sources */,
 				40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */,
