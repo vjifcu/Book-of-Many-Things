@@ -19,31 +19,54 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var componentsLabel: UILabel!
     @IBOutlet weak var descriptionEndLabel: UILabel!
 
+    @IBOutlet weak var stackView: UIStackView!
     
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 2, bottom: 10.0, right: 2)
     let reuseIdentifier = "cell"
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-    
-    var spell: Spell?
 
+    var spell: Spell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let spell = spell{
-            descriptionLabel.text = spell.description[0].joined(separator: "\n\n")
-            
             items.removeAll()
             
-            if let table = spell.table?[0]
-            {
-                for rows in table{
-                    for cells in rows{
-                        items.append(cells)
+            var combinedDesc = [Any]()
+            
+            if let tables = spell.table{
+                let commonLength = min(spell.description.count, tables.count)
+                combinedDesc = zip(spell.description, tables).flatMap { [$0, $1] }
+
+                for desc in spell.description.suffix(from: commonLength){
+                    combinedDesc.append(desc)
+                }
+                
+                for table in tables.suffix(from: commonLength){
+                    combinedDesc.append(table)
+                }
+                
+                for items in combinedDesc{
+                    let newLabel = UILabel()
+                    if let desc = items as? [String]{
+                        let newLabel = UILabel()
+                        newLabel.text = desc.joined(separator: "\n\n")
+                        newLabel.font = UIFont(name: "TeXGyreBonum-Regular", size: 15)
+                        newLabel.numberOfLines = 0
+                        stackView.addArrangedSubview(newLabel)
+                    } else if let table = items as? [[String]]{
+                        print("table!")
                     }
                 }
+                
+            } else{
+                let newLabel = UILabel()
+                newLabel.text = spell.description[0].joined(separator: "\n\n")
+                newLabel.font = UIFont(name: "TeXGyreBonum-Regular", size: 15)
+                newLabel.numberOfLines = 0
+                stackView.addArrangedSubview(newLabel)
             }
-            
-            descriptionEndLabel.text = spell.description[1].joined(separator: "\n\n")
             
             nameLabel.text = spell.name
             

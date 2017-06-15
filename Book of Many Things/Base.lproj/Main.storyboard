@@ -324,11 +324,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-hv-taa">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-hv-taa">
                                 <rect key="frame" x="12" y="6" width="351" height="655"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="641.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="595.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-py-Bid" userLabel="Name">
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="32.5"/>
@@ -377,66 +377,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lso-gs-cLQ">
-                                                <rect key="frame" x="0.0" y="195.5" width="351" height="446"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d27-u9-YLX" userLabel="Description">
-                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmn-F8-jA2">
-                                                        <rect key="frame" x="0.0" y="23" width="351" height="400"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="400" id="2XJ-AQ-PJK"/>
-                                                        </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Z71-eP-nl0">
-                                                            <size key="itemSize" width="50" height="50"/>
-                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        </collectionViewFlowLayout>
-                                                        <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="fnD-jk-k7d" customClass="MyCollectionViewCell" customModule="Book_of_Many_Things" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="us1-l7-XaP">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                            <nil key="textColor"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </view>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="us1-l7-XaP" secondAttribute="bottom" id="7pA-eb-0ro"/>
-                                                                    <constraint firstItem="us1-l7-XaP" firstAttribute="top" secondItem="fnD-jk-k7d" secondAttribute="top" id="FXR-0v-ZwR"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="us1-l7-XaP" secondAttribute="trailing" id="URF-uX-P1q"/>
-                                                                    <constraint firstItem="us1-l7-XaP" firstAttribute="leading" secondItem="fnD-jk-k7d" secondAttribute="leading" id="cRU-5a-zdI"/>
-                                                                </constraints>
-                                                                <connections>
-                                                                    <outlet property="myLabel" destination="us1-l7-XaP" id="61V-oQ-a5P"/>
-                                                                </connections>
-                                                            </collectionViewCell>
-                                                        </cells>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="kjZ-6W-d0n" id="ayu-g5-98d"/>
-                                                            <outlet property="delegate" destination="kjZ-6W-d0n" id="x32-k9-riF"/>
-                                                        </connections>
-                                                    </collectionView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpw-kX-KAB" userLabel="Description End">
-                                                        <rect key="frame" x="0.0" y="423" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lso-gs-cLQ">
+                                                <rect key="frame" x="0.0" y="195.5" width="351" height="400"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -473,12 +415,11 @@
                         <outlet property="areaOfEffectLabel" destination="adl-vh-xKZ" id="kY9-fT-Bms"/>
                         <outlet property="castingTimeLabel" destination="z3y-QN-0PF" id="XTm-5m-d5J"/>
                         <outlet property="componentsLabel" destination="MED-H8-IvW" id="2ZN-Iq-Ohg"/>
-                        <outlet property="descriptionEndLabel" destination="rpw-kX-KAB" id="EHd-l0-9kh"/>
-                        <outlet property="descriptionLabel" destination="d27-u9-YLX" id="izg-8m-OCJ"/>
                         <outlet property="durationLabel" destination="ez3-5e-S4F" id="Y0Y-d7-d3m"/>
                         <outlet property="nameLabel" destination="CGH-py-Bid" id="xes-eF-XTc"/>
                         <outlet property="rangeLabel" destination="HSC-Zg-3Ly" id="H8Y-HO-kDP"/>
                         <outlet property="savingThrowLabel" destination="Osl-16-GNm" id="LJz-17-1DU"/>
+                        <outlet property="stackView" destination="lso-gs-cLQ" id="EuI-HM-ZPA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN2-yz-Aum" userLabel="First Responder" sceneMemberID="firstResponder"/>
