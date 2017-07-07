@@ -97,7 +97,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tXM-N9-VYQ" id="XjD-pi-JnX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -416,10 +416,10 @@
                         <outlet property="castingTimeLabel" destination="z3y-QN-0PF" id="XTm-5m-d5J"/>
                         <outlet property="componentsLabel" destination="MED-H8-IvW" id="2ZN-Iq-Ohg"/>
                         <outlet property="durationLabel" destination="ez3-5e-S4F" id="Y0Y-d7-d3m"/>
-                        <outlet property="nameLabel" destination="CGH-py-Bid" id="xes-eF-XTc"/>
                         <outlet property="rangeLabel" destination="HSC-Zg-3Ly" id="H8Y-HO-kDP"/>
                         <outlet property="savingThrowLabel" destination="Osl-16-GNm" id="LJz-17-1DU"/>
                         <outlet property="stackView" destination="lso-gs-cLQ" id="EuI-HM-ZPA"/>
+                        <outlet property="textStackView" destination="Mw4-FA-MKC" id="b6r-1a-MkM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xN2-yz-Aum" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -522,6 +522,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gYv-pe-LzK"/>
+        <segue reference="z0A-dM-WAX"/>
     </inferredMetricsTieBreakers>
 </document>

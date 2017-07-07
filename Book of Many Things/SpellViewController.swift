@@ -10,7 +10,7 @@ import UIKit
 
 class SpellViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    //@IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var areaOfEffectLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var castingTimeLabel: UILabel!
@@ -18,19 +18,26 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     @IBOutlet weak var rangeLabel: UILabel!
     @IBOutlet weak var componentsLabel: UILabel!
     @IBOutlet weak var descriptionEndLabel: UILabel!
+    @IBOutlet weak var textStackView: UIStackView!
+    
+    var nameLabel: UILabel!
 
     @IBOutlet weak var stackView: UIStackView!
     
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 20, bottom: 10.0, right: 20)
-    let reuseIdentifier = "cell"
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    var numTables = 0
+    
+    var tableData = [[String]]()
+    var tables = [UICollectionView]()
 
     var spell: Spell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        nameLabel = UILabel()
+        nameLabel.text = "TEST"
+        textStackView.addArrangedSubview(nameLabel)
         
         if let spell = spell{
             
@@ -51,7 +58,6 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                 }
                 
                 for items in combinedDesc{
-                    let newLabel = UILabel()
                     if let desc = items as? [String]{
                         let newLabel = UILabel()
                         newLabel.text = desc.joined(separator: "\n\n")
@@ -59,14 +65,26 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                         newLabel.numberOfLines = 0
                         stackView.addArrangedSubview(newLabel)
                     } else if let table = items as? [[String]]{
-                        let collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-                        collectionView.dataSource = self
-                        collectionView.delegate = self
-                        collectionView.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-                        collectionView.backgroundColor = UIColor.white
-                        stackView.addArrangedSubview(collectionView)
-                        let constraint = NSLayoutConstraint(item: collectionView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
-                        self.view.addConstraint(constraint)
+                        self.tables.append(UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewFlowLayout()))
+                        self.tables[numTables].dataSource = self
+                        self.tables[numTables].delegate = self
+                        self.tables[numTables].register(MyCollectionViewCell.self, forCellWithReuseIdentifier: String(numTables))
+                        self.tables[numTables].backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+                        self.stackView.addArrangedSubview(self.tables[numTables])
+                        let constraintHeight = NSLayoutConstraint(item: self.tables[numTables], attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(table.count*38))
+                        self.view.addConstraint(constraintHeight)
+                        
+                        self.tableData.append([String]())
+                        self.tableData[numTables].append(String(table[0].count))
+                        for row in table{
+                            for cell in row{
+                                self.tableData[numTables].append(cell)
+                            }
+                        }
+                        
+                        
+                        
+                        numTables += 1
                     }
                 }
                 
@@ -109,19 +127,32 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        for table in tables{
+            guard let flowLayout = table.collectionViewLayout as? UICollectionViewFlowLayout else {
+                return
+            }
+            table.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
+        let index = (tables.index(of: collectionView))!
+        return tableData[index].count-1
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let index = (tables.index(of: collectionView))!
+        let numItems = CGFloat(Int(tableData[index][0])!)
         
-        let paddingSpace = sectionInsets.left * (3 + 1)
-        let availableWidth = stackView.frame.width - paddingSpace
-        let widthPerItem = availableWidth / 3
         
-        return CGSize(width: widthPerItem, height: widthPerItem/2)
+        let paddingSpace = (sectionInsets.left) * ( numItems)
+        let availableWidth = collectionView.bounds.size.width - paddingSpace
+        let widthPerItem = availableWidth / numItems
+        
+        return CGSize(width: widthPerItem, height: 38)
         
     }
     
@@ -129,6 +160,10 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
     
     // 4
@@ -141,22 +176,21 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let index = tables.index(of: collectionView)!
         
         // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! MyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: index), for: indexPath as IndexPath) as! MyCollectionViewCell
 
-        if let cellLabel = cell.myLabel{
-            cellLabel.text = self.items[indexPath.item]
-            cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
-            
-            return cell
-        }
-        let newLabel = UILabel()
-        cell.myLabel = newLabel
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.myLabel.text = self.items[indexPath.item]
-        cell.myLabel.textColor = UIColor.black
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        cell.label.text = tableData[index][indexPath.item + 1]
+        
+        let numItems = Int(tableData[index][0])!
+        
+        if(indexPath.item/numItems % 2 == 1){
+            cell.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        } else {
+            cell.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
+        }
         
         return cell
     }
