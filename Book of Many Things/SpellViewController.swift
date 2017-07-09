@@ -9,18 +9,11 @@
 import UIKit
 
 class SpellViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var descriptionLabel: UILabel!
-    //@IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var areaOfEffectLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var castingTimeLabel: UILabel!
-    @IBOutlet weak var savingThrowLabel: UILabel!
-    @IBOutlet weak var rangeLabel: UILabel!
-    @IBOutlet weak var componentsLabel: UILabel!
-    @IBOutlet weak var descriptionEndLabel: UILabel!
     @IBOutlet weak var textStackView: UIStackView!
+    @IBOutlet weak var infoFieldsStackView: UIStackView!
     
     var nameLabel: UILabel!
+    var infoFields = [UILabel]()
 
     @IBOutlet weak var stackView: UIStackView!
     
@@ -35,11 +28,32 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         nameLabel = UILabel()
-        nameLabel.text = "TEST"
+        nameLabel.font = UIFont(name: "TeXGyreBonum-Regular", size: 24)
         textStackView.addArrangedSubview(nameLabel)
         
+        
         if let spell = spell{
+
+            if let fields = spell.infoFields{
+                for (key, value) in fields{
+                    var formattedString = NSMutableAttributedString()
+                    var label = UILabel()
+                    label.font = UIFont(name: "TeXGyreBonum-Regular", size: 17)
+                    if let field = value as? String{
+                        label.attributedText = formattedString.bold(key + ": ").normal(field)
+                    }
+                    else if let field = value as? [String]{
+                        label.attributedText = formattedString.bold(key + ": ").normal("Array")
+                    }
+                    infoFieldsStackView.addArrangedSubview(label)
+                    infoFields.append(label)
+                }
+            }
+            
             
             var combinedDesc = [Any]()
             
@@ -97,31 +111,6 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
             }
             
             nameLabel.text = spell.name
-            
-            var formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Range: ").normal(spell.range)
-            rangeLabel.attributedText = formattedString
-            formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Duration: ").normal(spell.duration)
-            durationLabel.attributedText = formattedString
-            formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Area of Effect: ").normal(spell.area_of_effect)
-            areaOfEffectLabel.attributedText = formattedString
-            formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Casting Time: ").normal(spell.casting_time)
-            castingTimeLabel.attributedText = formattedString
-            formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Saving Throw: ").normal(spell.saving_throw)
-            savingThrowLabel.attributedText = formattedString
-            formattedString = NSMutableAttributedString()
-            
-            formattedString.bold("Components: ").normal(spell.components)
-            componentsLabel.attributedText = formattedString
             
             
         }

@@ -7,11 +7,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="texgyrebonum-regular.otf">
-            <string>TeXGyreBonum-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Your Spellbook-->
         <scene sceneID="YJe-io-rG9">
@@ -34,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QZK-GC-URk" id="fbM-dV-LS9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -68,7 +63,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="45r-nA-kkT" id="YnH-xD-10n">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -126,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YW6-pr-lRF" id="UV0-ga-ldn">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -155,7 +150,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P61-bZ-2bI" id="ZGR-zF-TTE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -268,11 +263,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="r2f-16-NwB" userLabel="SomeCell">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="r2f-16-NwB" userLabel="SomeCell">
                                                         <rect key="frame" x="0.0" y="28" width="345" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r2f-16-NwB" id="0Rq-dq-1LR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                         <connections>
@@ -328,71 +323,25 @@
                                 <rect key="frame" x="12" y="6" width="351" height="655"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="595.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="529"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGH-py-Bid" userLabel="Name">
-                                                <rect key="frame" x="0.0" y="0.0" width="351" height="32.5"/>
-                                                <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-cR-cX2">
-                                                <rect key="frame" x="0.0" y="42.5" width="351" height="143"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSC-Zg-3Ly" userLabel="Range">
-                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez3-5e-S4F" userLabel="Duration">
-                                                        <rect key="frame" x="0.0" y="24" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adl-vh-xKZ" userLabel="Area of Effect">
-                                                        <rect key="frame" x="0.0" y="48" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3y-QN-0PF" userLabel="Casting Time">
-                                                        <rect key="frame" x="0.0" y="72" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osl-16-GNm" userLabel="Saving Throw">
-                                                        <rect key="frame" x="0.0" y="96" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MED-H8-IvW" userLabel="Components">
-                                                        <rect key="frame" x="0.0" y="120" width="351" height="23"/>
-                                                        <fontDescription key="fontDescription" name="TeXGyreBonum-Regular" family="TeX Gyre Bonum" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-cR-cX2">
+                                                <rect key="frame" x="0.0" y="0.0" width="351" height="119"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lso-gs-cLQ">
-                                                <rect key="frame" x="0.0" y="195.5" width="351" height="400"/>
+                                                <rect key="frame" x="0.0" y="129" width="351" height="400"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="lso-gs-cLQ" firstAttribute="leading" secondItem="Mw4-FA-MKC" secondAttribute="leading" id="9QP-0g-cj8"/>
                                             <constraint firstAttribute="trailing" secondItem="lso-gs-cLQ" secondAttribute="trailing" id="Yin-hT-Wh1"/>
-                                            <constraint firstAttribute="bottom" secondItem="lso-gs-cLQ" secondAttribute="bottom" id="qxJ-DC-DAA"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="width" secondItem="VPg-hv-taa" secondAttribute="width" id="0H9-xq-eos"/>
+                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="width" secondItem="VPg-hv-taa" secondAttribute="width" constant="-10" id="0H9-xq-eos"/>
                                     <constraint firstItem="Mw4-FA-MKC" firstAttribute="leading" secondItem="VPg-hv-taa" secondAttribute="leading" id="3zg-WB-X0v"/>
                                     <constraint firstAttribute="bottom" secondItem="Mw4-FA-MKC" secondAttribute="bottom" id="BlG-14-nya"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mw4-FA-MKC" secondAttribute="trailing" id="brv-K8-QTR"/>
                                     <constraint firstItem="Mw4-FA-MKC" firstAttribute="top" secondItem="VPg-hv-taa" secondAttribute="top" id="ske-4v-Y4q"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -406,18 +355,13 @@
                         <constraints>
                             <constraint firstItem="VPg-hv-taa" firstAttribute="leading" secondItem="IFt-a8-g4N" secondAttribute="leading" constant="12" id="VRf-04-PfC"/>
                             <constraint firstAttribute="bottom" secondItem="VPg-hv-taa" secondAttribute="bottom" constant="6" id="sad-ZI-LO3"/>
-                            <constraint firstAttribute="trailing" secondItem="VPg-hv-taa" secondAttribute="trailing" constant="12" id="wfR-dS-R6Z"/>
+                            <constraint firstAttribute="trailing" secondItem="VPg-hv-taa" secondAttribute="trailing" constant="2" id="wfR-dS-R6Z"/>
                             <constraint firstItem="VPg-hv-taa" firstAttribute="top" secondItem="IFt-a8-g4N" secondAttribute="top" constant="6" id="zC1-ZW-Lxg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MBm-n1-cjj"/>
                     <connections>
-                        <outlet property="areaOfEffectLabel" destination="adl-vh-xKZ" id="kY9-fT-Bms"/>
-                        <outlet property="castingTimeLabel" destination="z3y-QN-0PF" id="XTm-5m-d5J"/>
-                        <outlet property="componentsLabel" destination="MED-H8-IvW" id="2ZN-Iq-Ohg"/>
-                        <outlet property="durationLabel" destination="ez3-5e-S4F" id="Y0Y-d7-d3m"/>
-                        <outlet property="rangeLabel" destination="HSC-Zg-3Ly" id="H8Y-HO-kDP"/>
-                        <outlet property="savingThrowLabel" destination="Osl-16-GNm" id="LJz-17-1DU"/>
+                        <outlet property="infoFieldsStackView" destination="aAX-cR-cX2" id="hqF-Wa-ZID"/>
                         <outlet property="stackView" destination="lso-gs-cLQ" id="EuI-HM-ZPA"/>
                         <outlet property="textStackView" destination="Mw4-FA-MKC" id="b6r-1a-MkM"/>
                     </connections>

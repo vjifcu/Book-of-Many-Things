@@ -13,54 +13,6 @@
             timestampString = "519018337.281328"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Book_of_Many_Things.ClassSpellbook.viewDidLoad () -&gt; ()"
-                  moduleName = "Book of Many Things"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/victorjifcu/Documents/Xcode/Book%20of%20Many%20Things/Book%20of%20Many%20Things/ClassSpellbook.swift"
-                  timestampString = "518852501.798552"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "2368">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Book_of_Many_Things.ClassSpellbook.viewDidLoad () -&gt; ()"
-                  moduleName = "Book of Many Things"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/victorjifcu/Documents/Xcode/Book%20of%20Many%20Things/Book%20of%20Many%20Things/ClassSpellbook.swift"
-                  timestampString = "518852501.799708"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "3916">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Book of Many Things/ClassSpellbook.swift"
-            timestampString = "519018337.281328"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
             landmarkName = "buildData()"
@@ -106,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book of Many Things/Spell.swift"
-            timestampString = "519106732.911512"
+            timestampString = "521179873.959647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "init(dictionary:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book of Many Things/SpellViewController.swift"
-            timestampString = "521081813.91548"
+            timestampString = "521185917.100329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,13 +90,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Book of Many Things/SpellViewController.swift"
-            timestampString = "521082038.505667"
+            timestampString = "521185704.291494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Book_of_Many_Things.SpellViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "Book of Many Things"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/victorjifcu/Documents/Xcode/Book%20of%20Many%20Things/Book%20of%20Many%20Things/SpellViewController.swift"
+                  timestampString = "521185079.724984"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "748">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Book_of_Many_Things.SpellViewController.viewDidLoad () -&gt; ()"
+                  moduleName = "Book of Many Things"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/victorjifcu/Documents/Xcode/Book%20of%20Many%20Things/Book%20of%20Many%20Things/SpellViewController.swift"
+                  timestampString = "521185079.726174"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "804">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,45 +137,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Book of Many Things/SpellViewController.swift"
-            timestampString = "521082038.505667"
+            filePath = "Book of Many Things/Spell.swift"
+            timestampString = "521180090.538836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Book of Many Things/SpellViewController.swift"
-            timestampString = "521082038.505667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Book of Many Things/SpellViewController.swift"
-            timestampString = "521082038.505667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "init(dictionary:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
