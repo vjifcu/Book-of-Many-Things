@@ -14,6 +14,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var indexView: M4KTableIndexView!
     
+    var spellDetail = SpellViewController()
     var tab = 0
     var tabName = ""
     var spells = [[Spell]]()

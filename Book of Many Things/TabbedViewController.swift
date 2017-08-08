@@ -13,8 +13,8 @@ class TabbedViewController: UITabBarController{
     var currentTab = 0
     var tabNames = [String]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         do{
             if let file = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -33,7 +33,7 @@ class TabbedViewController: UITabBarController{
         } catch{
             print(error.localizedDescription)
         }
-
+        
         for children in self.viewControllers!{
             let tableViewController = children.childViewControllers.first as! ClassSpellbook
             tableViewController.tab = currentTab

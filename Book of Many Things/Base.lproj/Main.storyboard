@@ -234,176 +234,6 @@
             </objects>
             <point key="canvasLocation" x="750" y="340"/>
         </scene>
-        <!--Wizard-->
-        <scene sceneID="3Q9-vW-qaB">
-            <objects>
-                <viewController id="HO6-75-PjG" userLabel="Wizard" customClass="ClassSpellbook" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="W9S-89-mqR"/>
-                        <viewControllerLayoutGuide type="bottom" id="MXh-BI-j39"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lkg-c9-9lZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bnd-fg-C1f">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3gz-v0-enR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="Rlq-fZ-UFG"/>
-                                        </constraints>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3E-hz-JCB">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="510"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-AM-650">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="r2f-16-NwB" userLabel="SomeCell">
-                                                        <rect key="frame" x="0.0" y="28" width="345" height="60"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r2f-16-NwB" id="0Rq-dq-1LR">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </tableViewCellContentView>
-                                                        <connections>
-                                                            <segue destination="kjZ-6W-d0n" kind="show" id="zTt-nI-LKk"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                            </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-Kf-4Sy" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
-                                                <rect key="frame" x="345" y="0.0" width="30" height="510"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" priority="999" constant="30" id="vnN-U5-JAp"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="bnd-fg-C1f" firstAttribute="leading" secondItem="Lkg-c9-9lZ" secondAttribute="leading" id="Ky6-Gn-rHe"/>
-                            <constraint firstAttribute="trailing" secondItem="bnd-fg-C1f" secondAttribute="trailing" id="aUv-az-Xef"/>
-                            <constraint firstItem="MXh-BI-j39" firstAttribute="top" secondItem="bnd-fg-C1f" secondAttribute="bottom" id="gvf-4s-bbJ"/>
-                            <constraint firstItem="bnd-fg-C1f" firstAttribute="top" secondItem="W9S-89-mqR" secondAttribute="bottom" id="jaJ-ze-qgz"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="WkD-FW-IET"/>
-                    <connections>
-                        <outlet property="indexView" destination="pvT-Kf-4Sy" id="OjW-gP-ECx"/>
-                        <outlet property="searchBar" destination="3gz-v0-enR" id="BS5-nk-F4i"/>
-                        <outlet property="tableView" destination="e3h-AM-650" id="Mud-1M-bXA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a9G-Fq-2hu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3733.5999999999999" y="-1612.4437781109445"/>
-        </scene>
-        <!--Spell View Controller-->
-        <scene sceneID="daL-1m-KBr">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="kjZ-6W-d0n" customClass="SpellViewController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bEU-D9-zuS"/>
-                        <viewControllerLayoutGuide type="bottom" id="PD9-9c-e4R"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IFt-a8-g4N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-hv-taa">
-                                <rect key="frame" x="12" y="6" width="351" height="655"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mw4-FA-MKC">
-                                        <rect key="frame" x="0.0" y="0.0" width="351" height="529"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="aAX-cR-cX2">
-                                                <rect key="frame" x="0.0" y="0.0" width="351" height="119"/>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lso-gs-cLQ">
-                                                <rect key="frame" x="0.0" y="129" width="351" height="400"/>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="lso-gs-cLQ" firstAttribute="leading" secondItem="Mw4-FA-MKC" secondAttribute="leading" id="9QP-0g-cj8"/>
-                                            <constraint firstAttribute="trailing" secondItem="lso-gs-cLQ" secondAttribute="trailing" id="Yin-hT-Wh1"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="width" secondItem="VPg-hv-taa" secondAttribute="width" constant="-10" id="0H9-xq-eos"/>
-                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="leading" secondItem="VPg-hv-taa" secondAttribute="leading" id="3zg-WB-X0v"/>
-                                    <constraint firstAttribute="bottom" secondItem="Mw4-FA-MKC" secondAttribute="bottom" id="BlG-14-nya"/>
-                                    <constraint firstItem="Mw4-FA-MKC" firstAttribute="top" secondItem="VPg-hv-taa" secondAttribute="top" id="ske-4v-Y4q"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="0.0" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="VPg-hv-taa" firstAttribute="leading" secondItem="IFt-a8-g4N" secondAttribute="leading" constant="12" id="VRf-04-PfC"/>
-                            <constraint firstAttribute="bottom" secondItem="VPg-hv-taa" secondAttribute="bottom" constant="6" id="sad-ZI-LO3"/>
-                            <constraint firstAttribute="trailing" secondItem="VPg-hv-taa" secondAttribute="trailing" constant="2" id="wfR-dS-R6Z"/>
-                            <constraint firstItem="VPg-hv-taa" firstAttribute="top" secondItem="IFt-a8-g4N" secondAttribute="top" constant="6" id="zC1-ZW-Lxg"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="MBm-n1-cjj"/>
-                    <connections>
-                        <outlet property="infoFieldsStackView" destination="aAX-cR-cX2" id="hqF-Wa-ZID"/>
-                        <outlet property="stackView" destination="lso-gs-cLQ" id="EuI-HM-ZPA"/>
-                        <outlet property="textStackView" destination="Mw4-FA-MKC" id="b6r-1a-MkM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xN2-yz-Aum" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4487" y="-1612"/>
-        </scene>
-        <!--Priest-->
-        <scene sceneID="c26-Nl-k0u">
-            <objects>
-                <navigationController id="XWU-Ub-a09" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Priest" id="5NC-lx-1wf"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MJr-en-YBX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="HO6-75-PjG" kind="relationship" relationship="rootViewController" id="gYv-pe-LzK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dVi-hG-hfm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2956" y="-975"/>
-        </scene>
-        <!--Wizard-->
-        <scene sceneID="efD-hn-2vw">
-            <objects>
-                <navigationController id="NFc-Rd-4nn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wizard" id="bUm-Kf-1a2"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T5S-l5-Bso">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="HO6-75-PjG" kind="relationship" relationship="rootViewController" id="z0A-dM-WAX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ewf-He-sgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2956" y="-1609"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -455,17 +285,18 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="NFc-Rd-4nn" kind="relationship" relationship="viewControllers" id="08z-36-luD"/>
-                        <segue destination="XWU-Ub-a09" kind="relationship" relationship="viewControllers" id="h02-ak-cQG"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMA-4h-QQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2146" y="-304"/>
         </scene>
+        <!--SpellList-->
+        <scene sceneID="Pwh-N0-by2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SpellList" id="uNz-va-f2k" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5fb-FX-Zgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2775" y="-278"/>
+        </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="z0A-dM-WAX"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -9,13 +9,13 @@
 import UIKit
 
 class SpellViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var textStackView: UIStackView!
-    @IBOutlet weak var infoFieldsStackView: UIStackView!
     
     var nameLabel: UILabel!
     var infoFields = [UILabel]()
-
-    @IBOutlet weak var stackView: UIStackView!
+    
+    var scrollView = UIScrollView()
+    var innerView = UIView()
+    var stackView = UIStackView()
     
     let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     var numTables = 0
@@ -28,28 +28,55 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stackView.axis = .vertical
+        //stackView.spacing = 1
         
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(innerView)
+        innerView.addSubview(stackView)
         
+        //scrollView Constraints
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        innerView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(item: scrollView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: scrollView, attribute: .trailing, relatedBy: .equal, toItem: self.view, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: innerView, attribute: .leading, relatedBy: .equal, toItem: scrollView, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: innerView, attribute: .trailing, relatedBy: .equal, toItem: scrollView, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: innerView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: innerView, attribute: .bottom, relatedBy: .equal, toItem: scrollView, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: innerView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1.0, constant: 0).isActive = true
+
+        NSLayoutConstraint(item: stackView, attribute: .leading, relatedBy: .equal, toItem: innerView, attribute: .leading, multiplier: 1.0, constant: 8).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .trailing, relatedBy: .equal, toItem: innerView, attribute: .trailing, multiplier: 1.0, constant: -8).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: innerView, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: innerView, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+
         
         nameLabel = UILabel()
         nameLabel.font = UIFont(name: "TeXGyreBonum-Regular", size: 24)
-        textStackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(nameLabel)
         
         
         if let spell = spell{
 
             if let fields = spell.infoFields{
                 for (key, value) in fields{
-                    var formattedString = NSMutableAttributedString()
-                    var label = UILabel()
+                    let formattedString = NSMutableAttributedString()
+                    let label = UILabel()
                     label.font = UIFont(name: "TeXGyreBonum-Regular", size: 17)
                     if let field = value as? String{
                         label.attributedText = formattedString.bold(key + ": ").normal(field)
                     }
-                    else if let field = value as? [String]{
+                    else if value is [String]{
                         label.attributedText = formattedString.bold(key + ": ").normal("Array")
                     }
-                    infoFieldsStackView.addArrangedSubview(label)
+                    stackView.addArrangedSubview(label)
                     infoFields.append(label)
                 }
             }
