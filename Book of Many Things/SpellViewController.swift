@@ -73,8 +73,13 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                     if let field = value as? String{
                         label.attributedText = formattedString.bold(key + ": ").normal(field)
                     }
-                    else if value is [String]{
-                        label.attributedText = formattedString.bold(key + ": ").normal("Array")
+                    else if let texts = value as? [String]{
+                        var labelText = formattedString.bold(key + ": ")
+                        for text in texts{
+                            labelText = labelText.normal(text + ", ")
+                        }
+                        labelText.deleteCharacters(in: NSMakeRange(labelText.length-2, 2))
+                        label.attributedText = labelText
                     }
                     stackView.addArrangedSubview(label)
                     infoFields.append(label)
