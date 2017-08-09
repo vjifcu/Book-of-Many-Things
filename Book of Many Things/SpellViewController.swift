@@ -70,6 +70,7 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                     let formattedString = NSMutableAttributedString()
                     let label = UILabel()
                     label.font = UIFont(name: "TeXGyreBonum-Regular", size: 17)
+                    label.numberOfLines = 0
                     if let field = value as? String{
                         label.attributedText = formattedString.bold(key + ": ").normal(field)
                     }
