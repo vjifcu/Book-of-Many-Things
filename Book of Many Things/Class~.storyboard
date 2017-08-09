@@ -285,10 +285,29 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="SCp-og-wee" kind="relationship" relationship="viewControllers" id="U5D-dr-mUJ"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMA-4h-QQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2198" y="-304"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Hyz-PD-gvb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afM-On-nIW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="SCp-og-wee" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="dbn-9d-tPK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ma5-mC-dWg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="3026" y="-304"/>
         </scene>
     </scenes>
 </document>

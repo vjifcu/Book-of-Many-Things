@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lle-v6-pk9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wizard-->
+        <scene sceneID="71v-gh-yAG">
+            <objects>
+                <viewController id="lle-v6-pk9" userLabel="Wizard" customClass="ClassSpellbook" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Yt-ly-03a"/>
+                        <viewControllerLayoutGuide type="bottom" id="mCm-2i-ia0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TtV-AN-SKf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jrt-wy-9y2">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-8Y-lIy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="aLE-Ma-Xbz"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-PJ-VO0">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-gi-TWI">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="YCo-zz-oRT" userLabel="SomeCell">
+                                                        <rect key="frame" x="0.0" y="28" width="345" height="60"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YCo-zz-oRT" id="D0Z-jb-rxu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <segue destination="iKL-us-P8M" kind="show" id="yPt-sK-hoF">
+                                                                <nil key="action"/>
+                                                            </segue>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OML-BD-Czf" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
+                                                <rect key="frame" x="345" y="0.0" width="30" height="510"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" priority="999" constant="30" id="qeE-yK-fyu"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jrt-wy-9y2" firstAttribute="top" secondItem="4Yt-ly-03a" secondAttribute="bottom" id="0EU-mD-la6"/>
+                            <constraint firstAttribute="trailing" secondItem="jrt-wy-9y2" secondAttribute="trailing" id="ZLc-TZ-Tct"/>
+                            <constraint firstItem="jrt-wy-9y2" firstAttribute="leading" secondItem="TtV-AN-SKf" secondAttribute="leading" id="qr8-Au-uB4"/>
+                            <constraint firstItem="mCm-2i-ia0" firstAttribute="top" secondItem="jrt-wy-9y2" secondAttribute="bottom" id="zEK-8x-wm2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="glg-X5-tJ5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="indexView" destination="OML-BD-Czf" id="8sW-qr-MXs"/>
+                        <outlet property="searchBar" destination="wTR-8Y-lIy" id="ryC-o6-S6Q"/>
+                        <outlet property="tableView" destination="eU6-gi-TWI" id="JGK-TK-63Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BMi-W4-6QE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5759.1999999999998" y="-304.4977511244378"/>
+        </scene>
+        <!--Spell View Controller-->
+        <scene sceneID="ABd-Py-Uen">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="iKL-us-P8M" customClass="SpellViewController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6VW-Jq-hwS"/>
+                        <viewControllerLayoutGuide type="bottom" id="BGZ-dy-Pet"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WjL-GI-vY0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7pA-xt-9c2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WF9-P0-Bcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6511.1999999999998" y="-304.4977511244378"/>
+        </scene>
+    </scenes>
+</document>

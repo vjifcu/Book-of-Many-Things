@@ -12,6 +12,7 @@ class TabbedViewController: UITabBarController{
 
     var currentTab = 0
     var tabNames = [String]()
+    var classes = [UIViewController]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,8 +28,11 @@ class TabbedViewController: UITabBarController{
                 
                 for (key, _) in spellData{
                     tabNames.append(key)
+                    let storyboard = UIStoryboard(name: "Class", bundle: nil)
+                    classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
                     counter += 1
                 }
+                self.viewControllers = classes
             }
         } catch{
             print(error.localizedDescription)
