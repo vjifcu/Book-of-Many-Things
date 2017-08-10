@@ -402,7 +402,7 @@
 		40A2D99A1EE4BA2300FE237A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 434WL5CLN7;
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -416,7 +416,7 @@
 		40A2D99B1EE4BA2300FE237A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 434WL5CLN7;
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
