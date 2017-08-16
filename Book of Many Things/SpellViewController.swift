@@ -221,6 +221,11 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
     }
+    @IBAction func dropboxButton(_ sender: Any) {
+        DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
+        print("test")
+        })
+    }
     
 }
 

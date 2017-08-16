@@ -37,7 +37,7 @@ class TabbedViewController: UITabBarController{
         } catch{
             print(error.localizedDescription)
         }
-        
+        currentTab = 0
         for children in self.viewControllers!{
             children.tabBarItem.title = tabNames[currentTab]
             let tableViewController = children.childViewControllers.first as! ClassSpellbook

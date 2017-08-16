@@ -10,6 +10,8 @@
 		40035FA91EEF965800FD84AA /* M4KTableIndexPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */; };
 		40035FAA1EEF965800FD84AA /* M4KTableIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */; };
 		40035FAC1EEFAAAB00FD84AA /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */; };
+		4010EEBF1F43FCDF002D91BF /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4010EEBD1F43FCDF002D91BF /* DBChooser.bundle */; };
+		4010EEC01F43FCDF002D91BF /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010EEBE1F43FCDF002D91BF /* DBChooser.framework */; };
 		403515821F3AA2F600CA7D26 /* SpellList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403515801F3AA2F600CA7D26 /* SpellList.storyboard */; };
 		403515841F3AA51200CA7D26 /* Class.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403515831F3AA51200CA7D26 /* Class.storyboard */; };
 		403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D411EEA525E006478A9 /* SpellViewController.swift */; };
@@ -42,6 +44,9 @@
 		40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M4KTableIndexPreviewView.swift; sourceTree = "<group>"; };
 		40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M4KTableIndexView.swift; sourceTree = "<group>"; };
 		40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		4010EEBD1F43FCDF002D91BF /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
+		4010EEBE1F43FCDF002D91BF /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
+		4010EEC61F43FDE3002D91BF /* Book of Many Things-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Book of Many Things-Bridging-Header.h"; sourceTree = "<group>"; };
 		403515811F3AA2F600CA7D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SpellList.storyboard; sourceTree = "<group>"; };
 		403515831F3AA51200CA7D26 /* Class.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Class.storyboard; path = Base.lproj/Class.storyboard; sourceTree = "<group>"; };
 		403D3D411EEA525E006478A9 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4010EEC01F43FCDF002D91BF /* DBChooser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,9 +133,12 @@
 				4049ACED1F3BE3D0001BDC6D /* Launch Screen.storyboard */,
 				403515831F3AA51200CA7D26 /* Class.storyboard */,
 				403515801F3AA2F600CA7D26 /* SpellList.storyboard */,
+				4010EEBD1F43FCDF002D91BF /* DBChooser.bundle */,
+				4010EEBE1F43FCDF002D91BF /* DBChooser.framework */,
 				40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */,
 				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
 				40A2D98B1EE4BA2300FE237A /* Info.plist */,
+				4010EEC61F43FDE3002D91BF /* Book of Many Things-Bridging-Header.h */,
 			);
 			path = "Book of Many Things";
 			sourceTree = "<group>";
@@ -194,6 +203,7 @@
 					40A2D9791EE4BA2300FE237A = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 434WL5CLN7;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					40A2D98F1EE4BA2300FE237A = {
@@ -232,6 +242,7 @@
 				403515841F3AA51200CA7D26 /* Class.storyboard in Resources */,
 				405F6FB61EEB5CF5001C258B /* texgyrebonum-bolditalic.otf in Resources */,
 				40A2D9871EE4BA2300FE237A /* Assets.xcassets in Resources */,
+				4010EEBF1F43FCDF002D91BF /* DBChooser.bundle in Resources */,
 				405F6FB71EEB5CF5001C258B /* texgyrebonum-italic.otf in Resources */,
 				403515821F3AA2F600CA7D26 /* SpellList.storyboard in Resources */,
 				40A2D9851EE4BA2300FE237A /* Main.storyboard in Resources */,
@@ -403,12 +414,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 434WL5CLN7;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Book\\ of\\ Many\\ Things",
+				);
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.victorjifcu.Book-of-Many-Things";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/victorjifcu/Documents/Xcode/Book of Many Things/Book of Many Things/Book of Many Things-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -417,12 +436,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 434WL5CLN7;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Book\\ of\\ Many\\ Things",
+				);
 				INFOPLIST_FILE = "Book of Many Things/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ca.victorjifcu.Book-of-Many-Things";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/victorjifcu/Documents/Xcode/Book of Many Things/Book of Many Things/Book of Many Things-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
