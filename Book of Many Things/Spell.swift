@@ -10,12 +10,12 @@ import UIKit;
 
 class Spell{
     
-    let infoFields: Dictionary<String, Any>?
-    let name: String
-    let level: Int
-    let _class: [String]
-    let description: [[String]]
-    let table: [[[String]]]?
+    var infoFields: Dictionary<String, Any>?
+    var name: String = ""
+    var level: Int = 0
+    var _class: [String] = [""]
+    var description: [[String]] = [[""]]
+    var table: [[[String]]]?
     
     init(dictionary: [String: Any]){
         var dict = dictionary

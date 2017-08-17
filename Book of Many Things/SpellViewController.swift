@@ -223,9 +223,18 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     @IBAction func dropboxButton(_ sender: Any) {
         DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
-        print("test")
+            guard let result = results.first as? DBChooserResult else{
+                return
+            }
+            
+            print(result)
+            guard let parser = XMLParser(contentsOf: result.link) else{
+                fatalError("Could not parse XML file.")
+            }
+            
         })
     }
+    
     
 }
 
