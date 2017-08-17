@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SWXMLHash
+import Alamofire
 
 class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate{
     
@@ -21,6 +23,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
     var sections = [String]()
+    static var file: URL? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,32 +33,49 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         self.navigationItem.title = tabName
-        
-        
-        
+
         do{
-        if let file = Bundle.main.url(forResource: "data", withExtension: "json")
-        {
-            let data = try Data(contentsOf: file)
-            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            let spellData = json?["spells"] as! [String: [[String: Any]]]
-            for (key, value) in spellData{
-                self.spells.append(value.map{
-                    Spell(dictionary: $0)
-                })                
+
+            if ClassSpellbook.file == nil{
+                ClassSpellbook.file = Bundle.main.url(forResource: "data", withExtension: "json")
+                let data = try Data(contentsOf: ClassSpellbook.file!)
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                let spellData = json?["spells"] as! [String: [[String: Any]]]
+                
+                for (key, value) in spellData{
+                    self.spells.append(value.map{
+                        Spell(dictionary: $0)
+                    })
+                }
+                completeLoading()
+                
+            } else {
+                Alamofire.request(ClassSpellbook.file!).responseString{ response in
+                    let spellData = SWXMLHash.parse(response.result.value!)
+                    self.spells.append([Spell]())
+                    for value in spellData["compendium"]["spell"].all{
+                        let newSpell = Spell(data: value)
+                        self.spells[0].append(newSpell)
+                    }
+                    self.completeLoading()
+                }
             }
+
             
-            buildData()
             
-            indexView.tableView = self.tableView
-            indexView.indexes = sections
-            indexView.setup()
-            
-        }
+
         } catch{
             print(error.localizedDescription)
         }
         
+    }
+    
+    func completeLoading(){
+        buildData()
+        
+        indexView.tableView = self.tableView
+        indexView.indexes = sections
+        indexView.setup()
     }
     
     func buildData(){

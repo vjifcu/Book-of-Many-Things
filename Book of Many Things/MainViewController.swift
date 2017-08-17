@@ -1,0 +1,36 @@
+//
+//  MainViewController.swift
+//  Book of Many Things
+//
+//  Created by Victor Jifcu on 2017-08-16.
+//  Copyright © 2017 Victor Jifcu. All rights reserved.
+//
+
+import UIKit
+
+class MainViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    @IBAction func dropboxButton(_ sender: Any) {
+        DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
+            guard let result = results.first as? DBChooserResult else{
+                return
+            }
+            
+            ClassSpellbook.file = result.link
+            
+        })
+    }
+
+}

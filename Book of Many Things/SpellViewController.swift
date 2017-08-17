@@ -221,20 +221,6 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
         // handle tap events
         print("You selected cell #\(indexPath.item)!")
     }
-    @IBAction func dropboxButton(_ sender: Any) {
-        DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
-            guard let result = results.first as? DBChooserResult else{
-                return
-            }
-            
-            print(result)
-            guard let parser = XMLParser(contentsOf: result.link) else{
-                fatalError("Could not parse XML file.")
-            }
-            
-        })
-    }
-    
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit;
+import SWXMLHash
 
 class Spell{
     
@@ -32,4 +33,12 @@ class Spell{
         
         infoFields = dict
     }
+    
+    init(data: XMLIndexer){
+        self.name = data["name"].element!.text
+        self.level = Int(data["level"].element!.text)!
+        self._class.append(data["classes"].element!.text)
+        self.description[0].append(data["name"].element!.text)
+    }
+    
 }
