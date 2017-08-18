@@ -47,6 +47,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
                         Spell(dictionary: $0)
                     })
                 }
+                let temp = self.spells[0].filter{
+                    $0._class.contains(self.tabName)
+                }
+                self.spells[0] = temp
                 completeLoading()
                 
             } else {
@@ -57,6 +61,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
                         let newSpell = Spell(data: value)
                         self.spells[0].append(newSpell)
                     }
+                    let temp = self.spells[0].filter{
+                        $0._class.contains(self.tabName)
+                    }
+                    self.spells[0] = temp
                     self.completeLoading()
                 }
             }
@@ -84,7 +92,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         var spellData = [Spell]()
         
         if !searchString.isEmpty {
-            spellData = spells[tab].filter{spell in
+            spellData = spells[0].filter{spell in
                 let words = spell.name.lowercased().components(separatedBy: CharacterSet.whitespacesAndNewlines)
                 let matchingWords = words.filter{
                     if(!searchString.hasPrefix("(")){
@@ -96,7 +104,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
                 return matchingWords.count > 0
                 }
         }else{
-            spellData = spells[tab]
+            spellData = spells[0]
         }
         
         spellLevels.removeAll()

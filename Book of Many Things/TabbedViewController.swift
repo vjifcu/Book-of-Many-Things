@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SWXMLHash
+import Alamofire
 
 class TabbedViewController: UITabBarController{
 
@@ -18,6 +20,7 @@ class TabbedViewController: UITabBarController{
         super.viewWillAppear(animated)
         
         do{
+            if ClassSpellbook.file == nil{
             if let file = Bundle.main.url(forResource: "data", withExtension: "json")
             {
                 let data = try Data(contentsOf: file)
@@ -33,20 +36,55 @@ class TabbedViewController: UITabBarController{
                     counter += 1
                 }
                 self.viewControllers = classes
+                
+                currentTab = 0
+                for children in self.viewControllers!{
+                    children.tabBarItem.title = tabNames[currentTab]
+                    let tableViewController = children.childViewControllers.first as! ClassSpellbook
+                    tableViewController.tab = currentTab
+                    tableViewController.tabName = tabNames[currentTab]
+                    currentTab += 1
+                }
+                
+            }
+            } else {
+                Alamofire.request(ClassSpellbook.file!).responseString{ response in
+                    let spellData = SWXMLHash.parse(response.result.value!)
+                    
+                    for value in spellData["compendium"]["spell"].all{
+                        self.tabNames.append(contentsOf: ((value["classes"].element!.text).components(separatedBy: ", ")))
+                    }
+                    
+                    
+                    self.tabNames = Array(Set(self.tabNames))
+                    
+                    self.tabNames.sort {
+                        return $0 < $1
+                    }
+                    
+                    var counter = 0
+                    
+                    for _ in self.tabNames{
+                        let storyboard = UIStoryboard(name: "Class", bundle: nil)
+                        self.classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
+                        counter += 1
+                    }
+                    self.viewControllers = self.classes
+                    
+                    self.currentTab = 0
+                    for children in self.viewControllers!{
+                        children.tabBarItem.title = self.tabNames[self.currentTab]
+                        let tableViewController = children.childViewControllers.first as! ClassSpellbook
+                        tableViewController.tab = self.currentTab
+                        tableViewController.tabName = self.tabNames[self.currentTab]
+                        self.currentTab += 1
+                    }
+                    
+                }
             }
         } catch{
             print(error.localizedDescription)
         }
-        currentTab = 0
-        for children in self.viewControllers!{
-            children.tabBarItem.title = tabNames[currentTab]
-            let tableViewController = children.childViewControllers.first as! ClassSpellbook
-            tableViewController.tab = currentTab
-            tableViewController.tabName = tabNames[currentTab]
-            currentTab += 1
-        }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
