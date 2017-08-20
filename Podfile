@@ -7,5 +7,6 @@ target 'Book of Many Things' do
   pod 'SWXMLHash', '~> 4.0.0'
   pod 'Alamofire', '~> 4.4'
   pod 'MBProgressHUD', '~> 1.0.0'
+  pod 'Siren'
 
 end

@@ -108,7 +108,7 @@ class TabbedViewController: UITabBarController{
     
     private func loadSpells() -> [Spell]?{
         let result = NSKeyedUnarchiver.unarchiveObject(withFile: Spell.ArchiveURL.path) as? [Spell]
-        if (result!.count > 0){
+        if (result == nil || result!.count > 0){
             return result
         }
         return nil

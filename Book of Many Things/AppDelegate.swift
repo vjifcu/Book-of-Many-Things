@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Siren
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+        // Siren is a singleton
+        let siren = Siren.shared
+        
+        // Optional: Defaults to .option
+        siren.alertType = Siren.AlertType.option
+        
+        // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
+        // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
+        // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
+        siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 1
+        
+        // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
+        // DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
+        siren.checkVersion(checkType: .daily)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
