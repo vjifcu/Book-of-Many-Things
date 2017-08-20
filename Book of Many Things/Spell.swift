@@ -9,14 +9,27 @@
 import UIKit;
 import SWXMLHash
 
-class Spell{
+class Spell: NSObject, NSCoding {
+    
+    //MARK: Properties
+    struct PropertyKey{
+        static let infoFields = "infoFields"
+        static let name = "name"
+        static let level = "level"
+        static let _class = "_class"
+        static let desc = "desc"
+        static let table = "table"
+    }
     
     var infoFields: Dictionary<String, Any>?
     var name: String = ""
     var level: Int = 0
     var _class = [String]()
-    var description = [[String]]()
+    var desc = [[String]]()
     var table: [[[String]]]?
+    
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("spells")
     
     init(dictionary: [String: Any]){
         var dict = dictionary
@@ -26,12 +39,21 @@ class Spell{
         dict.removeValue(forKey: "level")
         self._class = dict["classes"] as! [String]
         dict.removeValue(forKey: "class")
-        self.description = dict["desc"] as! [[String]]
+        self.desc = dict["desc"] as! [[String]]
         dict.removeValue(forKey: "desc")
         self.table = dict["table"] as? [[[String]]]
         dict.removeValue(forKey: "table")
         
         infoFields = dict
+    }
+    
+    init(name: String, level: Int, _class: [String], desc: [[String]], infoFields: Dictionary<String, Any>?, table: [[[String]]]?){
+        self.name = name
+        self.level = level
+        self._class = _class
+        self.desc = desc
+        self.infoFields = infoFields
+        self.table = table
     }
     
     init(data: XMLIndexer){
@@ -40,12 +62,12 @@ class Spell{
         
         self._class = (data["classes"].element!.text).components(separatedBy: ", ")
         
-        self.description.append([String]())
+        self.desc.append([String]())
         var currentText = ""
         for text in data["text"].all{
             currentText += text.element!.text
             if currentText == "" {
-                self.description[0].append(currentText)
+                self.desc[0].append(currentText)
                 currentText = ""
             } else{
                 currentText += "\n"
@@ -53,7 +75,7 @@ class Spell{
             
         }
         if currentText != "" {
-            self.description[0].append(currentText)
+            self.desc[0].append(currentText)
         }
         
         let nonInfoFields = ["name", "level", "classes", "text"]
@@ -68,6 +90,36 @@ class Spell{
             }
         }
         
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder){
+        aCoder.encode(infoFields, forKey: PropertyKey.infoFields)
+        aCoder.encode(name, forKey: PropertyKey.name)
+        aCoder.encode(level, forKey: PropertyKey.level)
+        aCoder.encode(_class, forKey: PropertyKey._class)
+        aCoder.encode(desc, forKey: PropertyKey.desc)
+        aCoder.encode(table, forKey: PropertyKey.table)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder){
+        guard let name = aDecoder.decodeObject(forKey: PropertyKey.name) as? String else{
+            return nil
+        }
+        guard let level = aDecoder.decodeInteger(forKey: PropertyKey.level) as? Int else{
+            return nil
+        }
+        guard let _class = aDecoder.decodeObject(forKey: PropertyKey._class) as? [String] else{
+            return nil
+        }
+        guard let desc = aDecoder.decodeObject(forKey: PropertyKey.desc) as? [[String]] else{
+            return nil
+        }
+        let infoFields = aDecoder.decodeObject(forKey: PropertyKey.infoFields) as? Dictionary<String, Any>
+        let table = aDecoder.decodeObject(forKey: PropertyKey.table) as? [[[String]]]
+        
+        // Must call designated initializer
+        self.init(name: name, level: level, _class: _class, desc: desc, infoFields: infoFields, table: table)
     }
     
 }

@@ -18,6 +18,7 @@ class TabbedViewController: UITabBarController{
     static var response : String? = nil
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         
         loadData(response: TabbedViewController.response)
@@ -31,7 +32,16 @@ class TabbedViewController: UITabBarController{
     
     func loadData(response: String?){
         do{
-        if response == nil{
+            if spells.count == 0, let spellData = loadSpells(){
+                tabNames = [String]()
+                spells = spellData
+                for key in spellData{
+                    tabNames.append(contentsOf: key._class as! [String])
+                }
+                
+                writeData()
+                
+            } else if response == nil{
             if let file = Bundle.main.url(forResource: "data", withExtension: "json")
             {
                 let data = try Data(contentsOf: file)
@@ -45,30 +55,7 @@ class TabbedViewController: UITabBarController{
                     tabNames.append(contentsOf: key["classes"] as! [String])
                 }
                 
-                tabNames = Array(Set(self.tabNames))
-                
-                tabNames.sort {
-                    return $0 < $1
-                }
-                
-                self.classes = [UIViewController]()
-                for _ in tabNames{
-                    let storyboard = UIStoryboard(name: "Class", bundle: nil)
-                    classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
-                }
-                
-                self.viewControllers = classes
-                
-                currentTab = 0
-                for children in self.viewControllers!{
-                    children.tabBarItem.title = tabNames[currentTab]
-                    let tableViewController = children.childViewControllers.first as! ClassSpellbook
-                    tableViewController.tab = currentTab
-                    tableViewController.tabName = tabNames[currentTab]
-                    tableViewController.spells = spells.filter{$0._class.contains(tableViewController.tabName)}
-                    currentTab += 1
-                }
-                
+                writeData()
             }
         } else {
             let spellData = SWXMLHash.parse(response!)
@@ -80,43 +67,51 @@ class TabbedViewController: UITabBarController{
                 self.spells.append(Spell(data:value))
             }
             
-            self.tabNames = Array(Set(self.tabNames))
-            
-            self.tabNames.sort {
-                return $0 < $1
-            }
-            
-            self.classes = [UIViewController]()
-            for _ in self.tabNames{
-                let storyboard = UIStoryboard(name: "Class", bundle: nil)
-                self.classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
-            }
-            self.viewControllers = self.classes
-            
-            self.currentTab = 0
-            for children in self.viewControllers!{
-                children.tabBarItem.title = self.tabNames[self.currentTab]
-                let tableViewController = children.childViewControllers.first as! ClassSpellbook
-                tableViewController.tab = self.currentTab
-                tableViewController.tabName = self.tabNames[self.currentTab]
-                tableViewController.spells = self.spells.filter{$0._class.contains(tableViewController.tabName)}
-                self.currentTab += 1
-            }
-
+            writeData()
         }
         }catch{
             fatalError(error.localizedDescription)
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func writeData(){
+        self.tabNames = Array(Set(self.tabNames))
+        
+        self.tabNames.sort {
+            return $0 < $1
+        }
+        
+        self.classes = [UIViewController]()
+        for _ in self.tabNames{
+            let storyboard = UIStoryboard(name: "Class", bundle: nil)
+            self.classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
+        }
+        self.viewControllers = self.classes
+        
+        self.currentTab = 0
+        for children in self.viewControllers!{
+            children.tabBarItem.title = self.tabNames[self.currentTab]
+            let tableViewController = children.childViewControllers.first as! ClassSpellbook
+            tableViewController.tab = self.currentTab
+            tableViewController.tabName = self.tabNames[self.currentTab]
+            tableViewController.spells = self.spells.filter{$0._class.contains(tableViewController.tabName)}
+            self.currentTab += 1
+        }
+        
+        saveSpells()
     }
-    */
 
+    private func saveSpells(){
+        NSKeyedArchiver.archiveRootObject(spells, toFile: Spell.ArchiveURL.path)
+        
+    }
+    
+    private func loadSpells() -> [Spell]?{
+        let result = NSKeyedUnarchiver.unarchiveObject(withFile: Spell.ArchiveURL.path) as? [Spell]
+        if (result!.count > 0){
+            return result
+        }
+        return nil
+    }
+    
 }

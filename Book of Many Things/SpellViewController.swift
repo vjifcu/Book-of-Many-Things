@@ -93,10 +93,10 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
             if let tables = spell.table{
 
                 
-                let commonLength = min(spell.description.count, tables.count)
-                combinedDesc = zip(spell.description, tables).flatMap { [$0, $1] }
+                let commonLength = min(spell.desc.count, tables.count)
+                combinedDesc = zip(spell.desc, tables).flatMap { [$0, $1] }
 
-                for desc in spell.description.suffix(from: commonLength){
+                for desc in spell.desc.suffix(from: commonLength){
                     combinedDesc.append(desc)
                 }
                 
@@ -137,7 +137,7 @@ class SpellViewController: UIViewController, UICollectionViewDataSource, UIColle
                 
             } else{
                 let newLabel = UILabel()
-                newLabel.text = spell.description[0].joined(separator: "\n\n")
+                newLabel.text = spell.desc[0].joined(separator: "\n\n")
                 newLabel.font = UIFont(name: "TeXGyreBonum-Regular", size: 15)
                 newLabel.numberOfLines = 0
                 stackView.addArrangedSubview(newLabel)
