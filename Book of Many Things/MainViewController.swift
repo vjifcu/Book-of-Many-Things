@@ -41,15 +41,7 @@ class MainViewController: UIViewController {
         
     }
 
-    @IBAction func dropboxButton(_ sender: Any) {
-        DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
-            guard let result = results.first as? DBChooserResult else{
-                return
-            }
-            
-            ClassSpellbook.file = result.link
-            
-        })
+    @IBAction func resetData(_ sender: Any) {
+        dataViewController.loadData(response: nil)
     }
-
 }

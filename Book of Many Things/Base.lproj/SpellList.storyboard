@@ -41,7 +41,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="345" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YCo-zz-oRT" id="D0Z-jb-rxu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                         <connections>
@@ -135,7 +135,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mvF-3X-vGX" id="zEr-vy-ZSj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -203,6 +203,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6c-lJ-wrT">
                                         <rect key="frame" x="0.0" y="89.5" width="294" height="36.5"/>
                                         <state key="normal" title="Reset Spell Data"/>
+                                        <connections>
+                                            <action selector="resetData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="dyB-JY-qjG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
