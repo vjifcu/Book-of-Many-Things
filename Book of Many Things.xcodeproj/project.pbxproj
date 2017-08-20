@@ -141,6 +141,7 @@
 				403D3D411EEA525E006478A9 /* SpellViewController.swift */,
 				40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */,
 				40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */,
+				4045CB2A1F451F5E00534210 /* MainViewController.swift */,
 				40C962901EE61348005148F6 /* data.json */,
 				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
 				4049ACED1F3BE3D0001BDC6D /* Launch Screen.storyboard */,
@@ -152,7 +153,6 @@
 				40A2D9861EE4BA2300FE237A /* Assets.xcassets */,
 				40A2D98B1EE4BA2300FE237A /* Info.plist */,
 				4010EEC61F43FDE3002D91BF /* Book of Many Things-Bridging-Header.h */,
-				4045CB2A1F451F5E00534210 /* MainViewController.swift */,
 			);
 			path = "Book of Many Things";
 			sourceTree = "<group>";

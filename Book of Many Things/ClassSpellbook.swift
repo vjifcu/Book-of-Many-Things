@@ -10,7 +10,7 @@ import UIKit
 import SWXMLHash
 import Alamofire
 
-class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate{
+class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,7 +19,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     var spellDetail = SpellViewController()
     var tab = 0
     var tabName = ""
-    var spells = [[Spell]]()
+    var spells = [Spell]()
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
     var sections = [String]()
@@ -33,45 +33,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         self.navigationItem.title = tabName
-
         do{
 
-            if ClassSpellbook.file == nil{
-                ClassSpellbook.file = Bundle.main.url(forResource: "data", withExtension: "json")
-                let data = try Data(contentsOf: ClassSpellbook.file!)
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                let spellData = json?["spells"] as! [String: [[String: Any]]]
-                
-                for (key, value) in spellData{
-                    self.spells.append(value.map{
-                        Spell(dictionary: $0)
-                    })
-                }
-                let temp = self.spells[0].filter{
-                    $0._class.contains(self.tabName)
-                }
-                self.spells[0] = temp
-                completeLoading()
-                
-            } else {
-                Alamofire.request(ClassSpellbook.file!).responseString{ response in
-                    let spellData = SWXMLHash.parse(response.result.value!)
-                    self.spells.append([Spell]())
-                    for value in spellData["compendium"]["spell"].all{
-                        let newSpell = Spell(data: value)
-                        self.spells[0].append(newSpell)
-                    }
-                    let temp = self.spells[0].filter{
-                        $0._class.contains(self.tabName)
-                    }
-                    self.spells[0] = temp
-                    self.completeLoading()
-                }
-            }
-
+            completeLoading()
             
-            
-
         } catch{
             print(error.localizedDescription)
         }
@@ -92,7 +57,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         var spellData = [Spell]()
         
         if !searchString.isEmpty {
-            spellData = spells[0].filter{spell in
+            spellData = spells.filter{spell in
                 let words = spell.name.lowercased().components(separatedBy: CharacterSet.whitespacesAndNewlines)
                 let matchingWords = words.filter{
                     if(!searchString.hasPrefix("(")){
@@ -104,7 +69,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
                 return matchingWords.count > 0
                 }
         }else{
-            spellData = spells[0]
+            spellData = spells
         }
         
         spellLevels.removeAll()
@@ -156,7 +121,13 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         super.prepare(for: segue, sender: sender)
         
         guard let spellViewController = segue.destination as? SpellViewController else{
-            fatalError("Unexpected destination: \(segue.destination)")
+            guard let importViewController = segue.destination as? MainViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            importViewController.dataViewController = self.navigationController?.parent as! TabbedViewController
+            let popoverViewController = segue.destination
+            popoverViewController.popoverPresentationController!.delegate = self
+            return
         }
         
         guard let selectedSpellCell = sender as? UITableViewCell else{
@@ -170,6 +141,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         spellViewController.spell = spell
         
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     //Deselects cell after returning from detail view

@@ -24,7 +24,7 @@ class Spell{
         dict.removeValue(forKey: "name")
         self.level = dict["level"] as! Int
         dict.removeValue(forKey: "level")
-        self._class = dict["class"] as! [String]
+        self._class = dict["classes"] as! [String]
         dict.removeValue(forKey: "class")
         self.description = dict["desc"] as! [[String]]
         dict.removeValue(forKey: "desc")

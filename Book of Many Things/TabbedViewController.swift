@@ -8,13 +8,14 @@
 
 import UIKit
 import SWXMLHash
-import Alamofire
 
 class TabbedViewController: UITabBarController{
 
     var currentTab = 0
     var tabNames = [String]()
     var classes = [UIViewController]()
+    var spells = [Spell]()
+    static var response = String()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,16 +26,24 @@ class TabbedViewController: UITabBarController{
             {
                 let data = try Data(contentsOf: file)
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                let spellData = json?["spells"] as! [String: [[String: Any]]]
+                let spellData = json?["spells"] as! [[String: Any]]
                 
-                var counter = 0
+                for key in spellData{
+                    spells.append(Spell(dictionary: key))
+                    tabNames.append(contentsOf: key["classes"] as! [String])
+                }
                 
-                for (key, _) in spellData{
-                    tabNames.append(key)
+                tabNames = Array(Set(self.tabNames))
+                
+                tabNames.sort {
+                    return $0 < $1
+                }
+                
+                for _ in tabNames{
                     let storyboard = UIStoryboard(name: "Class", bundle: nil)
                     classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
-                    counter += 1
                 }
+                
                 self.viewControllers = classes
                 
                 currentTab = 0
@@ -43,44 +52,13 @@ class TabbedViewController: UITabBarController{
                     let tableViewController = children.childViewControllers.first as! ClassSpellbook
                     tableViewController.tab = currentTab
                     tableViewController.tabName = tabNames[currentTab]
+                    tableViewController.spells = spells.filter{$0._class.contains(tableViewController.tabName)}
                     currentTab += 1
                 }
                 
             }
             } else {
-                Alamofire.request(ClassSpellbook.file!).responseString{ response in
-                    let spellData = SWXMLHash.parse(response.result.value!)
-                    
-                    for value in spellData["compendium"]["spell"].all{
-                        self.tabNames.append(contentsOf: ((value["classes"].element!.text).components(separatedBy: ", ")))
-                    }
-                    
-                    
-                    self.tabNames = Array(Set(self.tabNames))
-                    
-                    self.tabNames.sort {
-                        return $0 < $1
-                    }
-                    
-                    var counter = 0
-                    
-                    for _ in self.tabNames{
-                        let storyboard = UIStoryboard(name: "Class", bundle: nil)
-                        self.classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
-                        counter += 1
-                    }
-                    self.viewControllers = self.classes
-                    
-                    self.currentTab = 0
-                    for children in self.viewControllers!{
-                        children.tabBarItem.title = self.tabNames[self.currentTab]
-                        let tableViewController = children.childViewControllers.first as! ClassSpellbook
-                        tableViewController.tab = self.currentTab
-                        tableViewController.tabName = self.tabNames[self.currentTab]
-                        self.currentTab += 1
-                    }
-                    
-                }
+                loadData(response: TabbedViewController.response)
             }
         } catch{
             print(error.localizedDescription)
@@ -91,7 +69,40 @@ class TabbedViewController: UITabBarController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func loadData(response: String){
+        let spellData = SWXMLHash.parse(response)
+        
+        for (tabNum, value) in spellData["compendium"]["spell"].all.enumerated(){
+            self.tabNames.append(contentsOf: ((value["classes"].element!.text).components(separatedBy: ", ")))
+            self.spells.append(Spell(data:value))
+        }
+        
+        self.tabNames = Array(Set(self.tabNames))
+        
+        self.tabNames.sort {
+            return $0 < $1
+        }
+        
+        self.classes = [UIViewController]()
+        for _ in self.tabNames{
+            let storyboard = UIStoryboard(name: "Class", bundle: nil)
+            self.classes.append(storyboard.instantiateViewController(withIdentifier: "test"))
+        }
+        self.viewControllers = self.classes
+        
+        self.currentTab = 0
+        for children in self.viewControllers!{
+            children.tabBarItem.title = self.tabNames[self.currentTab]
+            let tableViewController = children.childViewControllers.first as! ClassSpellbook
+            tableViewController.tab = self.currentTab
+            tableViewController.tabName = self.tabNames[self.currentTab]
+            tableViewController.spells = self.spells.filter{$0._class.contains(tableViewController.tabName)}
+            self.currentTab += 1
+        }
 
+    }
+    
     /*
     // MARK: - Navigation
 
