@@ -59,7 +59,7 @@ class TabbedViewController: UITabBarController{
             }
         } else {
             let spellData = SWXMLHash.parse(response!)
-            
+                
             tabNames = [String]()
             spells = [Spell]()
             for (tabNum, value) in spellData["compendium"]["spell"].all.enumerated(){
@@ -76,6 +76,8 @@ class TabbedViewController: UITabBarController{
     
     func writeData(){
         self.tabNames = Array(Set(self.tabNames))
+        
+        print(self.spells.first?.jsonRepresentation)
         
         self.tabNames.sort {
             return $0 < $1

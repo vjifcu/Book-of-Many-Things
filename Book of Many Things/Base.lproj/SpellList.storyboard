@@ -180,36 +180,43 @@
                         <viewControllerLayoutGuide type="bottom" id="o29-HX-JWq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xa0-el-gJi">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sm1-OS-Xa2">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WKQ-pd-qdj">
-                                <rect key="frame" x="3" y="22" width="294" height="126"/>
+                                <rect key="frame" x="3" y="22" width="294" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1n-UB-7Qj">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="57"/>
                                         <string key="text">We support XML and JSON files for importing spell data. Our compendium format is compatible with Fight Club 5's format. Manual input is coming soon.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R60-b0-fBJ">
-                                        <rect key="frame" x="0.0" y="52.5" width="294" height="37"/>
+                                        <rect key="frame" x="0.0" y="57" width="294" height="39.5"/>
                                         <state key="normal" title="Load Spell Data File from Dropbox"/>
                                         <connections>
                                             <action selector="loadData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="221-fH-AFh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6c-lJ-wrT">
-                                        <rect key="frame" x="0.0" y="89.5" width="294" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="96.5" width="294" height="40"/>
                                         <state key="normal" title="Reset Spell Data"/>
                                         <connections>
                                             <action selector="resetData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="dyB-JY-qjG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-p9-JXR">
+                                        <rect key="frame" x="0.0" y="136.5" width="294" height="39.5"/>
+                                        <state key="normal" title="Lambda"/>
+                                        <connections>
+                                            <action selector="saveSpellbook:" destination="5ok-hA-7tc" eventType="touchUpInside" id="HPb-hZ-hJL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -224,9 +231,9 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="160"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="150"/>
+                    <size key="freeformSize" width="300" height="200"/>
                     <connections>
                         <outlet property="loadingView" destination="sm1-OS-Xa2" id="E6P-Iy-mic"/>
                     </connections>

@@ -9,6 +9,9 @@
 import UIKit
 import Alamofire
 import MBProgressHUD
+import AWSCore
+import AWSLambda
+import AWSCognito
 
 class MainViewController: UIViewController {
 
@@ -47,6 +50,38 @@ class MainViewController: UIViewController {
         showLoadingHUD()
         dataViewController.loadData(response: nil)
         hideLoadingHUD()
+    }
+    
+    @IBAction func saveSpellbook(_ sender: Any) {
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,identityPoolId:"us-east-1:aee30c10-c47d-4ff7-9773-181a12eb7453")
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        let lambdaInvoker = AWSLambdaInvoker.default()
+        
+        let jsonObject = "{\"spells\":[" + dataViewController.spells.map{$0.jsonRepresentation}.joined(separator: ",") + "]}"
+        
+        lambdaInvoker.invokeFunction("serverless-admin-dev-save", jsonObject: jsonObject)
+            .continueWith(block: {(task: AWSTask<AnyObject>) -> Any? in
+                if let error = task.error as NSError? {
+                    if error.domain == AWSLambdaInvokerErrorDomain && AWSLambdaInvokerErrorType.functionError == AWSLambdaInvokerErrorType(rawValue: error.code) {
+                        print("Function error: \(error.userInfo[AWSLambdaInvokerFunctionErrorKey])")
+                    } else {
+                        print("Error: \(error)")
+                    }
+                    return nil
+                }
+                
+                // Handle response in task.result
+                if let JSONDictionary = task.result as? NSDictionary {
+                    print("Result: \(JSONDictionary)")
+                    print("resultKey: \(JSONDictionary["resultKey"])")
+                }
+                return nil
+                })
+        
     }
     
     private func showLoadingHUD() {

@@ -27,6 +27,20 @@ class Spell: NSObject, NSCoding {
     var _class = [String]()
     var desc = [[String]]()
     var table: [[[String]]]?
+    var jsonRepresentation : String{
+        var dict = [
+            "name" : name,
+            "level" : level,
+            "classes" : _class,
+            "desc" : desc,
+            "table" : table as Any
+        ] as [String : Any]
+
+        dict.append(with: infoFields!)
+        
+        let data = try! JSONSerialization.data(withJSONObject: dict, options: [])
+        return String(data:data, encoding:.utf8)!
+    }
     
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("spells")
@@ -122,4 +136,24 @@ class Spell: NSObject, NSCoding {
         self.init(name: name, level: level, _class: _class, desc: desc, infoFields: infoFields, table: table)
     }
     
+}
+
+extension Dictionary {
+    /// Merge and return a new dictionary
+    func merge(with: Dictionary<Key,Value>) -> Dictionary<Key,Value> {
+        var copy = self
+        for (k, v) in with {
+            // If a key is already present it will be overritten
+            copy[k] = v
+        }
+        return copy
+    }
+    
+    /// Merge in-place
+    mutating func append(with: Dictionary<Key,Value>) {
+        for (k, v) in with {
+            // If a key is already present it will be overritten
+            self[k] = v
+        }
+    }
 }

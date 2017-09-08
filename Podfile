@@ -8,5 +8,8 @@ target 'Book of Many Things' do
   pod 'Alamofire', '~> 4.4'
   pod 'MBProgressHUD', '~> 1.0.0'
   pod 'Siren'
+  pod 'AWSLambda'
+  pod 'AWSCognito'
+  pod 'AWSCore'
 
 end
