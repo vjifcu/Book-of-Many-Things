@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -150,7 +151,116 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1O-HA-9YZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7226" y="-1020"/>
+            <point key="canvasLocation" x="8892" y="-1018.7406296851575"/>
+        </scene>
+        <!--Code View Controller-->
+        <scene sceneID="tVy-3K-lc8">
+            <objects>
+                <viewController id="gUk-Dg-74H" customClass="CodeViewController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a4X-cX-yg4"/>
+                        <viewControllerLayoutGuide type="bottom" id="iDO-e2-WGM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vh3-ft-wOT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-Ln-QEP">
+                                <rect key="frame" x="16" y="74" width="343" height="289"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3EX-bT-AYX">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="139"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can save the current state of your spellbook and generate a code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZo-01-wBf">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can give this code to anyone, and they will be able to download your spell data." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1X-4o-OvY">
+                                                <rect key="frame" x="0.0" y="48" width="343" height="64.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You may have 1 active code at a time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2h-NL-nkv">
+                                                <rect key="frame" x="0.0" y="117.5" width="343" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FCM-YO-PCJ">
+                                        <rect key="frame" x="0.0" y="169" width="343" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your current code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz4-Ri-rsJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Uhw-dH-b2T">
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="40"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dz4-Ri-rsJ" firstAttribute="height" secondItem="FCM-YO-PCJ" secondAttribute="height" id="QJV-id-SVk"/>
+                                            <constraint firstItem="Uhw-dH-b2T" firstAttribute="height" secondItem="FCM-YO-PCJ" secondAttribute="height" id="bQK-ww-uBQ"/>
+                                            <constraint firstAttribute="height" constant="40" id="p1z-AG-Fe8"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jjp-dc-8De">
+                                        <rect key="frame" x="0.0" y="239" width="343" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0G-CL-wwR">
+                                                <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Generate Code"/>
+                                                <connections>
+                                                    <action selector="saveSpellbook:" destination="gUk-Dg-74H" eventType="touchUpInside" id="Beg-Tw-NII"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97Y-o9-JBj">
+                                                <rect key="frame" x="171.5" y="0.0" width="171.5" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Delete Current Code"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="i0G-CL-wwR" firstAttribute="height" secondItem="jjp-dc-8De" secondAttribute="height" id="EPY-Y8-2fl"/>
+                                            <constraint firstAttribute="height" constant="50" id="Kua-qk-Wbd"/>
+                                            <constraint firstItem="97Y-o9-JBj" firstAttribute="height" secondItem="jjp-dc-8De" secondAttribute="height" id="lJr-A6-IbJ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T1R-Ln-QEP" firstAttribute="top" secondItem="a4X-cX-yg4" secondAttribute="bottom" constant="10" id="49L-tO-vux"/>
+                            <constraint firstItem="T1R-Ln-QEP" firstAttribute="leading" secondItem="Vh3-ft-wOT" secondAttribute="leadingMargin" id="afj-FB-42V"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T1R-Ln-QEP" secondAttribute="trailing" id="vfD-dN-dI8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NcC-2y-aVM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="IpE-9z-bjN">
+                            <connections>
+                                <action selector="cancel:" destination="gUk-Dg-74H" id="MPw-DC-sxM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="codeLabel" destination="Uhw-dH-b2T" id="T8I-tk-WPu"/>
+                        <outlet property="loadingView" destination="Vh3-ft-wOT" id="let-4N-evM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R70-w2-AgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7383.1999999999998" y="-966.56671664167925"/>
         </scene>
         <!--Spellbook-->
         <scene sceneID="Agz-4B-Kgl">
@@ -169,7 +279,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hK-t0-vW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6511" y="-1020"/>
+            <point key="canvasLocation" x="8176.8000000000002" y="-1018.7406296851575"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="AG4-qJ-1Da">
@@ -180,7 +290,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o29-HX-JWq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xa0-el-gJi">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sm1-OS-Xa2">
@@ -189,34 +299,41 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WKQ-pd-qdj">
-                                <rect key="frame" x="3" y="22" width="294" height="176"/>
+                                <rect key="frame" x="3" y="22" width="294" height="326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1n-UB-7Qj">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="57"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="86"/>
                                         <string key="text">We support XML and JSON files for importing spell data. Our compendium format is compatible with Fight Club 5's format. Manual input is coming soon.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R60-b0-fBJ">
-                                        <rect key="frame" x="0.0" y="57" width="294" height="39.5"/>
-                                        <state key="normal" title="Load Spell Data File from Dropbox"/>
+                                        <rect key="frame" x="0.0" y="86" width="294" height="60"/>
+                                        <state key="normal" title="Load Spell Data from Dropbox"/>
                                         <connections>
                                             <action selector="loadData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="221-fH-AFh"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-p9-JXR">
+                                        <rect key="frame" x="0.0" y="146" width="294" height="60"/>
+                                        <state key="normal" title="Load Spell Data from Code"/>
+                                        <connections>
+                                            <action selector="saveSpellbook:" destination="5ok-hA-7tc" eventType="touchUpInside" id="HPb-hZ-hJL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="el0-X8-4ob">
+                                        <rect key="frame" x="0.0" y="206" width="294" height="60"/>
+                                        <state key="normal" title="View/Generate Spell Data Code"/>
+                                        <connections>
+                                            <segue destination="ydL-0Q-QQI" kind="presentation" id="InW-sU-vaK"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6c-lJ-wrT">
-                                        <rect key="frame" x="0.0" y="96.5" width="294" height="40"/>
+                                        <rect key="frame" x="0.0" y="266" width="294" height="60"/>
                                         <state key="normal" title="Reset Spell Data"/>
                                         <connections>
                                             <action selector="resetData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="dyB-JY-qjG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-p9-JXR">
-                                        <rect key="frame" x="0.0" y="136.5" width="294" height="39.5"/>
-                                        <state key="normal" title="Lambda"/>
-                                        <connections>
-                                            <action selector="saveSpellbook:" destination="5ok-hA-7tc" eventType="touchUpInside" id="HPb-hZ-hJL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -233,14 +350,32 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="200"/>
+                    <size key="freeformSize" width="300" height="350"/>
                     <connections>
                         <outlet property="loadingView" destination="sm1-OS-Xa2" id="E6P-Iy-mic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Flh-Zd-HRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5697.6000000000004" y="-730.43478260869574"/>
+            <point key="canvasLocation" x="5699" y="-780"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="swD-zF-rRf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ydL-0Q-QQI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="kqa-Ms-oaG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gUk-Dg-74H" kind="relationship" relationship="rootViewController" id="22Y-7K-RQA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEX-PG-Mll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6444" y="-966.56671664167925"/>
         </scene>
     </scenes>
 </document>

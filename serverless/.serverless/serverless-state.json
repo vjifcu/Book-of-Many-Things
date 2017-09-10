@@ -1,20 +1,20 @@
 {
   "service": {
-    "service": "fetch-file-and-store-in-s3",
+    "service": "serverless-admin",
     "serviceObject": {
-      "name": "fetch-file-and-store-in-s3"
+      "name": "serverless-admin"
     },
     "provider": {
       "stage": "dev",
-      "region": "us-west-1",
-      "variableSyntax": "\\${([ ~:a-zA-Z0-9._,\\-\\/\\(\\)]+?)}",
+      "region": "us-east-1",
+      "variableSyntax": "\\${([ ~:a-zA-Z0-9._'\",\\-\\/\\(\\)]+?)}",
       "name": "aws",
-      "runtime": "nodejs4.3",
+      "runtime": "nodejs6.10",
       "iamRoleStatements": [
         {
           "Effect": "Allow",
           "Action": [
-            "s3:PutObject"
+            "s3:*"
           ],
           "Resource": "arn:aws:s3:::serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep/*"
         }
@@ -31,7 +31,7 @@
           "SaveLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/fetch-file-and-store-in-s3-dev-save"
+              "LogGroupName": "/aws/lambda/serverless-admin-dev-save"
             }
           },
           "IamRoleLambdaExecution": {
@@ -60,7 +60,7 @@
                       "-",
                       [
                         "dev",
-                        "fetch-file-and-store-in-s3",
+                        "serverless-admin",
                         "lambda"
                       ]
                     ]
@@ -75,7 +75,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/fetch-file-and-store-in-s3-dev-save:*"
+                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-save:*"
                           }
                         ]
                       },
@@ -86,14 +86,14 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/fetch-file-and-store-in-s3-dev-save:*:*"
+                            "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-save:*:*"
                           }
                         ]
                       },
                       {
                         "Effect": "Allow",
                         "Action": [
-                          "s3:PutObject"
+                          "s3:*"
                         ],
                         "Resource": "arn:aws:s3:::serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep/*"
                       }
@@ -106,9 +106,9 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "fetch-file-and-store-in-s3",
+                    "serverless-admin",
                     "dev",
-                    "us-west-1",
+                    "us-east-1",
                     "lambdaRole"
                   ]
                 ]
@@ -122,9 +122,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/fetch-file-and-store-in-s3/dev/1503788296391-2017-08-26T22:58:16.391Z/fetch-file-and-store-in-s3.zip"
+                "S3Key": "serverless/serverless-admin/dev/1504931538478-2017-09-09T04:32:18.478Z/serverless-admin.zip"
               },
-              "FunctionName": "fetch-file-and-store-in-s3-dev-save",
+              "FunctionName": "serverless-admin-dev-save",
               "Handler": "handler.save",
               "MemorySize": 1024,
               "Role": {
@@ -133,138 +133,27 @@
                   "Arn"
                 ]
               },
-              "Runtime": "nodejs4.3",
-              "Timeout": 6
+              "Runtime": "nodejs6.10",
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "BUCKET": "serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep"
+                }
+              }
             },
             "DependsOn": [
               "SaveLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "SaveLambdaVersionrBev6uPwcOoAmTiXtlxOe4hun58gCtvLh2d3A7Rw": {
+          "SaveLambdaVersionH1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SaveLambdaFunction"
               },
-              "CodeSha256": "rBev6uPwcOoAmTiXtlxOe4hun58gCtv/Lh2+d3A7R+w="
-            }
-          },
-          "ApiGatewayRestApi": {
-            "Type": "AWS::ApiGateway::RestApi",
-            "Properties": {
-              "Name": "dev-fetch-file-and-store-in-s3"
-            }
-          },
-          "ApiGatewayResourceHandler": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Fn::GetAtt": [
-                  "ApiGatewayRestApi",
-                  "RootResourceId"
-                ]
-              },
-              "PathPart": "handler",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayResourceHandlerSave": {
-            "Type": "AWS::ApiGateway::Resource",
-            "Properties": {
-              "ParentId": {
-                "Ref": "ApiGatewayResourceHandler"
-              },
-              "PathPart": "save",
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              }
-            }
-          },
-          "ApiGatewayMethodHandlerSaveGet": {
-            "Type": "AWS::ApiGateway::Method",
-            "Properties": {
-              "HttpMethod": "GET",
-              "RequestParameters": {},
-              "ResourceId": {
-                "Ref": "ApiGatewayResourceHandlerSave"
-              },
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "AuthorizationType": "NONE",
-              "Integration": {
-                "IntegrationHttpMethod": "POST",
-                "Type": "AWS_PROXY",
-                "Uri": {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:apigateway:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":lambda:path/2015-03-31/functions/",
-                      {
-                        "Fn::GetAtt": [
-                          "SaveLambdaFunction",
-                          "Arn"
-                        ]
-                      },
-                      "/invocations"
-                    ]
-                  ]
-                }
-              },
-              "MethodResponses": []
-            }
-          },
-          "ApiGatewayDeployment1503788296412": {
-            "Type": "AWS::ApiGateway::Deployment",
-            "Properties": {
-              "RestApiId": {
-                "Ref": "ApiGatewayRestApi"
-              },
-              "StageName": "dev"
-            },
-            "DependsOn": [
-              "ApiGatewayMethodHandlerSaveGet"
-            ]
-          },
-          "SaveLambdaPermissionApiGateway": {
-            "Type": "AWS::Lambda::Permission",
-            "Properties": {
-              "FunctionName": {
-                "Fn::GetAtt": [
-                  "SaveLambdaFunction",
-                  "Arn"
-                ]
-              },
-              "Action": "lambda:InvokeFunction",
-              "Principal": "apigateway.amazonaws.com",
-              "SourceArn": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:aws:execute-api:",
-                    {
-                      "Ref": "AWS::Region"
-                    },
-                    ":",
-                    {
-                      "Ref": "AWS::AccountId"
-                    },
-                    ":",
-                    {
-                      "Ref": "ApiGatewayRestApi"
-                    },
-                    "/*/*"
-                  ]
-                ]
-              }
+              "CodeSha256": "H1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE="
             }
           }
         },
@@ -277,22 +166,7 @@
           "SaveLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SaveLambdaVersionrBev6uPwcOoAmTiXtlxOe4hun58gCtvLh2d3A7Rw"
-            }
-          },
-          "ServiceEndpoint": {
-            "Description": "URL of the service endpoint",
-            "Value": {
-              "Fn::Join": [
-                "",
-                [
-                  "https://",
-                  {
-                    "Ref": "ApiGatewayRestApi"
-                  },
-                  ".execute-api.us-west-1.amazonaws.com/dev"
-                ]
-              ]
+              "Ref": "SaveLambdaVersionH1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE"
             }
           }
         }
@@ -321,24 +195,19 @@
     "functions": {
       "save": {
         "handler": "handler.save",
-        "events": [
-          {
-            "http": {
-              "path": "handler/save",
-              "method": "get",
-              "integration": "AWS_PROXY"
-            }
-          }
-        ],
-        "name": "fetch-file-and-store-in-s3-dev-save",
+        "environment": {
+          "BUCKET": "serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep"
+        },
+        "events": [],
+        "name": "serverless-admin-dev-save",
         "package": {},
         "vpc": {}
       }
     },
-    "artifact": "C:\\Coding\\serverless3\\.serverless\\fetch-file-and-store-in-s3.zip"
+    "artifact": "/Users/victorjifcu/Documents/Xcode/Book of Many Things/serverless/.serverless/serverless-admin.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/fetch-file-and-store-in-s3/dev/1503788296391-2017-08-26T22:58:16.391Z",
-    "artifact": "fetch-file-and-store-in-s3.zip"
+    "artifactDirectoryName": "serverless/serverless-admin/dev/1504931538478-2017-09-09T04:32:18.478Z",
+    "artifact": "serverless-admin.zip"
   }
 }

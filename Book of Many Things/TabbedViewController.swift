@@ -77,8 +77,6 @@ class TabbedViewController: UITabBarController{
     func writeData(){
         self.tabNames = Array(Set(self.tabNames))
         
-        print(self.spells.first?.jsonRepresentation)
-        
         self.tabNames.sort {
             return $0 < $1
         }

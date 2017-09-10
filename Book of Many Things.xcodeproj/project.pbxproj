@@ -12,6 +12,7 @@
 		40035FAC1EEFAAAB00FD84AA /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40035FAB1EEFAAAB00FD84AA /* MyCollectionViewCell.swift */; };
 		4010EEBF1F43FCDF002D91BF /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4010EEBD1F43FCDF002D91BF /* DBChooser.bundle */; };
 		4010EEC01F43FCDF002D91BF /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4010EEBE1F43FCDF002D91BF /* DBChooser.framework */; };
+		40118F8C1F63B01600C48A33 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40118F8B1F63B01600C48A33 /* CodeViewController.swift */; };
 		403515821F3AA2F600CA7D26 /* SpellList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403515801F3AA2F600CA7D26 /* SpellList.storyboard */; };
 		403515841F3AA51200CA7D26 /* Class.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403515831F3AA51200CA7D26 /* Class.storyboard */; };
 		403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403D3D411EEA525E006478A9 /* SpellViewController.swift */; };
@@ -51,6 +52,7 @@
 		4010EEBD1F43FCDF002D91BF /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		4010EEBE1F43FCDF002D91BF /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
 		4010EEC61F43FDE3002D91BF /* Book of Many Things-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Book of Many Things-Bridging-Header.h"; sourceTree = "<group>"; };
+		40118F8B1F63B01600C48A33 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		403515811F3AA2F600CA7D26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SpellList.storyboard; sourceTree = "<group>"; };
 		403515831F3AA51200CA7D26 /* Class.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Class.storyboard; path = Base.lproj/Class.storyboard; sourceTree = "<group>"; };
 		403D3D411EEA525E006478A9 /* SpellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				40035FA71EEF965800FD84AA /* M4KTableIndexPreviewView.swift */,
 				40035FA81EEF965800FD84AA /* M4KTableIndexView.swift */,
 				4045CB2A1F451F5E00534210 /* MainViewController.swift */,
+				40118F8B1F63B01600C48A33 /* CodeViewController.swift */,
 				40C962901EE61348005148F6 /* data.json */,
 				40A2D9831EE4BA2300FE237A /* Main.storyboard */,
 				4049ACED1F3BE3D0001BDC6D /* Launch Screen.storyboard */,
@@ -371,6 +374,7 @@
 				40035FAA1EEF965800FD84AA /* M4KTableIndexView.swift in Sources */,
 				40B1BCE11EECFCA00011D115 /* TabbedViewController.swift in Sources */,
 				40035FAC1EEFAAAB00FD84AA /* MyCollectionViewCell.swift in Sources */,
+				40118F8C1F63B01600C48A33 /* CodeViewController.swift in Sources */,
 				403D3D421EEA525E006478A9 /* SpellViewController.swift in Sources */,
 				403D3D441EEA5E44006478A9 /* Spell.swift in Sources */,
 				40A2D97E1EE4BA2300FE237A /* AppDelegate.swift in Sources */,
