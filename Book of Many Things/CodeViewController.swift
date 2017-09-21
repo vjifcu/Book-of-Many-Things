@@ -98,6 +98,46 @@ class CodeViewController: UIViewController {
         
     }
     
+    @IBAction func deleteSpellbook(_ sender: Any) {
+        
+        self.showLoadingHUD()
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,identityPoolId:"us-east-1:aee30c10-c47d-4ff7-9773-181a12eb7453")
+        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        let lambdaInvoker = AWSLambdaInvoker.default()
+        
+        let jsonObject = "\"" + self.mainViewController.spellCode + "\""
+        
+        lambdaInvoker.invokeFunction("serverless-admin-dev-delete", jsonObject: jsonObject)
+            .continueWith(block: {(task: AWSTask<AnyObject>) -> Any? in
+                if let error = task.error as NSError? {
+                    if error.domain == AWSLambdaInvokerErrorDomain && AWSLambdaInvokerErrorType.functionError == AWSLambdaInvokerErrorType(rawValue: error.code) {
+                        print("Function error: \(error.userInfo[AWSLambdaInvokerFunctionErrorKey])")
+                    } else {
+                        print("Error: \(error)")
+                    }
+                    return nil
+                }
+                
+                // Handle response in task.result
+                self.mainViewController.spellCode = ""
+                UserDefaults.standard.removeObject(forKey: "spellCode")
+                
+                DispatchQueue.main.async(){
+                    self.codeLabel.text = ""
+                    
+                    self.lastGeneratedLabel.text = ""
+                    self.mainViewController.lastGenerated = ""
+                    UserDefaults.standard.removeObject(forKey: "lastGenerated")
+                    self.hideLoadingHUD()
+                }
+                return nil
+            })
+        
+    }
     
     private func showLoadingHUD() {
         let hud = MBProgressHUD.showAdded(to: loadingView, animated: true)
