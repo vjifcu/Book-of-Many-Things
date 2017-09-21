@@ -11,6 +11,18 @@
         "LogGroupName": "/aws/lambda/serverless-admin-dev-save"
       }
     },
+    "LoadLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-admin-dev-load"
+      }
+    },
+    "DeleteLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/serverless-admin-dev-delete"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -53,6 +65,12 @@
                   "Resource": [
                     {
                       "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-save:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-load:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-delete:*"
                     }
                   ]
                 },
@@ -64,6 +82,12 @@
                   "Resource": [
                     {
                       "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-save:*:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-load:*:*"
+                    },
+                    {
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-admin-dev-delete:*:*"
                     }
                   ]
                 },
@@ -99,7 +123,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-admin/dev/1504931538478-2017-09-09T04:32:18.478Z/serverless-admin.zip"
+          "S3Key": "serverless/serverless-admin/dev/1505954395426-2017-09-21T00:39:55.426Z/serverless-admin.zip"
         },
         "FunctionName": "serverless-admin-dev-save",
         "Handler": "handler.save",
@@ -123,14 +147,96 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "SaveLambdaVersionH1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE": {
+    "SaveLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SaveLambdaFunction"
         },
-        "CodeSha256": "H1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE="
+        "CodeSha256": "TsYb6dJhGg3sjLYq+/mRLT/RNJxuCMdQ4LSjEScjODM="
+      }
+    },
+    "LoadLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-admin/dev/1505954395426-2017-09-21T00:39:55.426Z/serverless-admin.zip"
+        },
+        "FunctionName": "serverless-admin-dev-load",
+        "Handler": "handler.load",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs6.10",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "BUCKET": "serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep"
+          }
+        }
+      },
+      "DependsOn": [
+        "LoadLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "LoadLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LoadLambdaFunction"
+        },
+        "CodeSha256": "TsYb6dJhGg3sjLYq+/mRLT/RNJxuCMdQ4LSjEScjODM="
+      }
+    },
+    "DeleteLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/serverless-admin/dev/1505954395426-2017-09-21T00:39:55.426Z/serverless-admin.zip"
+        },
+        "FunctionName": "serverless-admin-dev-delete",
+        "Handler": "handler.delete",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs6.10",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "BUCKET": "serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep"
+          }
+        }
+      },
+      "DependsOn": [
+        "DeleteLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "DeleteLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeleteLambdaFunction"
+        },
+        "CodeSha256": "TsYb6dJhGg3sjLYq+/mRLT/RNJxuCMdQ4LSjEScjODM="
       }
     }
   },
@@ -143,7 +249,19 @@
     "SaveLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SaveLambdaVersionH1KVPraIhCk83pfNOgz7GgMh5rmGGwt5hi9wTHsSOJE"
+        "Ref": "SaveLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM"
+      }
+    },
+    "LoadLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "LoadLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM"
+      }
+    },
+    "DeleteLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "DeleteLambdaVersionTsYb6dJhGg3sjLYqmRLTRNJxuCMdQ4LSjEScjODM"
       }
     }
   }

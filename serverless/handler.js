@@ -38,3 +38,36 @@ exports.save = function(event, context, callback) {
         }
     });
 };
+
+exports.load = function(event, context, callback) {
+    //console.log(JSON.stringify(event, null, 2));
+    var s3 = new AWS.S3();
+    console.log("GETTING FILE: " + base32.decode(event))
+    s3.getObject({
+        Bucket: 'serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep/test',
+        Key: base32.decode(event)
+    }, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+        } else {
+            callback(null, data.Body.toString('ascii'))
+        }
+    });
+};
+
+exports.delete = function(event, context, callback) {
+    //console.log(JSON.stringify(event, null, 2));
+    var s3 = new AWS.S3();
+    console.log("DELETING FILE: " + base32.decode(event))
+    s3.deleteObject({
+        Bucket: 'serverless-admin-dev-serverlessdeploymentbucket-4xb659gh8lep/test',
+        Key: base32.decode(event)
+    }, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+        } else {
+        	console.log("Deleted successfully")
+            callback(null, true)
+        }
+    });
+};

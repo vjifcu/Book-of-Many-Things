@@ -29,14 +29,18 @@ class Spell: NSObject, NSCoding {
     var table: [[[String]]]?
     var jsonRepresentation : String{
         var dict = [
-            "name" : name,
-            "level" : level,
-            "classes" : _class,
-            "desc" : desc,
-            "table" : table as Any
+            "Name" : name,
+            "Level" : level,
+            "Classes" : _class,
+            "Desc" : desc,
+            "Table" : table as Any
         ] as [String : Any]
 
         dict.append(with: infoFields!)
+        
+        for (key, element) in dict{
+            dict[key] = decodePropertiesRecursive(object: element)
+        }
         
         let data = try! JSONSerialization.data(withJSONObject: dict, options: [])
         return String(data:data, encoding:.utf8)!
@@ -47,16 +51,16 @@ class Spell: NSObject, NSCoding {
     
     init(dictionary: [String: Any]){
         var dict = dictionary
-        self.name = dict["name"] as! String
-        dict.removeValue(forKey: "name")
-        self.level = dict["level"] as! Int
-        dict.removeValue(forKey: "level")
-        self._class = dict["classes"] as! [String]
-        dict.removeValue(forKey: "class")
-        self.desc = dict["desc"] as! [[String]]
-        dict.removeValue(forKey: "desc")
-        self.table = dict["table"] as? [[[String]]]
-        dict.removeValue(forKey: "table")
+        self.name = dict["Name"] as! String
+        dict.removeValue(forKey: "Name")
+        self.level = dict["Level"] as! Int
+        dict.removeValue(forKey: "Level")
+        self._class = dict["Classes"] as! [String]
+        dict.removeValue(forKey: "Classes")
+        self.desc = dict["Desc"] as! [[String]]
+        dict.removeValue(forKey: "Desc")
+        self.table = dict["Table"] as? [[[String]]]
+        dict.removeValue(forKey: "Table")
         
         infoFields = dict
     }
@@ -134,6 +138,37 @@ class Spell: NSObject, NSCoding {
         
         // Must call designated initializer
         self.init(name: name, level: level, _class: _class, desc: desc, infoFields: infoFields, table: table)
+    }
+    
+    func decodePropertiesRecursive(object: Any) -> Any{
+        if object is Int{
+            return object
+        }
+        
+        if let object = object as? String{
+            let data = object.data(using: String.Encoding.nonLossyASCII)
+            return String(data: data!, encoding: .utf8)
+        }
+        
+        if let object = object as? [String]{
+            var decodedArray = [String]()
+            for element in object{
+                let data = element.data(using: String.Encoding.nonLossyASCII)
+                decodedArray.append(String(data: data!, encoding: .utf8)!)
+            }
+            return decodedArray
+        }
+        
+        if let object = object as? [Any]{
+            var decodedObject = [Any]()
+            for element in object{
+                decodedObject.append(decodePropertiesRecursive(object: element))
+            }
+            return decodedObject
+        }
+        
+        return object
+        
     }
     
 }

@@ -21,7 +21,7 @@ class TabbedViewController: UITabBarController{
         
         super.viewWillAppear(animated)
         
-        loadData(response: TabbedViewController.response)
+        loadData(response: TabbedViewController.response, data: nil)
         
     }
 
@@ -30,7 +30,7 @@ class TabbedViewController: UITabBarController{
         // Dispose of any resources that can be recreated.
     }
     
-    func loadData(response: String?){
+    func loadData(response: String?, data: String?){
         do{
             if spells.count == 0, let spellData = loadSpells(){
                 tabNames = [String]()
@@ -42,21 +42,37 @@ class TabbedViewController: UITabBarController{
                 writeData()
                 
             } else if response == nil{
-            if let file = Bundle.main.url(forResource: "data", withExtension: "json")
-            {
-                let data = try Data(contentsOf: file)
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                let spellData = json?["spells"] as! [[String: Any]]
-                
-                tabNames = [String]()
-                spells = [Spell]()
-                for key in spellData{
-                    spells.append(Spell(dictionary: key))
-                    tabNames.append(contentsOf: key["classes"] as! [String])
+                if data == nil{
+                    if let file = Bundle.main.url(forResource: "data", withExtension: "json")
+                    {
+                        let data = try Data(contentsOf: file)
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let spellData = json?["spells"] as! [[String: Any]]
+                        
+                        tabNames = [String]()
+                        spells = [Spell]()
+                        for key in spellData{
+                            spells.append(Spell(dictionary: key))
+                            tabNames.append(contentsOf: key["Classes"] as! [String])
+                        }
+                        
+                        writeData()
+                    }
+                } else {
+                    let formattedData = data!.data(using: .utf8)!
+                    let json = try JSONSerialization.jsonObject(with: formattedData) as? [String: Any]
+                    let spellData = json?["spells"] as! [[String: Any]]
+                    
+                    tabNames = [String]()
+                    spells = [Spell]()
+                    for key in spellData{
+                        spells.append(Spell(dictionary: key))
+                        tabNames.append(contentsOf: key["Classes"] as! [String])
+                    }
+                    
+                    writeData()
                 }
-                
-                writeData()
-            }
+
         } else {
             let spellData = SWXMLHash.parse(response!)
                 
