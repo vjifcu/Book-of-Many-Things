@@ -42,6 +42,11 @@ class MainViewController: UIViewController {
     
     @IBAction func loadData(_ sender: Any) {
         DBChooser.default().open(for: DBChooserLinkTypeDirect, from: self, completion: {(results: [Any]!) -> Void in
+            
+            guard results != nil else{
+                return
+            }
+            
             guard let result = results.first as? DBChooserResult else{
                 return
             }
@@ -133,10 +138,12 @@ class MainViewController: UIViewController {
     private func showLoadingHUD() {
         let hud = MBProgressHUD.showAdded(to: loadingView, animated: true)
         hud.label.text = "Loading..."
+        UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
     private func hideLoadingHUD() {
         MBProgressHUD.hide(for: loadingView, animated: true)
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
 }

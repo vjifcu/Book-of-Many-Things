@@ -37,7 +37,6 @@ class CodeViewController: UIViewController {
     }
 
     @IBAction func saveSpellbook(_ sender: Any) {
-        
         if (UserDefaults.standard.string(forKey: "spellCode") != nil){
             let alert = UIAlertController(title: "Cannot have multiple codes", message: "If you wish to upload another snapshot of your spellbook, please delete your existing code.", preferredStyle: .alert)
 
@@ -98,6 +97,22 @@ class CodeViewController: UIViewController {
         
     }
     
+    @IBAction func confirmDeleteSpellbook(_ sender: Any) {
+        
+        if(self.mainViewController.spellCode != ""){
+            let alert = UIAlertController(title: nil, message: "Do you want to delete your code?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+                self.deleteSpellbook(sender)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }        
+        
+    }
+    
     @IBAction func deleteSpellbook(_ sender: Any) {
         
         self.showLoadingHUD()
@@ -142,10 +157,12 @@ class CodeViewController: UIViewController {
     private func showLoadingHUD() {
         let hud = MBProgressHUD.showAdded(to: loadingView, animated: true)
         hud.label.text = "Loading..."
+        UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
     private func hideLoadingHUD() {
         MBProgressHUD.hide(for: loadingView, animated: true)
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
 }
