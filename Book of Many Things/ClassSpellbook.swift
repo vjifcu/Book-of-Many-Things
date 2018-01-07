@@ -17,12 +17,13 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     @IBOutlet weak var indexView: M4KTableIndexView!
     
     var spellDetail = SpellViewController()
-    var tab = 0
     var tabName = ""
     var spells = [Spell]()
     var spellLevels = [Int]()
     var spellsFiltered = [[Spell]]()
     var sections = [String]()
+    var selectedSpell = Spell(name: "Placeholder")
+    var compendiumMode = false
     static var file: URL? = nil
     
     override func viewDidLoad() {
@@ -30,9 +31,38 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         tableView.dataSource = self
         tableView.delegate = self
+        if(!compendiumMode){
+            tableView.allowsMultipleSelection = true
+        }
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.done
         self.navigationItem.title = tabName
+        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationController!.navigationBar.barStyle = UIBarStyle.blackOpaque
+        self.navigationController!.navigationBar.barTintColor = UIColor(red: 50/255, green: 21/255, blue: 50/255, alpha: 1)
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        for subView in searchBar.subviews {
+            searchBar.barStyle = UIBarStyle.blackOpaque
+            searchBar.barTintColor = UIColor(red: 30/255, green: 0, blue:28/255, alpha:1)
+            let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
+            textFieldInsideSearchBar.textColor = UIColor.black
+            textFieldInsideSearchBar.tintColor = UIColor.black
+            for subViewOne in subView.subviews {
+                
+                if let textField = subViewOne as? UITextField {
+                    
+                    subViewOne.backgroundColor = UIColor(red: 250/255, green: 248/255, blue:1, alpha:1)
+                    
+                    //use the code below if you want to change the color of placeholder
+                    let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+                    textFieldInsideUISearchBarLabel?.textColor = UIColor.blue
+                }
+                
+            }
+        }
+        
         do{
 
             completeLoading()
@@ -47,7 +77,11 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         buildData()
         
         indexView.tableView = self.tableView
-        indexView.indexes = sections
+        if(sections.count == 0){
+            indexView.indexes = ["0"]
+        } else {
+            indexView.indexes = sections
+        }
         indexView.setup()
     }
     
@@ -105,6 +139,23 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         return spellsFiltered[section].count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(compendiumMode){
+            selectedSpell = spellsFiltered[indexPath.section][indexPath.row]
+            self.performSegue(withIdentifier: "CompendiumSegue", sender: self)
+        } else {
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.backgroundView?.backgroundColor = UIColor(red: 85/255, green: 40/255, blue: 95/255, alpha: 1)
+        
+        headerView.textLabel?.textColor = UIColor.white
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SomeCell")!
@@ -122,7 +173,14 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         guard let spellViewController = segue.destination as? SpellViewController else{
             guard let importViewController = segue.destination as? MainViewController else{
-                fatalError("Unexpected destination: \(segue.destination)")
+                guard let spellbookViewController = segue.destination as? MySpellbookController else {
+                    fatalError("Invalid destination")
+                }
+                let backButtonItem = UIBarButtonItem()
+                backButtonItem.title = "Spells"
+                self.navigationItem.backBarButtonItem = backButtonItem
+                
+                return
             }
             importViewController.dataViewController = self.navigationController?.parent as! TabbedViewController
             let popoverViewController = segue.destination
@@ -130,16 +188,9 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             return
         }
         
-        guard let selectedSpellCell = sender as? UITableViewCell else{
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-
-        guard let indexPath = tableView.indexPath(for: selectedSpellCell) else{
-            fatalError("The selected cell is not being displayed by the table")
-        }
-        let spell = spellsFiltered[indexPath.section][indexPath.row]
+        self.navigationItem.backBarButtonItem = nil
         
-        spellViewController.spell = spell
+        spellViewController.spell = selectedSpell
         
     }
     
@@ -152,9 +203,15 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         super.viewWillAppear(animated)
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: indexPath, animated: true)
+            if(compendiumMode){
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
         
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
     }
     
     //Search bar logic///////////////////////////////////////////////////////////
@@ -189,6 +246,22 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             indexView.isHidden = true
         }
         buildData()
+    }
+    
+}
+
+class CellSpell: UITableViewCell {
+    
+    let selectedColor = UIColor(red: 240/255, green: 238/255, blue: 1, alpha: 1)
+    let deselectedColor = UIColor(red: 250/255, green: 248/255, blue: 1, alpha: 1)
+    let colorView = UIView()
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        accessoryType = selected ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
+        tintColor = UIColor.purple
+        colorView.backgroundColor = selected ? selectedColor : deselectedColor
+        self.selectedBackgroundView = colorView
     }
     
 }

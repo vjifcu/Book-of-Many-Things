@@ -49,6 +49,10 @@ class Spell: NSObject, NSCoding {
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("spells")
     
+    init(name: String){
+        self.name = name
+    }
+    
     init(dictionary: [String: Any]){
         var dict = dictionary
         self.name = dict["Name"] as! String

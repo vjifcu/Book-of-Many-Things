@@ -22,9 +22,17 @@ class TabbedViewController: UITabBarController{
         super.viewWillAppear(animated)
         
         loadData(response: TabbedViewController.response, data: nil)
+        self.tabBar.barTintColor = UIColor(red: 50/255, green: 21/255, blue: 50/255, alpha: 1)
+        self.tabBar.tintColor = UIColor.white
+        
+        self.moreNavigationController.navigationBar.isTranslucent = false
+        self.moreNavigationController.navigationBar.barStyle = UIBarStyle.blackOpaque
+        self.moreNavigationController.navigationBar.barTintColor = UIColor(red: 50/255, green: 21/255, blue: 50/255, alpha: 1)
+        self.moreNavigationController.navigationBar.tintColor = UIColor.white
+        self.moreNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,7 +116,6 @@ class TabbedViewController: UITabBarController{
         for children in self.viewControllers!{
             children.tabBarItem.title = self.tabNames[self.currentTab]
             let tableViewController = children.childViewControllers.first as! ClassSpellbook
-            tableViewController.tab = self.currentTab
             tableViewController.tabName = self.tabNames[self.currentTab]
             tableViewController.spells = self.spells.filter{$0._class.contains(tableViewController.tabName)}
             self.currentTab += 1

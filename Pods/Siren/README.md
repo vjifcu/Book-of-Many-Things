@@ -2,6 +2,8 @@
 
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
+![Swift Support](https://img.shields.io/badge/Swift-2.3%2C%203.1%2C%203.2%2C%204.0-orange.svg)
+
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58c4d0d85601d40100c5c51d&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58c4d0d85601d40100c5c51d/build/latest?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Siren.svg)](https://cocoapods.org/pods/Siren)  [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/) [![CocoaPods](https://img.shields.io/cocoapods/dt/Siren.svg)](https://cocoapods.org/pods/Siren) [![CocoaPods](https://img.shields.io/cocoapods/dm/Siren.svg)](https://cocoapods.org/pods/Siren)
 ---
 
@@ -58,32 +60,50 @@ If a new version is available, an alert can be presented to the user informing t
 
 ## Installation Instructions
 
+| Swift Version |  Branch Name  | Will Continue to Receive Updates?
+| ------------- | ------------- |  -------------
+| 4.0  | master   | **Yes**
+| 3.2  | swift3.2 | No
+| 3.1  | swift3.1 | No
+| 2.3  | swift2.3 | No  
+
 ### CocoaPods
-For Swift 3 support:
+For Swift 4 support:
 ```ruby
 pod 'Siren'
 ```
 
-For Swift 4 support:
+For Swift 3.2 support:
 ```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift4'
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.2'
+```
+
+For Swift 3.1 support:
+```ruby
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift3.1'
 ```
 
 For Swift 2.3 support:
 ```ruby
-pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3' 
+pod 'Siren', :git => 'https://github.com/ArtSabintsev/Siren.git', :branch => 'swift2.3'
 ```
 
 ### Carthage
-For Swift 3 support:
-
+For Swift 4 support:
 ```swift
 github "ArtSabintsev/Siren"
 ```
 
-For Swift 4 support:
+For Swift 3.2 support:
+
 ```swift
-github "ArtSabintsev/Siren", "swift4"
+github "ArtSabintsev/Siren", "swift3.2"
+```
+
+For Swift 3.1 support:
+
+```swift
+github "ArtSabintsev/Siren", "swift3.1"
 ```
 
 For Swift 2.3 support:
@@ -94,7 +114,7 @@ github "ArtSabintsev/Siren", "swift2.3"
 
 ### Swift Package Manager
 ```swift
-.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 2)
+.Package(url: "https://github.com/ArtSabintsev/Siren.git", majorVersion: 3)
 ```
 
 ## Example Code
@@ -113,12 +133,20 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	  // Optional: Defaults to .option
 	  siren.alertType = <#Siren.AlertType_Enum_Value#>
 
+	  // Optional: Change the various UIAlertController and UIAlertAction messaging. One or more values can be changes. If only a subset of values are changed, the defaults with which Siren comes with will be used.
+      siren.alertMessaging = SirenAlertMessaging(updateTitle: "New Fancy Title",
+                                                 updateMessage: "New message goes here!",
+                                                 updateButtonMessage: "Update Now, Plz!?",
+                                                 nextTimeButtonMessage: "OK, next time it is!",
+                                                 skipVersionButtonMessage: "Please don't push skip, please don't!")
+
 	  // Optional: Set this variable if you would only like to show an alert if your app has been available on the store for a few days.
 	  // This default value is set to 1 to avoid this issue: https://github.com/ArtSabintsev/Siren#words-of-caution
 	  // To show the update immediately after Apple has updated their JSON, set this value to 0. Not recommended due to aforementioned reason in https://github.com/ArtSabintsev/Siren#words-of-caution.
 	  siren.showAlertAfterCurrentVersionHasBeenReleasedForDays = 3
 
 	  // Replace .immediately with .daily or .weekly to specify a maximum daily or weekly frequency for version checks.
+		// DO NOT CALL THIS METHOD IN didFinishLaunchingWithOptions IF YOU ALSO PLAN TO CALL IT IN applicationDidBecomeActive.
     siren.checkVersion(checkType: .immediately)
 
     return true
@@ -185,11 +213,11 @@ Six delegate methods allow you to handle or track the user's behavior. Each meth
 
 ```	swift
 public protocol SirenDelegate: class {
-    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)   // User presented with update dialog
+    func sirenDidShowUpdateDialog(alertType: Siren.AlertType)  // User presented with update dialog
     func sirenUserDidLaunchAppStore()                          // User did click on button that launched App Store.app
     func sirenUserDidSkipVersion()                             // User did click on button that skips version update
     func sirenUserDidCancel()                                  // User did click on button that cancels update dialog
-    func sirenDidFailVersionCheck(error: NSError)              // Siren failed to perform version check (may return system-level error)
+    func sirenDidFailVersionCheck(error: Error)                // Siren failed to perform version check (may return system-level error)
     func sirenDidDetectNewVersionWithoutAlert(message: String) // Siren performed version check and did not display alert
 }
 ```
@@ -230,6 +258,7 @@ Siren is localized for
 - Swedish
 - Thai
 - Turkish
+- Ukrainian
 - Urdu
 - Vietnamese
 
@@ -254,10 +283,14 @@ For your convenience, you may turn on debugging statements by setting `self.debu
 The App Store reviewer will **not** see the alert. The version in the App Store will always be older than the version being reviewed.
 
 ## Phased Releases
-In 2017, Apple announced the [ability to rollout app updates gradually (a.k.a. Phased Releases)](https://itunespartner.apple.com/en/apps/faq/Managing%20Your%20Apps_Submission%20Process). Siren will continue to work as it has in the past, presenting an update modal to _all_ users. If you opt-in to a phased rollout for a specific version, you will need to remotely disable Siren until the rollout is done.
+In 2017, Apple announced the [ability to rollout app updates gradually (a.k.a. Phased Releases)](https://itunespartner.apple.com/en/apps/faq/Managing%20Your%20Apps_Submission%20Process). Siren will continue to work as it has in the past, presenting an update modal to _all_ users. If you opt-in to a phased rollout for a specific version, you have a few choices:
+
+- You can leave Siren configured as normal. Phased rollout will continue to auto-update apps. Since all users can still manually update your app directly, Siren will ignore the phase rollout and will prompt users to update.
+- You can set `showAlertAfterCurrentVersionHasBeenReleasedForDays` to `7`, and Siren will not prompt any users until the latest version is 7 days old, after phased rollout is complete.
+- You can remotely disable Siren until the rollout is done using your own API / backend logic.
 
 ## Words of Caution
-Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been release, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 24 hours after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.
+Occasionally, the iTunes JSON will update faster than the App Store CDN, meaning the JSON may state that the new version of the app has been released, while no new binary is made available for download via the App Store. It is for this reason that Siren will, by default, wait 24 hours after the JSON has been updated to prompt the user to update. To change the default setting, please modify the value of `showAlertAfterCurrentVersionHasBeenReleasedForDays`.
 
 ## Ports
 - **Objective-C (iOS)**

@@ -8,10 +8,29 @@
 
 import Foundation
 
+/// MARK - Siren UpdateType
+
+/// `UpdateType` defines what kind of update is available
+/// It is used as parameter if user wants to use
+/// custom alert to inform the user about an update.
+///
+/// - major: Major release available: A.b.c.d
+/// - minor: Minor release available: a.B.c.d
+/// - patch: Patch release available: a.b.C.d
+/// - revision: Revision release available: a.b.c.D
+/// - unknown: No information available about the update
+public enum UpdateType: String {
+    case major
+    case minor
+    case patch
+    case revision
+    case unknown
+}
+
 // MARK: - SirenDelegate Protocol
 
 /// Delegate that handles all codepaths for Siren upon version check completion.
-public protocol SirenDelegate: class {
+public protocol SirenDelegate: NSObjectProtocol {
     /// User presented with update dialog.
     func sirenDidShowUpdateDialog(alertType: Siren.AlertType)
 
@@ -25,10 +44,10 @@ public protocol SirenDelegate: class {
     func sirenUserDidCancel()
 
     /// Siren failed to perform version check (may return system-level error).
-    func sirenDidFailVersionCheck(error: NSError)
+    func sirenDidFailVersionCheck(error: Error)
 
     /// Siren performed version check and did not display alert.
-    func sirenDidDetectNewVersionWithoutAlert(message: String)
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType)
 
     /// Siren performed version check and latest version is installed.
     func sirenLatestVersionInstalled()
@@ -54,11 +73,11 @@ public extension SirenDelegate {
         printMessage()
     }
 
-    func sirenDidFailVersionCheck(error: NSError) {
+    func sirenDidFailVersionCheck(error: Error) {
         printMessage()
     }
 
-    func sirenDidDetectNewVersionWithoutAlert(message: String) {
+    func sirenDidDetectNewVersionWithoutAlert(message: String, updateType: UpdateType) {
         printMessage()
     }
 

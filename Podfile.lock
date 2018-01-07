@@ -1,12 +1,12 @@
 PODS:
-  - Alamofire (4.5.0)
-  - AWSCognito (2.5.10):
-    - AWSCore (= 2.5.10)
-  - AWSCore (2.5.10)
-  - AWSLambda (2.5.10):
-    - AWSCore (= 2.5.10)
+  - Alamofire (4.6.0)
+  - AWSCognito (2.6.10):
+    - AWSCore (= 2.6.10)
+  - AWSCore (2.6.10)
+  - AWSLambda (2.6.10):
+    - AWSCore (= 2.6.10)
   - MBProgressHUD (1.0.0)
-  - Siren (2.0.7)
+  - Siren (3.2.0)
   - SWXMLHash (4.0.0)
 
 DEPENDENCIES:
@@ -19,12 +19,12 @@ DEPENDENCIES:
   - SWXMLHash (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
-  AWSCore: 490c988f6af48a10ea113ff06c53a1ef72a3534b
-  AWSLambda: ed5888a96f68b1cbbac2352d9b1926e3d83d7ea5
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AWSCognito: 94d97a52c51310dfd20f2db5dc4fce7ebce0e8dc
+  AWSCore: 5bb072a6b5b185f43ddbd239d6554d2f8a285ad2
+  AWSLambda: 2f3e873db574ea3096d55cbab2b15c08d1a70b2c
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  Siren: e51ff27a8e83c3b7508fc7e41becbfa16523b26c
+  Siren: 964f57553cf6a39d1bada4e403557523a213b397
   SWXMLHash: 6bbc0bf72975a18ceda469fb7d6a886a26d81694
 
 PODFILE CHECKSUM: 2fa650a03913081533f0ef65e6496956e1104c42

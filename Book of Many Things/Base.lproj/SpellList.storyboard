@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lle-v6-pk9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lle-v6-pk9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +19,20 @@
                         <viewControllerLayoutGuide type="bottom" id="mCm-2i-ia0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TtV-AN-SKf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jrt-wy-9y2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-8Y-lIy">
+                                    <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-8Y-lIy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="aLE-Ma-Xbz"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="barTintColor" red="0.14839428663253784" green="0.0" blue="0.1434522271156311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-PJ-VO0">
@@ -36,36 +40,38 @@
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-gi-TWI">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="separatorColor" red="0.77808660268783569" green="0.70247536897659302" blue="0.86608058214187622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="sectionIndexBackgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="YCo-zz-oRT" userLabel="SomeCell">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SomeCell" id="YCo-zz-oRT" userLabel="SomeCell" customClass="CellSpell" customModule="Book_of_Many_Things" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="345" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YCo-zz-oRT" id="D0Z-jb-rxu">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="59.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
-                                                        <connections>
-                                                            <segue destination="iKL-us-P8M" kind="show" id="yPt-sK-hoF">
-                                                                <nil key="action"/>
-                                                            </segue>
-                                                        </connections>
+                                                        <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OML-BD-Czf" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
                                                 <rect key="frame" x="345" y="0.0" width="30" height="510"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" priority="999" constant="30" id="qeE-yK-fyu"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.31617048382759094" green="0.13841643929481506" blue="0.30755579471588135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jrt-wy-9y2" firstAttribute="top" secondItem="4Yt-ly-03a" secondAttribute="bottom" id="0EU-mD-la6"/>
                             <constraint firstAttribute="trailing" secondItem="jrt-wy-9y2" secondAttribute="trailing" id="ZLc-TZ-Tct"/>
@@ -75,24 +81,32 @@
                     </view>
                     <navigationItem key="navigationItem" id="glg-X5-tJ5">
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="pEW-1f-bbE">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="5ok-hA-7tc" kind="popoverPresentation" identifier="showPopover" popoverAnchorBarButtonItem="pEW-1f-bbE" id="9ba-Kn-vef">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="bookmarks" id="Tl9-lF-oSV">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="uVf-t8-kRK" kind="show" id="73o-Nb-FCZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="indexView" destination="OML-BD-Czf" id="8sW-qr-MXs"/>
                         <outlet property="searchBar" destination="wTR-8Y-lIy" id="ryC-o6-S6Q"/>
                         <outlet property="tableView" destination="eU6-gi-TWI" id="JGK-TK-63Z"/>
+                        <segue destination="iKL-us-P8M" kind="show" identifier="CompendiumSegue" id="dS6-6N-aZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMi-W4-6QE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5759.1999999999998" y="-304.4977511244378"/>
+            <point key="canvasLocation" x="5620" y="-305"/>
         </scene>
         <!--Spell View Controller-->
         <scene sceneID="ABd-Py-Uen">
@@ -103,17 +117,27 @@
                         <viewControllerLayoutGuide type="bottom" id="BGZ-dy-Pet"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WjL-GI-vY0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="7pA-xt-9c2">
                         <nil key="title"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WF9-P0-Bcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6511.1999999999998" y="-304.4977511244378"/>
+        </scene>
+        <!--MySpellbook-->
+        <scene sceneID="Gvm-mQ-H39">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="MySpellbook" storyboardName="MySpellbook" id="uVf-t8-kRK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8nd-xW-aRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7151" y="-305"/>
         </scene>
         <!--Your Spellbook-->
         <scene sceneID="fbN-Hf-RGs">
@@ -162,11 +186,11 @@
                         <viewControllerLayoutGuide type="bottom" id="iDO-e2-WGM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Vh3-ft-wOT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="T1R-Ln-QEP">
-                                <rect key="frame" x="16" y="74" width="343" height="309"/>
+                                <rect key="frame" x="16" y="10" width="343" height="309"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3EX-bT-AYX">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="139"/>
@@ -286,8 +310,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUx-k0-Cag" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Spellbook" id="sxZ-BE-D0K"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hfv-C3-exg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Hfv-C3-exg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -317,38 +341,38 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="WKQ-pd-qdj">
-                                <rect key="frame" x="3" y="22" width="294" height="326"/>
+                                <rect key="frame" x="3" y="2" width="294" height="346"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1n-UB-7Qj">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="91.5"/>
                                         <string key="text">We support XML and JSON files for importing spell data. Our compendium format is compatible with Fight Club 5's format. Manual input is coming soon.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R60-b0-fBJ">
-                                        <rect key="frame" x="0.0" y="86" width="294" height="60"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="294" height="63.5"/>
                                         <state key="normal" title="Load Spell Data from Dropbox"/>
                                         <connections>
                                             <action selector="loadData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="221-fH-AFh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSd-p9-JXR">
-                                        <rect key="frame" x="0.0" y="146" width="294" height="60"/>
+                                        <rect key="frame" x="0.0" y="155" width="294" height="63.5"/>
                                         <state key="normal" title="Load Spell Data Code"/>
                                         <connections>
                                             <action selector="loadCode:" destination="5ok-hA-7tc" eventType="touchUpInside" id="kHa-6g-ESb"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="el0-X8-4ob">
-                                        <rect key="frame" x="0.0" y="206" width="294" height="60"/>
+                                        <rect key="frame" x="0.0" y="218.5" width="294" height="64"/>
                                         <state key="normal" title="View/Generate Spell Data Code"/>
                                         <connections>
                                             <segue destination="ydL-0Q-QQI" kind="presentation" id="InW-sU-vaK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6c-lJ-wrT">
-                                        <rect key="frame" x="0.0" y="266" width="294" height="60"/>
+                                        <rect key="frame" x="0.0" y="282.5" width="294" height="63.5"/>
                                         <state key="normal" title="Reset Spell Data"/>
                                         <connections>
                                             <action selector="resetData:" destination="5ok-hA-7tc" eventType="touchUpInside" id="dyB-JY-qjG"/>
@@ -382,9 +406,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ydL-0Q-QQI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kqa-Ms-oaG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="kqa-Ms-oaG">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.19607843137254902" green="0.082352941176470587" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
