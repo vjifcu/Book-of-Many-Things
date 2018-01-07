@@ -23,7 +23,8 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     var spellsFiltered = [[Spell]]()
     var sections = [String]()
     var selectedSpell = Spell(name: "Placeholder")
-    var compendiumMode = false
+    var selectedSpells = Set<Spell>()
+    var compendiumMode = true
     static var file: URL? = nil
     
     override func viewDidLoad() {
@@ -125,6 +126,19 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         }
         
         tableView.reloadData()
+        
+        for (sectionIndex, section) in spellsFiltered.enumerated(){
+            
+            for (spellIndex, spell) in section.enumerated(){
+                
+                if(selectedSpells.contains(spell)){
+                    tableView.selectRow(at: IndexPath(row: spellIndex, section: sectionIndex), animated: false, scrollPosition: .none)
+                }
+                
+            }
+            
+        }
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -144,7 +158,15 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             selectedSpell = spellsFiltered[indexPath.section][indexPath.row]
             self.performSegue(withIdentifier: "CompendiumSegue", sender: self)
         } else {
-            
+            print(indexPath.item)
+            selectedSpells.insert(spellsFiltered[indexPath.section][indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if(!compendiumMode){
+            print(indexPath.item)
+            selectedSpells.remove(spellsFiltered[indexPath.section][indexPath.row])
         }
     }
     

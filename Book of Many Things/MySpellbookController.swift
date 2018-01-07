@@ -107,6 +107,7 @@ class MySpellbookController: UITableViewController {
         }
         
         spellbookViewController.tabName = cell.textLabel!.text!
+        spellbookViewController.compendiumMode = false;
         
     }
     
