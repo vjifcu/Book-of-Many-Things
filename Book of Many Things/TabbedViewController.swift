@@ -105,6 +105,10 @@ class TabbedViewController: UITabBarController{
             return $0 < $1
         }
         
+        self.spells.sort{
+            $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending
+        }
+        
         self.classes = [UIViewController]()
         for _ in self.tabNames{
             let storyboard = UIStoryboard(name: "Class", bundle: nil)
