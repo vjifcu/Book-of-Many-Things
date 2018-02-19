@@ -25,6 +25,8 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     var selectedSpell = Spell(name: "Placeholder")
     var selectedSpells = Set<Spell>()
     var compendiumMode = true
+    var editMode = false
+    var selectedSpellbook = -1
     static var file: URL? = nil
     
     override func viewDidLoad() {
@@ -132,12 +134,16 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         
         tableView.reloadData()
         
+        var temp = Set(selectedSpells)
+        selectedSpells.removeAll()
+        
         for (sectionIndex, section) in spellsFiltered.enumerated(){
             
             for (spellIndex, spell) in section.enumerated(){
                 
-                if(selectedSpells.contains(spell)){
+                if(temp.contains(where:{spellname in spellname.name == spell.name})){
                     tableView.selectRow(at: IndexPath(row: spellIndex, section: sectionIndex), animated: false, scrollPosition: .none)
+                    selectedSpells.insert(spellsFiltered[sectionIndex][spellIndex])
                 }
                 
             }
@@ -155,6 +161,9 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(spellsFiltered.count == 0){
+            return 0
+        }
         return spellsFiltered[section].count
     }
     
@@ -199,7 +208,16 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         guard let spellViewController = segue.destination as? SpellViewController else{
             guard let importViewController = segue.destination as? MainViewController else{
                 guard let spellbookViewController = segue.destination as? MySpellbookController else {
-                    fatalError("Invalid destination")
+                    guard let spellbookSpellsViewController = segue.destination as? ClassSpellbook else {
+                       fatalError("Invalid destination")
+                    }
+                    
+                    spellbookSpellsViewController.spells = TabbedViewController.spells
+                    spellbookSpellsViewController.selectedSpells = Set(spells)
+                    spellbookSpellsViewController.compendiumMode = false
+                    spellbookSpellsViewController.editMode = true
+                    spellbookSpellsViewController.selectedSpellbook = selectedSpellbook
+                    return
                 }
                 let backButtonItem = UIBarButtonItem()
                 backButtonItem.title = "Spells"
@@ -230,6 +248,11 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         if let indexPath = tableView.indexPathForSelectedRow {
             if(compendiumMode){
                 tableView.deselectRow(at: indexPath, animated: true)
+            }
+        } else {
+            if(selectedSpellbook != -1 && !editMode){
+                spells = MySpellbookController.spellbooks[selectedSpellbook].spells
+                buildData()
             }
         }
         
@@ -288,33 +311,38 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     }
     
     @IBAction func saveSpellbook(_ sender: Any) {
-        let alert = UIAlertController(title: "Name your spellbook", message: nil, preferredStyle: .alert)
         
-        alert.addTextField(configurationHandler: nil)
-        
-        // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+        if(!editMode){
             
-            if let navController = self.navigationController, navController.viewControllers.count >= 2 {
-                let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! MySpellbookController
+            let alert = UIAlertController(title: "Name your spellbook", message: nil, preferredStyle: .alert)
+            
+            alert.addTextField(configurationHandler: nil)
+            
+            // add the actions (buttons)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
                 
-                var spellbookName = alert.textFields?.first?.text
-                if(spellbookName == nil || spellbookName == ""){
-                    spellbookName = "Spellbook " + String(viewController.spellbooks.count + 1)
+                if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+                    
+                    var spellbookName = alert.textFields?.first?.text
+                    if(spellbookName == nil || spellbookName == ""){
+                        spellbookName = "Spellbook " + String(MySpellbookController.spellbooks.count + 1)
+                    }
+                    
+                    MySpellbookController.spellbooks.append(Spellbook(name: spellbookName!, spells: Array(self.selectedSpells)))
                 }
                 
-                viewController.spellbooks.append(Spellbook(name: spellbookName!, spells: Array(self.selectedSpells)))
-                viewController.saveSpellbooks()
+                self.navigationController?.popViewController(animated: true)
                 
-            }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
             
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            MySpellbookController.spellbooks[selectedSpellbook] = Spellbook(name: MySpellbookController.spellbooks[selectedSpellbook].name, spells: Array(self.selectedSpells))
             self.navigationController?.popViewController(animated: true)
-            
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        }
         
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

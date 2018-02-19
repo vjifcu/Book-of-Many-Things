@@ -117,7 +117,7 @@
                                 <action selector="cancel:" destination="Rjz-I5-IRR" id="tP5-Xy-LZf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="RcV-h1-cJv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="RcV-h1-cJv">
                             <connections>
                                 <action selector="saveSpellbook:" destination="Rjz-I5-IRR" id="B9G-Xb-13e"/>
                             </connections>
@@ -210,6 +210,11 @@
                                 <action selector="cancel:" destination="bsc-hX-qL1" id="kak-EN-xDA"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="KqM-MC-yfH">
+                            <connections>
+                                <segue destination="Rjz-I5-IRR" kind="show" id="eow-Qf-oj3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -248,4 +253,7 @@
             <point key="canvasLocation" x="1170" y="418"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eow-Qf-oj3"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -61,7 +61,7 @@ class CodeViewController: UIViewController {
         
         let lambdaInvoker = AWSLambdaInvoker.default()
         
-        let jsonObject = "{\"spells\":[" + mainViewController.dataViewController.spells.map{$0.jsonRepresentation}.joined(separator: ",") + "]}"
+        let jsonObject = "{\"spells\":[" + TabbedViewController.spells.map{$0.jsonRepresentation}.joined(separator: ",") + "]}"
         
         lambdaInvoker.invokeFunction("serverless-admin-dev-save", jsonObject: jsonObject)
             .continueWith(block: {(task: AWSTask<AnyObject>) -> Any? in

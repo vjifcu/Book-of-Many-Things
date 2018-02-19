@@ -14,7 +14,7 @@ class TabbedViewController: UITabBarController{
     var currentTab = 0
     var tabNames = [String]()
     var classes = [UIViewController]()
-    var spells = [Spell]()
+    static var spells = [Spell]()
     static var response : String? = nil
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +40,9 @@ class TabbedViewController: UITabBarController{
     
     func loadData(response: String?, data: String?){
         do{
-            if spells.count == 0, let spellData = loadSpells(){
+            if TabbedViewController.spells.count == 0, let spellData = loadSpells(){
                 tabNames = [String]()
-                spells = spellData
+                TabbedViewController.spells = spellData
                 for key in spellData{
                     tabNames.append(contentsOf: key._class as! [String])
                 }
@@ -58,9 +58,9 @@ class TabbedViewController: UITabBarController{
                         let spellData = json?["spells"] as! [[String: Any]]
                         
                         tabNames = [String]()
-                        spells = [Spell]()
+                        TabbedViewController.spells = [Spell]()
                         for key in spellData{
-                            spells.append(Spell(dictionary: key))
+                            TabbedViewController.spells.append(Spell(dictionary: key))
                             tabNames.append(contentsOf: key["Classes"] as! [String])
                         }
                         
@@ -72,9 +72,9 @@ class TabbedViewController: UITabBarController{
                     let spellData = json?["spells"] as! [[String: Any]]
                     
                     tabNames = [String]()
-                    spells = [Spell]()
+                    TabbedViewController.spells = [Spell]()
                     for key in spellData{
-                        spells.append(Spell(dictionary: key))
+                        TabbedViewController.spells.append(Spell(dictionary: key))
                         tabNames.append(contentsOf: key["Classes"] as! [String])
                     }
                     
@@ -85,10 +85,10 @@ class TabbedViewController: UITabBarController{
             let spellData = SWXMLHash.parse(response!)
                 
             tabNames = [String]()
-            spells = [Spell]()
+            TabbedViewController.spells = [Spell]()
             for (tabNum, value) in spellData["compendium"]["spell"].all.enumerated(){
                 self.tabNames.append(contentsOf: ((value["classes"].element!.text).components(separatedBy: ", ")))
-                self.spells.append(Spell(data:value))
+                TabbedViewController.spells.append(Spell(data:value))
             }
             
             writeData()
@@ -105,7 +105,7 @@ class TabbedViewController: UITabBarController{
             return $0 < $1
         }
         
-        self.spells.sort{
+        TabbedViewController.spells.sort{
             $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending
         }
         
@@ -121,7 +121,7 @@ class TabbedViewController: UITabBarController{
             children.tabBarItem.title = self.tabNames[self.currentTab]
             let tableViewController = children.childViewControllers.first as! ClassSpellbook
             tableViewController.tabName = self.tabNames[self.currentTab]
-            tableViewController.spells = self.spells.filter{$0._class.contains(tableViewController.tabName)}
+            tableViewController.spells = TabbedViewController.spells.filter{$0._class.contains(tableViewController.tabName)}
             self.currentTab += 1
         }
         
@@ -129,7 +129,7 @@ class TabbedViewController: UITabBarController{
     }
 
     private func saveSpells(){
-        NSKeyedArchiver.archiveRootObject(spells, toFile: Spell.ArchiveURL.path)
+        NSKeyedArchiver.archiveRootObject(TabbedViewController.spells, toFile: Spell.ArchiveURL.path)
         
     }
     

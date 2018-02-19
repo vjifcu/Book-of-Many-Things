@@ -9,13 +9,13 @@ import UIKit
 
 class MySpellbookController: UITableViewController {
 
-    var spellbooks = [Spellbook]()
+    static var spellbooks = [Spellbook]()
     var selectedSpellbook = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        spellbooks = loadSpellbooks() ?? [Spellbook]();
+        MySpellbookController.spellbooks = loadSpellbooks() ?? [Spellbook]();
         
         self.title = "My Spellbooks"
         
@@ -25,6 +25,7 @@ class MySpellbookController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        saveSpellbooks()
     }
     
     // MARK: - Table view data source
@@ -36,20 +37,20 @@ class MySpellbookController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return spellbooks.count + 1
+        return MySpellbookController.spellbooks.count + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SpellbookCell", for: indexPath)
 
-        if(indexPath.row == spellbooks.count)
+        if(indexPath.row == MySpellbookController.spellbooks.count)
         {
             cell.textLabel!.text = "➕ New Spellbook"
             cell.backgroundColor = UIColor(red: 250/255, green: 225/255, blue: 1, alpha: 1)
             return cell
         }
         
-        cell.textLabel!.text = spellbooks[indexPath.row].name
+        cell.textLabel!.text = MySpellbookController.spellbooks[indexPath.row].name
         cell.backgroundColor = UIColor(red: 250/255, green: 248/255, blue: 1, alpha: 1)
 
         return cell
@@ -57,7 +58,7 @@ class MySpellbookController: UITableViewController {
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath.row == spellbooks.count){
+        if (indexPath.row == MySpellbookController.spellbooks.count){
             return false
         }
         return true
@@ -65,7 +66,7 @@ class MySpellbookController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSpellbook = indexPath.row
-        if (indexPath.row == spellbooks.count){
+        if (indexPath.row == MySpellbookController.spellbooks.count){
             self.performSegue(withIdentifier: "newSpellbookSegue", sender: self)
         } else {
             self.performSegue(withIdentifier: "showSpellbookSegue", sender: self)
@@ -113,17 +114,18 @@ class MySpellbookController: UITableViewController {
         var tabTitle = ""
         
         if let navController = self.navigationController, navController.viewControllers.count >= 2 {
-            if(selectedSpellbook == spellbooks.count){
+            if(selectedSpellbook == MySpellbookController.spellbooks.count){
                 let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! ClassSpellbook
                 let tabBarController = viewController.tabBarController as! TabbedViewController
                 
-                spellbookViewController.spells = tabBarController.spells
+                spellbookViewController.spells = TabbedViewController.spells
                 spellbookViewController.compendiumMode = false;
                 tabTitle = "New Spellbook"
             } else {
-                spellbookViewController.spells = spellbooks[selectedSpellbook].spells
-                tabTitle = spellbooks[selectedSpellbook].name
+                spellbookViewController.spells = MySpellbookController.spellbooks[selectedSpellbook].spells
+                tabTitle = MySpellbookController.spellbooks[selectedSpellbook].name
                 spellbookViewController.compendiumMode = true;
+                spellbookViewController.selectedSpellbook = selectedSpellbook
             }
             
         }
@@ -133,8 +135,20 @@ class MySpellbookController: UITableViewController {
         
     }
     
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            MySpellbookController.spellbooks.remove(at: indexPath.row)
+            saveSpellbooks()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
     public func saveSpellbooks(){
-        NSKeyedArchiver.archiveRootObject(spellbooks, toFile: Spellbook.ArchiveURL.path)
+        NSKeyedArchiver.archiveRootObject(MySpellbookController.spellbooks, toFile: Spellbook.ArchiveURL.path)
         
     }
     
