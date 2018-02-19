@@ -91,6 +91,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         let searchString = searchBar.text!
         var spellData = [Spell]()
         
+        self.spells.sort{
+            $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending
+        }
+        
         if !searchString.isEmpty {
             spellData = spells.filter{spell in
                 let words = spell.name.lowercased().components(separatedBy: CharacterSet.whitespacesAndNewlines)
@@ -112,6 +116,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         spellLevels.sort {
             return $0 < $1
         }
+        
         
         spellsFiltered.removeAll()
             
@@ -158,14 +163,12 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             selectedSpell = spellsFiltered[indexPath.section][indexPath.row]
             self.performSegue(withIdentifier: "CompendiumSegue", sender: self)
         } else {
-            print(indexPath.item)
             selectedSpells.insert(spellsFiltered[indexPath.section][indexPath.row])
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if(!compendiumMode){
-            print(indexPath.item)
             selectedSpells.remove(spellsFiltered[indexPath.section][indexPath.row])
         }
     }
@@ -235,7 +238,21 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
-    
+    /*
+    @IBAction func saveSpellbook(_ sender: UIBarButtonItem) {
+        
+        if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+            let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! MySpellbookController
+            
+            let spellbookName = "Spellbook " + String(viewController.spellbooks.count + 1)
+            
+            viewController.spellbooks.append(Spellbook(name: spellbookName, spells: Array(selectedSpells)))
+            
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    */
     //Search bar logic///////////////////////////////////////////////////////////
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
@@ -268,6 +285,36 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             indexView.isHidden = true
         }
         buildData()
+    }
+    
+    @IBAction func saveSpellbook(_ sender: Any) {
+        let alert = UIAlertController(title: "Name your spellbook", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: nil)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in
+            
+            if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+                let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! MySpellbookController
+                
+                var spellbookName = alert.textFields?.first?.text
+                if(spellbookName == nil || spellbookName == ""){
+                    spellbookName = "Spellbook " + String(viewController.spellbooks.count + 1)
+                }
+                
+                viewController.spellbooks.append(Spellbook(name: spellbookName!, spells: Array(self.selectedSpells)))
+                viewController.saveSpellbooks()
+                
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

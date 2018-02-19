@@ -10,17 +10,22 @@ import UIKit
 class MySpellbookController: UITableViewController {
 
     var spellbooks = [Spellbook]()
+    var selectedSpellbook = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        spellbooks = loadSpellbooks() ?? [Spellbook]();
+        
         self.title = "My Spellbooks"
-        spellbooks.append(Spellbook(name:"Spellbook 1", spells: [Spell]()));
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     // MARK: - Table view data source
 
@@ -45,6 +50,7 @@ class MySpellbookController: UITableViewController {
         }
         
         cell.textLabel!.text = spellbooks[indexPath.row].name
+        cell.backgroundColor = UIColor(red: 250/255, green: 248/255, blue: 1, alpha: 1)
 
         return cell
     }
@@ -57,6 +63,15 @@ class MySpellbookController: UITableViewController {
         return true
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSpellbook = indexPath.row
+        if (indexPath.row == spellbooks.count){
+            self.performSegue(withIdentifier: "newSpellbookSegue", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "showSpellbookSegue", sender: self)
+        }
+    }
+    
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -94,21 +109,41 @@ class MySpellbookController: UITableViewController {
         guard let spellbookViewController = segue.destination as? ClassSpellbook else {
             return
         }
-        guard let cell = sender as? UITableViewCell else {
-            return
-        }
+        
+        var tabTitle = ""
         
         if let navController = self.navigationController, navController.viewControllers.count >= 2 {
-            let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! ClassSpellbook
-            let tabBarController = viewController.tabBarController as! TabbedViewController
-            
-            spellbookViewController.spells = tabBarController.spells
+            if(selectedSpellbook == spellbooks.count){
+                let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! ClassSpellbook
+                let tabBarController = viewController.tabBarController as! TabbedViewController
+                
+                spellbookViewController.spells = tabBarController.spells
+                spellbookViewController.compendiumMode = false;
+                tabTitle = "New Spellbook"
+            } else {
+                spellbookViewController.spells = spellbooks[selectedSpellbook].spells
+                tabTitle = spellbooks[selectedSpellbook].name
+                spellbookViewController.compendiumMode = true;
+            }
             
         }
         
-        spellbookViewController.tabName = cell.textLabel!.text!
-        spellbookViewController.compendiumMode = false;
+        spellbookViewController.tabName = tabTitle
         
+        
+    }
+    
+    public func saveSpellbooks(){
+        NSKeyedArchiver.archiveRootObject(spellbooks, toFile: Spellbook.ArchiveURL.path)
+        
+    }
+    
+    private func loadSpellbooks() -> [Spellbook]?{
+        let result = NSKeyedUnarchiver.unarchiveObject(withFile: Spellbook.ArchiveURL.path) as? [Spellbook]
+        if (result == nil || result!.count > 0){
+            return result
+        }
+        return nil
     }
     
 
