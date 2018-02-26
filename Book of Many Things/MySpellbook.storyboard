@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vpu-tT-Iha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5TZ-dR-jD0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,37 +10,49 @@
     </dependencies>
     <scenes>
         <!--My Spellbook Controller-->
-        <scene sceneID="mV8-Lh-o7p">
+        <scene sceneID="mDP-7L-pep">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="vpu-tT-Iha" customClass="MySpellbookController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IIj-rz-w5c">
+                <viewController hidesBottomBarWhenPushed="YES" id="5TZ-dR-jD0" customClass="MySpellbookController" customModule="Book_of_Many_Things" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DvK-cW-bcV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jdk-Ni-fxF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VaJ-0o-DWf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.97892731311274495" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpellbookCell" id="qDv-z0-IBP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qDv-z0-IBP" id="Jui-Xu-Adm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.97898156658496716" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vpu-tT-Iha" id="VDk-B4-py1"/>
-                            <outlet property="delegate" destination="vpu-tT-Iha" id="xhp-WI-hpH"/>
-                        </connections>
-                    </tableView>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="qc5-p0-M6b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                                <color key="backgroundColor" red="0.97892731310000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpellbookCell" id="ZQQ-3Z-3u6">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZQQ-3Z-3u6" id="v7f-ik-66h">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.97898156660000002" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qc5-p0-M6b" firstAttribute="leading" secondItem="VaJ-0o-DWf" secondAttribute="leading" id="S1F-s2-7Mw"/>
+                            <constraint firstItem="qc5-p0-M6b" firstAttribute="top" secondItem="VaJ-0o-DWf" secondAttribute="top" id="e6C-i4-sWF"/>
+                            <constraint firstAttribute="trailing" secondItem="qc5-p0-M6b" secondAttribute="trailing" id="l3G-vS-irs"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="Rjz-I5-IRR" kind="show" identifier="newSpellbookSegue" id="XoS-n5-aOk"/>
-                        <segue destination="bsc-hX-qL1" kind="show" identifier="showSpellbookSegue" id="dsQ-M5-c2z"/>
+                        <outlet property="tableView" destination="qc5-p0-M6b" id="Lvd-RH-flp"/>
+                        <segue destination="Rjz-I5-IRR" kind="show" identifier="newSpellbookSegue" id="3ac-pb-w6m"/>
+                        <segue destination="bsc-hX-qL1" kind="show" identifier="showSpellbookSegue" id="buo-uf-6vK"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wk9-T3-JW7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THS-RU-aKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-638" y="107"/>
+            <point key="canvasLocation" x="-742" y="114"/>
         </scene>
         <!--Wizard-->
         <scene sceneID="paV-mg-Y40">
@@ -54,8 +66,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0mF-7B-yly">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0mF-7B-yly">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxx-P9-qQ9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -67,11 +79,11 @@
                                         <color key="barTintColor" red="0.14839428660000001" green="0.0" blue="0.1434522271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5f-XJ-aoX">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5f-XJ-aoX">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="460"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-kN-b9J">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1P-kN-b9J">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="460"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="separatorColor" red="0.77808660269999996" green="0.70247536899999996" blue="0.86608058210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,8 +100,8 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42W-qU-G1B" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
-                                                <rect key="frame" x="345" y="0.0" width="30" height="510"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42W-qU-G1B" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
+                                                <rect key="frame" x="345" y="0.0" width="30" height="460"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" priority="999" constant="30" id="eV3-ak-Z8m"/>
@@ -102,12 +114,11 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.31617048380000001" green="0.1384164393" blue="0.3075557947" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="0mF-7B-yly" secondAttribute="trailing" id="503-1F-7Do"/>
                             <constraint firstItem="0mF-7B-yly" firstAttribute="top" secondItem="3Ru-yr-4ua" secondAttribute="bottom" id="AEZ-7m-Ylg"/>
-                            <constraint firstItem="sVl-DE-E87" firstAttribute="top" secondItem="0mF-7B-yly" secondAttribute="bottom" id="Qrs-sT-j20"/>
                             <constraint firstItem="0mF-7B-yly" firstAttribute="leading" secondItem="Xlu-3r-xMk" secondAttribute="leading" id="YIi-9U-Pgk"/>
                         </constraints>
                     </view>
@@ -128,6 +139,7 @@
                     <connections>
                         <outlet property="indexView" destination="42W-qU-G1B" id="a8h-q0-WSc"/>
                         <outlet property="searchBar" destination="wxx-P9-qQ9" id="bAh-Hl-iIW"/>
+                        <outlet property="stackView" destination="0mF-7B-yly" id="sWV-it-hjH"/>
                         <outlet property="tableView" destination="h1P-kN-b9J" id="JNf-uq-n6O"/>
                     </connections>
                 </viewController>
@@ -147,8 +159,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hPZ-7g-SyS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hPZ-7g-SyS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJI-KN-x4c">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -160,11 +172,11 @@
                                         <color key="barTintColor" red="0.14839428660000001" green="0.0" blue="0.1434522271" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JX-hz-CGS">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="510"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9JX-hz-CGS">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="460"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Q0-CYm">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Q0-CYm">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="460"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="separatorColor" red="0.77808660269999996" green="0.70247536899999996" blue="0.86608058210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,8 +193,8 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNn-8U-dfH" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
-                                                <rect key="frame" x="345" y="0.0" width="30" height="510"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNn-8U-dfH" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
+                                                <rect key="frame" x="345" y="0.0" width="30" height="460"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" priority="999" constant="30" id="xAX-AC-VZ6"/>
@@ -195,14 +207,14 @@
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.31617048380000001" green="0.1384164393" blue="0.3075557947" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hPZ-7g-SyS" firstAttribute="leading" secondItem="aMY-uZ-KLc" secondAttribute="leading" id="7D4-ah-INC"/>
                             <constraint firstItem="hPZ-7g-SyS" firstAttribute="top" secondItem="4hp-Pr-bZr" secondAttribute="bottom" id="DhU-wy-23u"/>
-                            <constraint firstItem="hjX-70-njO" firstAttribute="top" secondItem="hPZ-7g-SyS" secondAttribute="bottom" id="NFm-dB-9oi"/>
                             <constraint firstAttribute="trailing" secondItem="hPZ-7g-SyS" secondAttribute="trailing" id="Ob8-cQ-VY6"/>
                         </constraints>
+                        <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q9K-sc-4p6">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Cnp-tb-gRO">
@@ -221,6 +233,7 @@
                     <connections>
                         <outlet property="indexView" destination="CNn-8U-dfH" id="SrY-G4-kPu"/>
                         <outlet property="searchBar" destination="jJI-KN-x4c" id="E7n-bX-ksx"/>
+                        <outlet property="stackView" destination="hPZ-7g-SyS" id="xdO-D9-p46"/>
                         <outlet property="tableView" destination="R5f-Q0-CYm" id="3dW-5n-MvN"/>
                         <segue destination="LNd-Ip-416" kind="show" identifier="CompendiumSegue" id="HLs-h8-Bal"/>
                     </connections>
@@ -254,6 +267,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eow-Qf-oj3"/>
+        <segue reference="3ac-pb-w6m"/>
     </inferredMetricsTieBreakers>
 </document>

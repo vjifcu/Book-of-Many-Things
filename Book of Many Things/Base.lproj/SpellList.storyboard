@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jrt-wy-9y2">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jrt-wy-9y2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTR-8Y-lIy">
@@ -35,10 +35,10 @@
                                         <color key="barTintColor" red="0.14839428663253784" green="0.0" blue="0.1434522271156311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-PJ-VO0">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-PJ-VO0">
                                         <rect key="frame" x="0.0" y="44" width="375" height="510"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-gi-TWI">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-gi-TWI">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="510"/>
                                                 <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,7 +56,7 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OML-BD-Czf" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OML-BD-Czf" customClass="M4KTableIndexView" customModule="Book_of_Many_Things" customModuleProvider="target">
                                                 <rect key="frame" x="345" y="0.0" width="30" height="510"/>
                                                 <color key="backgroundColor" red="0.98039215686274506" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -76,7 +76,6 @@
                             <constraint firstItem="jrt-wy-9y2" firstAttribute="top" secondItem="4Yt-ly-03a" secondAttribute="bottom" id="0EU-mD-la6"/>
                             <constraint firstAttribute="trailing" secondItem="jrt-wy-9y2" secondAttribute="trailing" id="ZLc-TZ-Tct"/>
                             <constraint firstItem="jrt-wy-9y2" firstAttribute="leading" secondItem="TtV-AN-SKf" secondAttribute="leading" id="qr8-Au-uB4"/>
-                            <constraint firstItem="mCm-2i-ia0" firstAttribute="top" secondItem="jrt-wy-9y2" secondAttribute="bottom" id="zEK-8x-wm2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="glg-X5-tJ5">
@@ -100,6 +99,7 @@
                     <connections>
                         <outlet property="indexView" destination="OML-BD-Czf" id="8sW-qr-MXs"/>
                         <outlet property="searchBar" destination="wTR-8Y-lIy" id="ryC-o6-S6Q"/>
+                        <outlet property="stackView" destination="jrt-wy-9y2" id="BaW-Uc-SZ6"/>
                         <outlet property="tableView" destination="eU6-gi-TWI" id="JGK-TK-63Z"/>
                         <segue destination="iKL-us-P8M" kind="show" identifier="CompendiumSegue" id="dS6-6N-aZf"/>
                     </connections>
@@ -195,7 +195,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3EX-bT-AYX">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="139"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can save the current state of your spellbook and generate a code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZo-01-wBf">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can save the current state of your compendium and generate a code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZo-01-wBf">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>

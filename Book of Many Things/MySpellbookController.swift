@@ -6,14 +6,43 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
-class MySpellbookController: UITableViewController {
+class MySpellbookController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     static var spellbooks = [Spellbook]()
     var selectedSpellbook = 0
+    var adBannerView: GADBannerView?
+    var constraint : NSLayoutConstraint?
+    static var instance : MySpellbookController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MySpellbookController.instance = self
+        tableView.dataSource = self
+        tableView.delegate = self
+        /*
+        adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView?.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adBannerView?.delegate = self
+        adBannerView?.rootViewController = self
+        
+        adBannerView?.load(GADRequest())
+ */
+        
+        var constant = 0
+        
+        if(TabbedViewController.showingAd){
+            constant = TabbedViewController.adBannerHeight
+        }
+        
+        if(constraint != nil){
+            self.view.removeConstraint(constraint!)
+        }
+        
+        constraint = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: CGFloat(-constant))
+        constraint!.isActive = true
         
         MySpellbookController.spellbooks = loadSpellbooks() ?? [Spellbook]();
         
@@ -30,17 +59,17 @@ class MySpellbookController: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return MySpellbookController.spellbooks.count + 1
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SpellbookCell", for: indexPath)
 
         if(indexPath.row == MySpellbookController.spellbooks.count)
@@ -57,14 +86,14 @@ class MySpellbookController: UITableViewController {
     }
     
     // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if (indexPath.row == MySpellbookController.spellbooks.count){
             return false
         }
         return true
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSpellbook = indexPath.row
         if (indexPath.row == MySpellbookController.spellbooks.count){
             self.performSegue(withIdentifier: "newSpellbookSegue", sender: self)
@@ -135,8 +164,15 @@ class MySpellbookController: UITableViewController {
         
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = MySpellbookController.spellbooks[sourceIndexPath.row]
+        MySpellbookController.spellbooks.remove(at: sourceIndexPath.row)
+        MySpellbookController.spellbooks.insert(movedObject, at: destinationIndexPath.row)
+        self.tableView.reloadData()
+    }
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             MySpellbookController.spellbooks.remove(at: indexPath.row)
@@ -145,6 +181,11 @@ class MySpellbookController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: animated)
     }
     
     public func saveSpellbooks(){
@@ -161,4 +202,45 @@ class MySpellbookController: UITableViewController {
     }
     
 
+    func adViewDidReceiveAd(_ bannerView: GADBannerView!) {
+        // Reposition the banner ad to create a slide down effect
+        let translateTransform = CGAffineTransform(translationX: 0, y: -bannerView.bounds.size.height)
+        bannerView.transform = translateTransform
+        
+        UIView.animate(withDuration: 0.5) {
+            self.tableView.tableHeaderView?.frame = bannerView.frame
+            bannerView.transform = CGAffineTransform.identity
+            self.tableView.tableHeaderView = bannerView
+        }
+        
+    }
+    
+    func adView(_ bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
+        print("Fail to receive ads")
+        print(error)
+    }
+    
+    func animateConstraints(){
+        
+        if(constraint == nil){
+            return
+        }
+        
+        self.view.removeConstraint(constraint!)
+        
+        var constant = 0
+        
+        if(TabbedViewController.showingAd){
+            constant = TabbedViewController.adBannerHeight
+        }
+        
+        constraint = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: CGFloat(-constant))
+        constraint!.isActive = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+    }
+    
 }

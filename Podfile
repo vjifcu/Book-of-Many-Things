@@ -11,5 +11,6 @@ target 'Book of Many Things' do
   pod 'AWSLambda'
   pod 'AWSCognito'
   pod 'AWSCore'
+  pod 'Google-Mobile-Ads-SDK'
 
 end

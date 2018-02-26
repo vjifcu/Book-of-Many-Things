@@ -11,6 +11,7 @@ import Siren
 import AWSCore
 import AWSCognito
 import AWSLambda
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         AWSLogger.default().logLevel = .verbose
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-9438249199484491~9068676553")
+        
         return true
     }
 

@@ -9,12 +9,14 @@
 import UIKit
 import SWXMLHash
 import Alamofire
+import GoogleMobileAds
 
-class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate{
+class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelegate, UITableViewDelegate, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, GADBannerViewDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var indexView: M4KTableIndexView!
+    @IBOutlet weak var stackView: UIStackView!
     
     var spellDetail = SpellViewController()
     var tabName = ""
@@ -29,8 +31,14 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     var selectedSpellbook = -1
     static var file: URL? = nil
     
+    var constraint : NSLayoutConstraint?
+    
+    var adBannerView: GADBannerView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //initAdMobBanner()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -45,6 +53,26 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         self.navigationController!.navigationBar.barTintColor = UIColor(red: 50/255, green: 21/255, blue: 50/255, alpha: 1)
         self.navigationController!.navigationBar.tintColor = UIColor.white
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+        
+        if(stackView == nil){
+            stackView = view.subviews[0] as! UIStackView
+        }
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        var constant = 0
+        
+        if(TabbedViewController.showingAd){
+            constant = TabbedViewController.adBannerHeight
+        }
+        
+        if(constraint != nil){
+            self.view.removeConstraint(constraint!)
+        }
+        
+        constraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: CGFloat(-constant))
+        constraint!.isActive = true
         
         for subView in searchBar.subviews {
             searchBar.barStyle = UIBarStyle.blackOpaque
@@ -137,18 +165,49 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         var temp = Set(selectedSpells)
         selectedSpells.removeAll()
         
-        for (sectionIndex, section) in spellsFiltered.enumerated(){
-            
-            for (spellIndex, spell) in section.enumerated(){
+        
+
+        for spell in spells{
                 
                 if(temp.contains(where:{spellname in spellname.name == spell.name})){
-                    tableView.selectRow(at: IndexPath(row: spellIndex, section: sectionIndex), animated: false, scrollPosition: .none)
-                    selectedSpells.insert(spellsFiltered[sectionIndex][spellIndex])
+                    
+                    for (sectionIndex, section) in spellsFiltered.enumerated(){
+                        for (spellIndex, spell) in section.enumerated(){
+                            if(temp.contains(where:{spellname in spellname.name == spell.name})){
+                            tableView.selectRow(at: IndexPath(row: spellIndex, section: sectionIndex), animated: false, scrollPosition: .none)
+                            }
+                        }
+                    }
+                    
+                    selectedSpells.insert(spell)
                 }
-                
-            }
             
         }
+        
+    }
+    
+    static func setConstraint(constant: Int){
+        /*
+        self.view.removeConstraint(ClassSpellbook.constraint!)
+        
+        let temp = NSLayoutConstraint(item: stackView,
+                                      attribute: .bottom,
+                                      relatedBy: .equal,
+                                      toItem: self.view,
+                                      attribute: .bottom,
+                                      multiplier: 1,
+                                      constant: -200)
+        ClassSpellbook.constraint = temp
+        self.view.addConstraint(temp)
+        
+        let temp = NSLayoutConstraint(item: stackView,
+                                      attribute: .bottom,
+                                      relatedBy: .equal,
+                                      toItem: self.view,
+                                      attribute: .bottom,
+                                      multiplier: 1,
+                                      constant: constant)
+        ClassSpellbook.constraint = temp*/
         
     }
     
@@ -173,6 +232,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             self.performSegue(withIdentifier: "CompendiumSegue", sender: self)
         } else {
             selectedSpells.insert(spellsFiltered[indexPath.section][indexPath.row])
+            print(spellsFiltered[indexPath.section][indexPath.row].name)
         }
     }
     
@@ -342,6 +402,58 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
             MySpellbookController.spellbooks[selectedSpellbook] = Spellbook(name: MySpellbookController.spellbooks[selectedSpellbook].name, spells: Array(self.selectedSpells))
             self.navigationController?.popViewController(animated: true)
         }
+        
+    }
+    
+    func initAdMobBanner(){
+        
+        adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        let offset  = UIApplication.shared.statusBarFrame.height + (self.navigationController?.navigationBar.bounds.height)! + adBannerView!.frame.height
+        print(UIScreen.main.bounds.height)
+        adBannerView!.frame = CGRect(x: 0.0,
+                                  y: UIScreen.main.bounds.height - 0 ,
+                                  width: adBannerView!.frame.width,
+                                  height: adBannerView!.frame.height)
+        adBannerView?.delegate = self
+        self.view.addSubview(adBannerView!)
+        adBannerView?.adUnitID = "ca-app-pub-9438249199484491/6989308129"
+        adBannerView?.rootViewController = self
+        
+        adBannerView?.load(GADRequest())
+        
+    }
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        let offset  = UIApplication.shared.statusBarFrame.height + (self.navigationController?.navigationBar.bounds.height)! + adBannerView!.frame.height
+        print(UIScreen.main.bounds.height)
+        let translateTransform = CGAffineTransform(translationX: 0, y: UIScreen.main.bounds.height - offset)
+        
+        UIView.animate(withDuration: 0.5){
+            bannerView.transform = CGAffineTransform.identity
+        }
+        
+    }
+    
+    func animateConstraints(){
+        
+        if(constraint == nil){
+            return
+        }
+        
+        self.view.removeConstraint(constraint!)
+        
+        var constant = 0
+        
+        if(TabbedViewController.showingAd){
+            constant = TabbedViewController.adBannerHeight
+        }
+        
+        constraint = NSLayoutConstraint(item: stackView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: CGFloat(-constant))
+        constraint!.isActive = true
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
         
     }
     
