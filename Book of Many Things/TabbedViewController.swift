@@ -78,8 +78,22 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
         }
         
         if(changed){
-            TabbedViewController.tabNames = temp
+            
+            var temp2 = [String]()
+            
+            for i in 0 ..< 4{
+                temp2.append(temp[i])
+            }
+            
+            temp = temp.filter{!temp2.contains($0)}
+            
+            temp.sort {
+                return $0 < $1
+            }
+            
+            TabbedViewController.tabNames = temp2 + temp
             saveTabs()
+            writeData()
         }
     }
     
@@ -152,16 +166,21 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
         
         let savedTabNames = loadTabs()
         
-        if(savedTabNames == nil){
+        TabbedViewController.tabNames = Array(Set(TabbedViewController.tabNames))
         
-            TabbedViewController.tabNames = Array(Set(TabbedViewController.tabNames))
-        
-            TabbedViewController.tabNames.sort {
-                return $0 < $1
-            }
-        } else {
-            TabbedViewController.tabNames = savedTabNames!
+        TabbedViewController.tabNames.sort {
+            return $0 < $1
         }
+        
+        var newTabOrder = [String]()
+        for i in 0 ..< 4{
+            if(TabbedViewController.tabNames.contains(savedTabNames![i])){
+                newTabOrder.append(savedTabNames![i]);
+            }
+        }
+        
+        newTabOrder.append(contentsOf: TabbedViewController.tabNames.filter{!newTabOrder.contains($0)})
+        TabbedViewController.tabNames = newTabOrder
         
         TabbedViewController.spells.sort{
             $0.name.localizedCaseInsensitiveCompare($1.name) == ComparisonResult.orderedAscending
