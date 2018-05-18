@@ -107,6 +107,10 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
     func completeLoading(){
         buildData()
         
+        for subViews in indexView.subviews{
+            subViews.removeFromSuperview()
+        }
+        
         indexView.tableView = self.tableView
         if(sections.count == 0){
             indexView.indexes = ["0"]
@@ -312,7 +316,7 @@ class ClassSpellbook: UIViewController, UITableViewDataSource, UISearchBarDelega
         } else {
             if(selectedSpellbook != -1 && !editMode){
                 spells = MySpellbookController.spellbooks[selectedSpellbook].spells
-                buildData()
+                completeLoading()
             }
         }
         

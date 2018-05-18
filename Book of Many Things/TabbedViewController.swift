@@ -30,6 +30,10 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var moreTableView = moreNavigationController.topViewController!.view as! UITableView
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        moreTableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0)
         
     }
     
@@ -46,8 +50,10 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
         self.moreNavigationController.navigationBar.barTintColor = UIColor(red: 50/255, green: 21/255, blue: 50/255, alpha: 1)
         self.moreNavigationController.navigationBar.tintColor = UIColor.white
         self.moreNavigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        //self.customizableViewControllers = []
         initAdMobBanner()
         self.view.bringSubview(toFront: bannerAd)
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -202,6 +208,7 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
             self.currentTab += 1
         }
         
+        
         saveSpells()
     }
 
@@ -277,11 +284,22 @@ class TabbedViewController: UITabBarController, GADBannerViewDelegate{
         self.view.bringSubview(toFront: bannerAd)
     }
     
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if(item.title == nil){
+        }
+    }
+    
     func adView(_ bannerView: GADBannerView!, didFailToReceiveAdWithError error: GADRequestError!) {
         print("Fail to receive ads")
         print(error)
     }
-    
+    /*
+    override func tabBar(_ tabBar: UITabBar, willBeginCustomizing items: [UITabBarItem]) {
+        for item in items{
+            item.tint
+        }
+    }
+    */
     private func saveTabs(){
         NSKeyedArchiver.archiveRootObject(TabbedViewController.tabNames, toFile: TabbedViewController.TabArchiveURL.path)
     }
